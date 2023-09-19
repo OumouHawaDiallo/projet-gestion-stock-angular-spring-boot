@@ -1,0 +1,234 @@
+<header class="sticky-top" style="border-bottom: 2px solid gray;">
+  <nav class="container-fluid bg-mywhite">
+
+    <div class="row">
+      <div class="col-1 p-1">
+        <img src="../../assets/douanes.jpeg" width="90" alt="logo douanes sénégalaise"
+          class="img-fluid img-thumbnail rounded">
+      </div>
+
+      <div class="col-9">
+
+      </div>
+
+      <div class="col-2 my-auto text-center">
+
+        <div ngbDropdown class="d-inline-block bg-mywhite rounded-pill" style="box-shadow: #F5E0A7 0px 50px 100px -20px, #F5E0A7 0px 30px 60px -30px, #F5E0A7 0px -2px 6px 0px inset; outline: none;">
+
+          <button class="btn btn-primary rounded-pill" ngbDropdownToggle id="dropdownMenuButton1">
+            <img src="../../assets/user.png" alt="User" style="max-height: 40px; max-width: 40px;">
+            <span class="fw-bold mx-2">Administrateur</span>
+          </button>
+
+          <ul ngbDropdownMenu aria-labelledby="dropdownMenuButton1" class="dropdown-menu">
+            <li><button class="dropdown-item fw-bold" type="button">Profil</button></li>
+            <li><button class="dropdown-item fw-bold" type="button">Paramètres</button></li>
+            <li><button class="dropdown-item fw-bold" type="button">Déconnexion</button></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!--
+        <div class="col-2 my-auto text-center">
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <div class="text-center align-middle">
+                  <img src="../../assets/user.png" alt="User" class="mx-2">
+                  administrateur
+                </div>
+
+              </mat-expansion-panel-header>
+
+              <ng-template matExpansionPanelContent>
+                <div class="floating-content">
+                  <button mat-button>Sous-bouton 1</button>
+                  <button mat-button>Sous-bouton 2</button>
+                </div>
+              </ng-template>
+            </mat-expansion-panel>
+          </div>
+        -->
+
+    </div>
+
+
+  </nav>
+</header>
+
+<main>
+
+  <div class="container-fluid">
+    <div class="row">
+      <!-- Sidebar -->
+      <nav class="col-md-4 col-lg-3 d-md-block bg-mywhite " style="border-bottom: 2px solid gray;">
+        <div class="position-sticky">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <mat-expansion-panel class="mon-bouton mon-centre">
+                <mat-expansion-panel-header>
+                  <div class="">
+                    <mat-icon>calendar_today</mat-icon> Gestion des stocks
+                  </div>
+                </mat-expansion-panel-header>
+
+                <ng-template matExpansionPanelContent>
+                  <div class="floating-content">
+                    <button mat-button>Sous-bouton 1</button>
+                    <button mat-button>Sous-bouton 2</button>
+                    <button mat-button>Sous-bouton 3</button>
+                    <button mat-button>Sous-bouton 4</button>
+                  </div>
+                </ng-template>
+              </mat-expansion-panel>
+            </li>
+            <li class="nav-item">
+              <mat-expansion-panel class="mon-bouton">
+                <mat-expansion-panel-header>
+                  <div class="text-center align-middle">
+                    <mat-icon>assignment_ind</mat-icon> Gestion des utilsisateurs
+                  </div>
+                </mat-expansion-panel-header>
+
+                <ng-template matExpansionPanelContent>
+                  <div class="floating-content">
+                    <button mat-button>Sous-bouton 1</button>
+                    <button mat-button>Sous-bouton 2</button>
+                  </div>
+                </ng-template>
+              </mat-expansion-panel>
+            </li>
+            <li class="nav-item">
+              <a mat-raised-button class="nav-link mon-bouton" href="#">
+                <mat-icon> local_shipping</mat-icon> Gestion des fournisseurs
+              </a>
+            </li>
+            <li class="nav-item">
+              <a mat-raised-button class="nav-link mon-bouton align-middle my-auto" href="#">
+                <mat-icon>shopping_cart</mat-icon> Gestion des commandes
+              </a>
+            </li>
+            <li class="nav-item">
+              <a mat-raised-button class="nav-link mon-bouton" href="#">
+                <mat-icon>poll</mat-icon> Analyse et rapports
+              </a>
+            </li>
+            <li class="nav-item">
+              <a mat-raised-button class="nav-link mon-bouton" href="#">
+                <mat-icon>assignment</mat-icon> Gestion des demandes
+              </a>
+            </li>
+            <li class="nav-item">
+              <a mat-raised-button class="nav-link mon-bouton" href="#">
+                <mat-icon>open_in_new</mat-icon> retours et réparations
+              </a>
+            </li>
+            <li class="nav-item">
+              <a mat-raised-button class="nav-link mon-bouton" href="#">
+                <mat-icon>send</mat-icon> Transactions
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <!-- Content -->
+      <div class="col-md-8 ms-sm-auto col-lg-9 px-md-4">
+
+        <div class="container bg-mywarning my-3 py-2">
+          <div class="row">
+            <div class="col-12 text-center fw-bolder fs-4">
+              Gestion des utilisateurs
+            </div>
+          </div>
+        </div>
+
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-2">
+
+            </div>
+
+            <div class="col-md-4 p-4">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" style="box-shadow: #F5E0A7 0px 50px 100px -20px, #F5E0A7 0px 30px 60px -30px, #F5E0A7 0px -2px 6px 0px inset; outline: none;">
+                    <mat-icon>search</mat-icon>
+                  </span>
+                </div>
+                <input class="form-control input-sm bg-mywhite border-0" type="search" placeholder="Rechercher" aria-label="Search" style="box-shadow: #F5E0A7 0px 50px 100px -20px, #F5E0A7 0px 30px 60px -30px, #F5E0A7 0px -2px 6px 0px inset; outline: none;">
+              </div>
+
+            </div>
+
+            <div class="col-md-5 my-auto">
+
+            </div>
+
+            <div class="col-md-1">
+
+            </div>
+          </div>
+        </div>
+
+        <div class="container-fluid">
+          <div class="row d-flex p-3 align-middle">
+            <div class="col-4">
+              <h5 class="fw-bolder">Liste des utilsateurs</h5>
+            </div>
+
+            <div class="col-5">
+              <span class="fw-bolder">Téléchargement :
+                <button class="fw-bold mx-1 bg-mywhite shadow" style="border: none;"><i class="fa-regular fa-file-pdf fs-3"></i></button>
+                <button class="fw-bold mx-1 bg-mywhite shadow" style="border: none;"><i class="fa-regular fa-file-excel fs-3"></i></button>
+              </span>
+            </div>
+            <div class="col-3 d-flex justify-content-end">
+              <button  (click)="popupAjouter()" class="fw-bold bg-mywhite" style="border: 2x solid black; border-radius: 50%;"><i class="fa-solid fa-plus fs-3"></i></button>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="mat-elevation-z8">
+          <table mat-table [dataSource]="dataSource" style="box-shadow: #F5E0A7 0px 50px 100px -20px, #F5E0A7 0px 30px 60px -30px, #F5E0A7 0px -2px 6px 0px inset; outline: none;">
+
+            <!-- Position Column -->
+            <ng-container matColumnDef="position">
+              <th mat-header-cell *matHeaderCellDef> No. </th>
+              <td mat-cell *matCellDef="let element"><a (click)="popupDetail()">{{element.position}}</a></td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef> Name </th>
+              <td mat-cell *matCellDef="let element"><a (click)="popupDetail()">{{element.name}}</a></td>
+            </ng-container>
+
+            <!-- Weight Column -->
+            <ng-container matColumnDef="weight">
+              <th mat-header-cell *matHeaderCellDef> Weight </th>
+              <td mat-cell *matCellDef="let element"><a (click)="popupDetail()">{{element.weight}}</a></td>
+            </ng-container>
+
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="symbol">
+              <th mat-header-cell *matHeaderCellDef> Symbol </th>
+              <td mat-cell *matCellDef="let element"><a (click)="popupDetail()">{{element.symbol}}</a></td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+
+          <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+            aria-label="Select page of periodic elements">
+          </mat-paginator>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</main>
