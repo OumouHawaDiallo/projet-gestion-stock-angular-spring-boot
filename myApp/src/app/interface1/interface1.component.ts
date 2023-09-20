@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
@@ -10,12 +10,32 @@ import { DetailComponent } from '../detail/detail.component';
   templateUrl: './interface1.component.html',
   styleUrls: ['./interface1.component.css']
 })
-export class Interface1Component {
+export class Interface1Component implements AfterViewInit {
 
   constructor(
     // private dialogService: DialogService,
     private matDialog: MatDialog,
+    private el: ElementRef, private renderer: Renderer2
   ) { }
+
+
+  ngAfterViewInit() {
+    const coll = this.el.nativeElement.getElementsByClassName("collapsible");
+    for (let i = 0; i < coll.length; i++) {
+      this.renderer.listen(coll[i], "click", () => {
+        coll[i].classList.toggle("active");
+        const content = coll[i].nextElementSibling;
+        if (content.style.display === "block") {
+          content.style.display = "none";
+        } else {
+          content.style.display = "block";
+        }
+      });
+    }
+
+
+    this.dataSource.paginator = this.paginator;
+  }
 
   popupAjouter() {
     this.matDialog.open(
@@ -48,16 +68,14 @@ export class Interface1Component {
   }
 
 
-
-
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-  }
+  // ngAfterViewInit() {
+  //   this.dataSource.paginator = this.paginator;
+  // }
 
 }
 

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { ModifierComponent } from '../modifier/modifier.component';
 import { MatDialog } from '@angular/material/dialog';
+import { ModifierComponent } from '../modifier/modifier.component';
 
 @Component({
   selector: 'app-detail',

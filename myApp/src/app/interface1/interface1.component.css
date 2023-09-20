@@ -1,25 +1,76 @@
-.mon-bouton {
-  width: 100%;
-  border: 1px solid black;
-  color: #000;
+/* Styles pour le conteneur principal */
+.container1 {
+  /* overflow: hidden; */
+  display: grid;
+  height: 100vh; /* La hauteur du conteneur occupe 100% de la hauteur de la fenêtre */
+  grid-template-columns: 1fr 1fr 1fr 1fr; /* Quatre colonnes égales */
+  grid-template-rows: 0.4fr 1.2fr 1.2fr 1.2fr; /* Quatre rangées avec des fractions de hauteur */
+  grid-template-areas:
+    "nav nav nav nav"
+    "sidebar main main main"
+    "sidebar main main main"
+    "sidebar main main main"; /* Les noms d'aires pour chaque cellule de la grille */
+  grid-gap: 0.2rem; /* Espacement entre les cellules de la grille */
+}
+
+/* Styles pour la barre de navigation */
+nav {
+  grid-area: nav; /* Occupe la zone "nav" de la grille */
+  font-size: 1rem; /* Taille de police pour la barre de navigation */
+}
+
+/* Styles pour la section principale */
+main {
+  grid-area: main; /* Occupe la zone "main" de la grille */
+  font-size: 1rem; /* Taille de police pour la section principale */
+}
+
+/* Styles pour la barre latérale */
+#sidebar {
+  overflow-y: scroll;
+  grid-area: sidebar; /* Occupe la zone "sidebar" de la grille */
+  font-size: 1rem; /* Taille de police pour la barre latérale */
+}
+
+/* Styles pour les liens */
+li a {
+  display: block;
+  /* font-family: inherit; */
+  text-decoration: none;
   font-weight: bold;
-  margin: 5px;
-  background-color: white;
-  border-radius: 5%;
-  min-height: 50px;
+  margin: 1rem;
+}
+
+/* Media Query pour les écrans plus petits (largeur maximale de 550px) */
+@media only screen and (max-width: 550px) {
+  .container1 {
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.1fr 0.1fr auto;
+    grid-template-areas:
+      "nav"
+      "sidebar"
+      "main";
+  }
+  /* Ajustez la taille de police pour les écrans plus petits si nécessaire */
+  nav, main, #sidebar {
+    font-size: 0.8rem; /* Taille de police pour les écrans plus petits */
+  }
 }
 
 
-table {
-  width: 100%;
+
+
+
+
+
+
+
+
+
+/* Style the collapsible content. Note: hidden by default */
+.content {
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+  margin: 0 20px 0 20px;
 }
-
-mat-expansion-panel-header {
-  /* display: flex; */
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-}
-
-
