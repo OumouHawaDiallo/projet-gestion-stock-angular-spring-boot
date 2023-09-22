@@ -1,73 +1,128 @@
-<div class="card">
+<!-- <div class="row my-2">
+        <div class="col-md-2 text-success"><span class="mx-2 fs-5">N° chassis:</span></div>
+        <div class="col-md-4 fs-5">123456</div>
+        <div class="col-md-2 text-success"><span class="mx-2 fs-5">Date fabrication:</span></div>
+        <div class="col-md-4 fs-5">04/09/2022</div>
+  </div> -->
 
-  <div class="card-header d-flex justify-content-center fw-bold bg-myprimary fs-4">
-      <!-- {{ pageTitle }} -->
-   Detail du vehicule
-  </div>
+  <div class="card shadow">
 
-  <div class="card-body mt-3">
-    <div class="row">
-      <div class="col-md-12">
+    <div class="card-header d-flex justify-content-center fw-bold bg-myprimary fs-4">
 
-        <div class="row my-2">
-          <div class="col-md-2 text-success"><span class="mx-2 fs-5">N° chassis:</span></div>
-          <div class="col-md-4 fs-5">123456</div>
-          <div class="col-md-2 text-success"><span class="mx-2 fs-5">Date fabrication:</span></div>
-          <div class="col-md-4 fs-5">04/09/2022</div>
-        </div>
-        <div class="row my-2">
-          <div class="col-md-2 text-success"><span class="mx-2 fs-5">N° matricule:</span></div>
-          <div class="col-md-4 fs-5">1234</div>
-          <div class="col-md-2 text-success"><span class="mx-2 fs-5">Date commande:</span></div>
-          <div class="col-md-4 fs-5">05/09/2023</div>
-        </div>
-        <div class="row my-2">
-          <div class="col-md-2 text-success"><span class="mx-2 fs-5">Modèle:</span></div>
-          <div class="col-md-4 fs-5">4x4</div>
-          <div class="col-md-2 text-success"><span class="mx-2 fs-5"> Date livraison:</span></div>
-          <div class="col-md-4 fs-5">10/09/2023</div>
-        </div>
-        <div class="row my-2">
-          <div class="col-md-2 text-success"><span class="mx-2 fs-5">Marque:</span></div>
-          <div class="col-md-4 fs-5">Ford</div>
-          <div class="col-md-2 text-success"><span class="mx-2 fs-5"> Energie:</span></div>
-          <div class="col-md-4 fs-5">Essence</div>
-        </div>
-        <div class="row my-2">
-          <div class="col-md-2 text-success"><span class="mx-2 fs-5">Couleur:</span></div>
-          <div class="col-md-4 fs-5">Blanc</div>
-          <div class="col-md-2 text-success"><span class="mx-2 fs-5"> Etat:</span></div>
-          <div class="col-md-4 fs-5">Usagé</div>
-        </div>
-        <div class="row my-2">
-          <div class="col-md-2 text-success"><span class="mx-2 fs-5">Transmission:</span></div>
-          <div class="col-md-4 fs-5">Automatique</div>
-          <div class="col-md-2 text-success"><span class="mx-2 fs-5">Type vehicule:</span></div>
-          <div class="col-md-4 fs-5">Voiture</div>
-        </div>
-
-        <div class="col-12 mt-5 text-start">
-          <button type="submit" class="btn btn-myprimary fw-bold w-25 rounded-pill mx-2" data-bs-toggle="tooltip"
-              title="cliquer ici pour supprimer">
-             <span class="d-flex justify-content-center">Supprimer</span>
-          </button>
-          <button (click)="popupModifier()" type="submit" class="btn btn-myprimary fw-bold w-25 rounded-pill" data-bs-toggle="tooltip"
-              title="cliquer ici pour modifier">
-              <span class="d-flex justify-content-center">Modifier</span>
-          </button>
-
-          <a  class="btn btn-mygrey fw-bold w-25 rounded-pill mx-2"
-              data-bs-toggle="tooltip" title="cliquer ici pour annuler">
-              <span class="d-flex justify-content-center">Annuler</span>
-
-          </a>
-      </div>
-
-
-
-      </div>
-
+      Détail du véhicule
     </div>
-  </div>
 
-</div>
+
+
+    <div class="card-body">
+
+      <form class="container  mx-3 px-3 py-2">
+
+        <div class="row g-4 mb-3">
+
+          <div class="col-3 mx-auto">
+            <div class="text-success"><span class="mx-2 fs-4 fw-normal">N° chassis:</span></div>
+            <div class=" mx-2 fs-5 fw-light">123456</div>
+          </div>
+
+          <div class="col-3 mx-auto">
+            <div class="text-success"><span class="mx-2 fs-4 fw-normal">Couleur:</span></div>
+            <div class=" mx-2 fs-5 fw-light">Rouge</div>
+          </div>
+
+          <div class="col-3 mx-auto">
+            <div class="text-success"><span class="mx-2 fs-4 fw-normal">Date livraison:</span></div>
+            <div class=" mx-2 fs-5 fw-light">10/09/2023</div>
+          </div>
+
+        </div>
+
+
+
+        <div class="row g-4 mb-3">
+
+          <div class="col-3 mx-auto">
+            <div class="text-success"><span class="mx-2 fs-4 fw-normal">N° matricule:</span></div>
+            <div class=" mx-2 fs-5 fw-light">1234</div>
+          </div>
+
+          <div class="col-3 mx-auto">
+            <div class="text-success"><span class="mx-2 fs-4 fw-normal">Transmission:</span></div>
+            <div class=" mx-2 fs-5 fw-light">Automatique</div>
+
+          </div>
+
+          <div class="col-3 mx-auto">
+            <div class="text-success"><span class="mx-2 fs-4 fw-normal">Energies:</span></div>
+            <div class=" mx-2 fs-5 fw-light">Essence</div>
+
+          </div>
+
+        </div>
+
+
+        <div class="row g-4 mb-3">
+
+          <div class="col-3 mx-auto">
+            <div class="text-success"><span class="mx-2 fs-4 fw-normal">Modèle:</span></div>
+            <div class=" mx-2 fs-5 fw-light">4x4</div>
+          </div>
+
+          <div class="col-3 mx-auto">
+            <div class="text-success"><span class="mx-2 fs-4 fw-normal">Date fabrication:</span></div>
+            <div class=" mx-2 fs-5 fw-light">04/09/2022</div>
+          </div>
+
+          <div class="col-3 mx-auto">
+            <div class="text-success"><span class="mx-2 fs-4 fw-normal">Etat:</span></div>
+            <div class=" mx-2 fs-5 fw-light">Neuf</div>
+          </div>
+
+        </div>
+
+
+
+        <div class="row g-4 mb-3">
+
+          <div class="col-3 mx-auto">
+            <div class="text-success"><span class="mx-2 fs-4 fw-normal">Marque:</span></div>
+            <div class=" mx-2 fs-5 fw-light">Toyota</div>
+          </div>
+
+          <div class="col-3 mx-auto">
+            <div class="text-success"><span class="mx-2 fs-4 fw-normal">Date commande:</span></div>
+            <div class=" mx-2 fs-5 fw-light">5/09/2023</div>
+          </div>
+
+          <div class="col-3 mx-auto">
+            <div class="text-success"><span class="mx-2 fs-4 fw-normal">Type vehicule:</span></div>
+            <div class=" mx-2 fs-5 fw-light">Voiture</div>
+          </div>
+
+        </div>
+
+        <div class="row mt-5">
+          <div class="col-12 text-start">
+            <button type="submit" class="btn btn-myprimary fw-bold w-25 mx-1" data-bs-toggle="tooltip"
+              title="cliquer ici pour ajouter">
+              Supprimer
+            </button>
+
+            <button  (click)="popupModifier()" class="btn btn-myprimary fw-bold w-25 mx-3" data-bs-toggle="tooltip"
+              title="cliquer ici pour ajouter">
+              Modifier
+            </button>
+
+            <button class="btn btn-mysecondary fw-bold w-25 mx-1" data-bs-toggle="tooltip"
+              title="cliquer ici pour ajouter">
+              Annuler
+            </button>
+          </div>
+        </div>
+
+      </form>
+
+        
+    </div>
+
+  </div>

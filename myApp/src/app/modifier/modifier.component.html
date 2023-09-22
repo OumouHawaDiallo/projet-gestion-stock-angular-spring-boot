@@ -1,260 +1,232 @@
-<div class="card">
+
+<div class="card shadow">
 
   <div class="card-header d-flex justify-content-center fw-bold bg-myprimary fs-4">
-      <!-- {{ pageTitle }} -->
-   Modifier un vehicule
+
+    Modifier un vehicule
   </div>
+
+
 
   <div class="card-body">
 
-      <form>
-          <div class="row">
+    <form class="container px-3 py-2">
 
-              <div class="col-6">
-                  <div class="form-group row mb-2">
+      <div class="row g-4 mb-3">
 
-                        <label for="applyNameId" class="col-md-3 col-lg-3 col-form-label fs-5">
-                          N° de châssis
-                         </label>
-                         <div class="col-md-9 col-lg-9">
-                            <input name="" type="text" class="form-control  my-2 bg-mywhite w-75 fs-5" placeholder="12341234">
-                         </div>
+        <div class="col-3 mx-auto">
+          <label for="applyNameId" class="form-label fw-bold">
+            N° de châssis
+          </label>
+          <input id="applyNameId" name="" type="text"
+            class="form-control bg-mywhite border border-myprimary fw-light" placeholder="123456">
+        </div>
 
+        <div class="col-3 mx-auto">
+          <label for="applyNameId" class="form-label fw-bold">
+            Couleur
+          </label>
 
-                  </div>
-
-              </div>
-
-              <div class="col-6">
-                  <div class="form-group row mb-2">
-                      <label for="applyNameId" class="col-md-3 col-lg-3 col-form-label fs-5">
-                          Date fabrication
-                      </label>
-
-                      <div class="col-md-9 col-lg-9">
-                          <input name="" type="text" class="form-control my-2 bg-mywhite w-75 fs-5" placeholder="04/09/2022">
-
-                      </div>
-                  </div>
-
-              </div>
-
-          </div>
-
-          <div class="row">
-
-            <div class="col-6">
-                <div class="form-group row mb-2">
-                    <label for="applyNameId" class="col-md-3 col-lg-3 col-form-label fs-5">
-                        N° matricule
-                    </label>
-
-                    <div class="col-md-9 col-lg-9">
-                        <input name="" type="text" class="form-control my-2 bg-mywhite w-75 fs-5" placeholder="1234">
-
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="col-6">
-                <div class="form-group row mb-2">
-                    <label for="applyNameId" class="col-md-3 col-lg-3 col-form-label fs-5">
-                        Date commande
-                    </label>
-
-                    <div class="col-md-9 col-lg-9">
-                        <input name="" type="text" class="form-control my-2 bg-mywhite w-75 fs-5" placeholder="5/09/2023">
-
-                    </div>
-                </div>
-
-            </div>
+          <select formControlName="Couleur" class="form-select bg-mywhite border border-myprimary fw-light">
+            <!-- <option selected>Selectionner une couleur</option> -->
+            <option selected>Blanc</option>
+            <!-- <option>Blanc</option> -->
+            <option>Noir</option>
+            <option>Gris</option>
+            <option>Rouge</option>
+            <option>Orange</option>
+            <option>Bleu</option>
+            <option>Vert</option>
+            <option>Rose</option>
+            <option>Maron</option>
+            <option>Jaune</option>
+            <option>Argent</option>
+            <option>Violet</option>
+          </select>
 
         </div>
 
-        <div class="row">
-
-          <div class="col-6">
-              <div class="form-group row mb-2">
-                  <label for="applyNameId" class="col-md-3 col-lg-3 col-form-label fs-5">
-                    Modèle
-                  </label>
-
-                  <div class="col-md-9 col-lg-9">
-                      <input name="" type="text" class="form-control my-2 bg-mywhite w-75 fs-5" placeholder="4x4">
-
-                  </div>
-              </div>
-
-          </div>
-
-          <div class="col-6">
-              <div class="form-group row mb-2">
-                  <label for="applyNameId" class="col-md-3  col-lg-3col-form-label fs-5">
-                      Date livraison
-                  </label>
-
-                  <div class="col-md-9 col-lg-9">
-                      <input name="" type="text" class="form-control my-2 bg-mywhite w-75 fs-5" placeholder="10/09/2023">
-
-                  </div>
-              </div>
-
-          </div>
+        <div class="col-3 mx-auto">
+          <label for="applyNameId" class="form-label fw-bold">
+            Date livraison
+          </label>
+          <input id="applyNameId" name="" type="date"
+            class="form-control bg-mywhite border border-myprimary fw-light" placeholder="10/09/2023">
+        </div>
 
       </div>
 
-      <div class="row">
 
-        <div class="col-6">
-            <div class="form-group row mb-2">
-                <label for="applyNameId" class="col-md-3 col-lg-3 col-form-label fs-5">
-                    Marque
-                </label>
 
-                <div class="col-md-9 col-lg-9">
-                    <input name="ford" type="text" class="form-control my-2 bg-mywhite w-75 fs-5" placeholder="Ford">
+      <div class="row g-4 mb-3">
 
-                </div>
-            </div>
+        <div class="col-3 mx-auto">
+          <label for="applyNameId" class="form-label  fw-bold">
+            N° matricule
+          </label>
+          <input id="applyNameId" name="" type="text"
+            class="form-control bg-mywhite border border-myprimary fw-light" placeholder="1234">
+        </div>
+
+        <div class="col-3 mx-auto">
+          <label for="applyNameId" class="form-label fw-bold">
+            Transmission
+          </label>
+          <select formControlName="Transmission" class="form-select bg-mywhite border border-myprimary fw-light">
+            <!-- <option selected>Selectionner une transmission</option> -->
+            <option selected>Automatique</option>
+            <!-- <option>Automatique</option> -->
+            <option> Semi Automatique</option>
+            <option>Manuel</option>
+          </select>
 
         </div>
 
-        <div class="col-6">
-            <div class="form-group row mb-2">
-                <label for="applyNameId" class="col-md-3 col-lg-3 col-form-label fs-5">
-                   Energie
-                </label>
+        <div class="col-3 mx-auto">
+          <label for="applyNameId" class="form-label fw-bold">
+            Energie
+          </label>
+          <select formControlName="Energie" class="form-select bg-mywhite border border-myprimary fw-light">
+            <!-- <option selected>Selectionner une energie</option> -->
+            <option selected>Essence</option>
+            <!-- <option>Essence</option> -->
+            <option>Diesel</option>
+            <option>Électricité</option>
+            <option>Hybride </option>
+            <option>Hybride rechargeable</option>
+            <option>Hydrogène</option>
+            <option>Gaz naturel</option>
+            <option>GPL (Gaz de pétrole liquéfié)</option>
+            <option>Biocarburants</option>
+            <option>Énergie solaire</option>
 
-                <div class="col-md-9 col-lg-9">
-
-                  <select formControlName="Couleur" class="form-select my-2 bg-mywhite w-75 fs-5">
-                    <option selected>Essence</option>
-                    <option>Essence</option>
-                    <option>Diesel</option>
-                    <option>Électricité</option>
-                    <option>Hybride </option>
-                    <option>Hybride rechargeable</option>
-                    <option>Hydrogène</option>
-                    <option>Gaz naturel</option>
-                    <option>GPL (Gaz de pétrole liquéfié)</option>
-                    <option>Biocarburants</option>
-                    <option>Énergie solaire</option>
-
-                  </select>
-
-                </div>
-            </div>
+          </select>
 
         </div>
-
-    </div>
-
-    <div class="row">
-
-      <div class="col-6">
-          <div class="form-group row mb-2">
-              <label for="applyNameId" class="col-md-3 col-lg-3 col-form-label fs-5">
-                  Couleur
-              </label>
-
-              <div class="col-md-9 col-lg-9">
-
-                <select formControlName="Couleur" class="form-select my-2 bg-mywhite w-75 fs-5">
-                  <option selected>Blanc</option>
-                  <option>Blanc</option>
-                  <option>Noir</option>
-                  <option>Gris</option>
-                  <option>Rouge</option>
-                  <option>Orange</option>
-                  <option>Vert</option>
-                  <option>Bleu</option>
-                  <option>Violet</option>
-                  <option>Vert</option>
-                  <option>Rose</option>
-                  <option>Maron</option>
-                  <option>Jaune</option>
-                  <option>jaune</option>
-                </select>
-
-              </div>
-          </div>
 
       </div>
 
-      <div class="col-6">
-          <div class="form-group row mb-2">
-              <label for="applyNameId" class="col-md-3 col-lg-3 col-form-label fs-5">
-                  Etat
-              </label>
 
-              <div class="col-md-9 col-lg-9">
+      <div class="row g-4 mb-3">
 
-                <select formControlName="Couleur" class="form-select my-2 bg-mywhite w-75 fs-5">
-                  <option selected>Usagé</option>
-                  <option>Usagé</option>
-                  <option>Neuf</option>
-                  <option>Accidenté</option>
-                </select>
+        <div class="col-3 mx-auto">
+          <label for="applyNameId" class="form-label fw-bold">
+            Modèle
+          </label>
+          <input id="applyNameId" name="" type="text"
+            class="form-control bg-mywhite border border-myprimary fw-bold" placeholder="4x4">
+        </div>
 
-              </div>
-          </div>
+        <div class="col-3 mx-auto">
+          <label for="applyNameId" class="form-label fw-bold">
+            Date fabrication
+          </label>
+          <input id="applyNameId" name="" type="date"
+            class="form-control bg-mywhite border border-myprimary fw-light" placeholder="04/09/2022">
+        </div>
+
+        <div class="col-3 mx-auto">
+          <label for="applyNameId" class="form-label fw-bold">
+            Etat
+          </label>
+          <select formControlName="Etat" class="form-select bg-mywhite border border-myprimary fw-light">
+            <!-- <option selected>Selectionner un etat</option> -->
+            <option selected>Neuf</option>
+            <option>Usagé</option>
+            <!-- <option>Neuf</option> -->
+            <option>Accidenté</option>
+
+          </select>
+        </div>
 
       </div>
 
-  </div>
-  <div class="row">
 
-    <div class="col-6">
-        <div class="form-group row mb-2">
-            <label for="applyNameId" class="col-md-3 col-lg-3 col-form-label fs-5">
-                Transmission
-            </label>
 
-            <div class="col-md-9 col-lg-9">
+      <div class="row g-4 mb-3">
 
-              <select formControlName="Couleur" class="form-select my-2 bg-mywhite w-75 fs-5">
-                <option selected>Automatique</option>
-                <option>Automatique</option>
-                <option>Manuel</option>
-              </select>
+        <div class="col-3 mx-auto">
+          <label for="applyNameId" class="form-label fw-bold">
+            Marque
+          </label>
+          <select formControlName="Energie" class="form-select bg-mywhite border border-myprimary fw-light">
+            <!-- <option selected>Selectionner une marque </option> -->
+            <option selected>Toyota</option>
+            <!-- <option>Toyota</option> -->
+            <option>Volkswagen </option>
+            <option>Ford</option>
+            <option>Chevrolet</option>
+            <option>Honda</option>
+            <option>Nissan</option>
+            <option>Mercedes-Benz</option>
+            <option>BMW</option>
+            <option>Audi</option>
+            <option>Hyundai</option>
+            <option>Kia</option>
+            <option>Subaru</option>
+            <option>Mazda</option>
+            <option>Jeep </option>
+            <option>Volvo</option>
+            <option>Tesla</option>
+            <option>Porsche</option>
+            <option>Lexus</option>
+            <option>Land Rover</option>
+            <option>Ferrari </option>
+            <option>Maserati</option>
+            <option>Jaguar </option>
 
-            </div>
+          </select>
         </div>
 
-    </div>
-
-    <div class="col-6">
-        <div class="form-group row mb-2">
-            <label for="applyNameId" class="col-md-3 col-lg-3 col-form-label fs-5">
-                Type vehicule
-            </label>
-
-            <div class="col-md-9 col-lg-9">
-                <input name="" type="text" class="form-control my-2 bg-mywhite w-75 fs-5" placeholder="Voiture">
-
-            </div>
+        <div class="col-3 mx-auto">
+          <label for="applyNameId" class="form-label fw-bold">
+            Date commande
+          </label>
+          <input id="applyNameId" name="" type="date"
+            class="form-control bg-mywhite border border-myprimary fw-light" placeholder="5/09/2023">
         </div>
 
-    </div>
+        <div class="col-3 mx-auto">
+          <label for="applyNameId" class="form-label fw-bold">
+            Type vehicule
+          </label>
+          <select formControlName="Type vehicule" class="form-select bg-mywhite border border-myprimary fw-light">
+            <option selected>Selectionner un type  vehicule</option>
+            <option selected>Voiture</option>
+            <!-- <option>Voiture</option> -->
+            <option>Camion</option>
+            <option>Moto</option>
+            <option>Scooter </option>
+            <option>Cyclomoteur</option>
+            <option>Vélos</option>
+            <option>Bus</option>
+            <option>Train </option>
+            <option>Avion</option>
+            <option>Bateaux</option>
+            <option>Véhicule électrique</option>
 
-</div>
+          </select>
+        </div>
 
-    <div class="col-12 mt-3 text-start">
-        <button type="submit" class="btn btn-myprimary fw-bold w-25 rounded-pill" data-bs-toggle="tooltip"
+      </div>
+
+      <div class="row mt-5">
+        <div class="col-12 text-start">
+          <button type="submit" class="btn btn-myprimary fw-bold w-25 mx-1" data-bs-toggle="tooltip"
             title="cliquer ici pour ajouter">
             Valider
-        </button>
+          </button>
 
-        <a  class="btn btn-mygrey fw-bold w-25 rounded-pill mx-2"
-            data-bs-toggle="tooltip" title="cliquer ici pour annuler">
+          <button  class="btn btn-mysecondary fw-bold w-25 mx-3" data-bs-toggle="tooltip"
+            title="cliquer ici pour ajouter">
             Annuler
-        </a>
-    </div>
+          </button>
+        </div>
+      </div>
 
-      </form>
+    </form>
 
-  </div>
+      
+  </div>
 
 </div>

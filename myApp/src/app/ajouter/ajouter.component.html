@@ -1,117 +1,5 @@
+
 <div class="card shadow">
-
-  <div class="card-header d-flex justify-content-center fw-bold bg-myprimary fs-4">
-
-   Ajouter un vehicule
-  </div>
-
-  <div class="card-body mt-4">
-
-      <form>
-
-        <div class="row row-space mx-4">
-          <div class="col-12 mt-3">
-              <div class="input-group">
-                  <label class="label">first name</label>
-                  <input class="input--style-4  border border-myprimary" type="text" name="first_name">
-              </div>
-          </div>
-          <div class="col-12 mt-3">
-              <div class="input-group">
-                  <label class="label">last name</label>
-                  <input class="input--style-4 border border-myprimary" type="text" name="last_name">
-              </div>
-          </div>
-          <div class="col-12 mt-3">
-            <div class="input-group">
-                <label class="label">last name</label>
-                <input class="input--style-4 border border-myprimary" type="text" name="last_name">
-            </div>
-        </div>
-      </div>
-
-      <div class="row row-space mx-4">
-        <div class="col-12 mt-3">
-            <div class="input-group">
-                <label class="label">first name</label>
-                <input class="input--style-4 border border-myprimary" type="text" name="first_name">
-            </div>
-        </div>
-        <div class="col-12 mt-3">
-            <div class="input-group">
-                <label class="label">last name</label>
-                <input class="input--style-4 border border-myprimary" type="text" name="last_name">
-            </div>
-        </div>
-        <div class="col-12 mt-3">
-          <div class="input-group">
-              <label class="label">last name</label>
-              <input class="input--style-4 border border-myprimary" type="text" name="last_name">
-          </div>
-      </div>
-    </div>
-
-    <div class="row row-space mx-4">
-      <div class="col-12 mt-3">
-          <div class="input-group">
-              <label class="label">first name</label>
-              <input class="input--style-4 border border-myprimary" type="text" name="first_name">
-          </div>
-      </div>
-      <div class="col-12 mt-3">
-          <div class="input-group">
-              <label class="label">last name</label>
-              <input class="input--style-4 border border-myprimary" type="text" name="last_name">
-          </div>
-      </div>
-      <div class="col-12 mt-3">
-        <div class="input-group">
-            <label class="label">last name</label>
-            <input class="input--style-4 border border-myprimary" type="text" name="last_name">
-        </div>
-    </div>
-  </div>
-
-  <div class="row row-space mx-4">
-    <div class="col-12 mt-3">
-        <div class="input-group">
-            <label class="label">first name</label>
-            <input class="input--style-4 border border-myprimary" type="text" name="first_name">
-        </div>
-    </div>
-    <div class="col-12 mt-3">
-        <div class="input-group">
-            <label class="label">last name</label>
-            <input class="input--style-4 border border-myprimary" type="text" name="last_name">
-        </div>
-    </div>
-    <div class="col-12 mt-3">
-      <div class="input-group">
-          <label class="label">last name</label>
-          <input class="input--style-4 border border-myprimary" type="text" name="last_name">
-      </div>
-  </div>
-</div>
-<div class="row mx-4">
-  <div class=" col-12 text-start p-t-15">
-    <button class="btn btn--radius-2 btn--blue1 fw-bold" type="submit" data-bs-toggle="tooltip"
-    title="cliquer ici pour valider">Valider</button>
-    <button class="btn btn--radius-2 btn--blue2 fw-bold mx-2" type="submit" data-bs-toggle="tooltip"
-    title="cliquer ici pour annuler">Annuler</button>
-  </div>
-
-
-</div>
-
-
-
-      </form>
-
-  </div>
-
-</div>
-
-<!-- <div class="card">
 
   <div class="card-header d-flex justify-content-center fw-bold bg-myprimary fs-4">
 
@@ -122,12 +10,12 @@
 
   <div class="card-body">
 
-    <form class="container p-3">
+    <form class="container px-3 py-2">
 
       <div class="row g-4 mb-3">
 
         <div class="col-3 mx-auto">
-          <label for="applyNameId" class="form-label">
+          <label for="applyNameId" class="form-label fw-bold">
             N° de châssis
           </label>
           <input id="applyNameId" name="" type="text"
@@ -135,18 +23,33 @@
         </div>
 
         <div class="col-3 mx-auto">
-          <label for="applyNameId" class="form-label">
-            N° de châssis
+          <label for="applyNameId" class="form-label fw-bold">
+            Couleur
           </label>
-          <input id="applyNameId" name="" type="text"
-            class="form-control bg-mywhite border border-myprimary">
+
+          <select formControlName="Couleur" class="form-select bg-mywhite border border-myprimary">
+            <option selected>Selectionner une couleur</option>
+            <option>Blanc</option>
+            <option>Noir</option>
+            <option>Gris</option>
+            <option>Rouge</option>
+            <option>Vert</option>
+            <option>Bleu</option>
+            <option>Vert</option>
+            <option>Rose</option>
+            <option>Maron</option>
+            <option>Jaune</option>
+            <option>Argent</option>
+            <option>Violet</option>
+          </select>
+
         </div>
 
         <div class="col-3 mx-auto">
-          <label for="applyNameId" class="form-label">
-            N° de châssis
+          <label for="applyNameId" class="form-label fw-bold">
+            Date livraison
           </label>
-          <input id="applyNameId" name="" type="text"
+          <input id="applyNameId" name="" type="date"
             class="form-control bg-mywhite border border-myprimary">
         </div>
 
@@ -157,27 +60,79 @@
       <div class="row g-4 mb-3">
 
         <div class="col-3 mx-auto">
-          <label for="applyNameId" class="form-label">
-            N° de châssis
+          <label for="applyNameId" class="form-label fw-bold">
+            N° matricule
           </label>
           <input id="applyNameId" name="" type="text"
             class="form-control bg-mywhite border border-myprimary">
         </div>
 
         <div class="col-3 mx-auto">
-          <label for="applyNameId" class="form-label">
-            N° de châssis
+          <label for="applyNameId" class="form-label fw-bold">
+            Transmission
+          </label>
+          <select formControlName="Transmission" class="form-select bg-mywhite border border-myprimary">
+            <option selected>Selectionner une transmission</option>
+            <option>Automatique</option>
+            <option> Semi Automatique</option>
+            <option>Manuel</option>
+          </select>
+
+        </div>
+
+        <div class="col-3 mx-auto">
+          <label for="applyNameId" class="form-label fw-bold">
+            Energie
+          </label>
+          <select formControlName="Energie" class="form-select bg-mywhite border border-myprimary">
+            <option selected>Selectionner une energie</option>
+            <option>Essence</option>
+            <option>Diesel</option>
+            <option>Électricité</option>
+            <option>Hybride </option>
+            <option>Hybride rechargeable</option>
+            <option>Hydrogène</option>
+            <option>Gaz naturel</option>
+            <option>GPL (Gaz de pétrole liquéfié)</option>
+            <option>Biocarburants</option>
+            <option>Énergie solaire</option>
+
+          </select>
+
+        </div>
+
+      </div>
+
+
+      <div class="row g-4 mb-3">
+
+        <div class="col-3 mx-auto">
+          <label for="applyNameId" class="form-label fw-bold">
+            Modèle
           </label>
           <input id="applyNameId" name="" type="text"
             class="form-control bg-mywhite border border-myprimary">
         </div>
 
         <div class="col-3 mx-auto">
-          <label for="applyNameId" class="form-label">
-            N° de châssis
+          <label for="applyNameId" class="form-label fw-bold">
+            Date fabrication
           </label>
-          <input id="applyNameId" name="" type="text"
+          <input id="applyNameId" name="" type="date"
             class="form-control bg-mywhite border border-myprimary">
+        </div>
+
+        <div class="col-3 mx-auto">
+          <label for="applyNameId" class="form-label fw-bold">
+            Etat
+          </label>
+          <select formControlName="Etat" class="form-select bg-mywhite border border-myprimary">
+            <option selected>Selectionner un etat</option>
+            <option>Usagé</option>
+            <option>Neuf</option>
+            <option>Accidenté</option>
+
+          </select>
         </div>
 
       </div>
@@ -187,76 +142,76 @@
       <div class="row g-4 mb-3">
 
         <div class="col-3 mx-auto">
-          <label for="applyNameId" class="form-label">
-            N° de châssis
+          <label for="applyNameId" class="form-label fw-bold">
+            Marque
           </label>
-          <input id="applyNameId" name="" type="text"
+          <select formControlName="Energie" class="form-select bg-mywhite border border-myprimary">
+            <option selected>Selectionner une marque </option>
+            <option>Toyota</option>
+            <option>Volkswagen </option>
+            <option>Ford</option>
+            <option>Chevrolet</option>
+            <option>Honda</option>
+            <option>Nissan</option>
+            <option>Mercedes-Benz</option>
+            <option>BMW</option>
+            <option>Audi</option>
+            <option>Hyundai</option>
+            <option>Kia</option>
+            <option>Subaru</option>
+            <option>Mazda</option>
+            <option>Jeep </option>
+            <option>Volvo</option>
+            <option>Tesla</option>
+            <option>Porsche</option>
+            <option>Lexus</option>
+            <option>Land Rover</option>
+            <option>Ferrari </option>
+            <option>Maserati</option>
+            <option>Jaguar </option>
+
+          </select>
+        </div>
+
+        <div class="col-3 mx-auto">
+          <label for="applyNameId" class="form-label fw-bold">
+            Date commande
+          </label>
+          <input id="applyNameId" name="" type="date"
             class="form-control bg-mywhite border border-myprimary">
         </div>
 
         <div class="col-3 mx-auto">
-          <label for="applyNameId" class="form-label">
-            N° de châssis
+          <label for="applyNameId" class="form-label fw-bold">
+            Type vehicule
           </label>
-          <input id="applyNameId" name="" type="text"
-            class="form-control bg-mywhite border border-myprimary">
-        </div>
+          <select formControlName="Type vehicule" class="form-select bg-mywhite border border-myprimary">
+            <option selected>Selectionner un type  vehicule</option>
+            <option>Voiture</option>
+            <option>Camion</option>
+            <option>Moto</option>
+            <option>Scooter </option>
+            <option>Cyclomoteur</option>
+            <option>Vélos</option>
+            <option>Bus</option>
+            <option>Train </option>
+            <option>Avion</option>
+            <option>Bateaux</option>
+            <option>Véhicule électrique</option>
 
-        <div class="col-3 mx-auto">
-          <label for="applyNameId" class="form-label">
-            N° de châssis
-          </label>
-          <input id="applyNameId" name="" type="text"
-            class="form-control bg-mywhite border border-myprimary">
+          </select>
         </div>
 
       </div>
 
-
-
-      <div class="row g-4 mb-3">
-
-        <div class="col-3 mx-auto">
-          <label for="applyNameId" class="form-label">
-            N° de châssis
-          </label>
-          <input id="applyNameId" name="" type="text"
-            class="form-control bg-mywhite border border-myprimary">
-        </div>
-
-        <div class="col-3 mx-auto">
-          <label for="applyNameId" class="form-label">
-            N° de châssis
-          </label>
-          <input id="applyNameId" name="" type="text"
-            class="form-control bg-mywhite border border-myprimary">
-        </div>
-
-        <div class="col-3 mx-auto">
-          <label for="applyNameId" class="form-label">
-            N° de châssis
-          </label>
-          <input id="applyNameId" name="" type="text"
-            class="form-control bg-mywhite border border-myprimary">
-        </div>
-
-      </div>
-
-
-
-
-
-
-
-
-      <div class="row">
-        <div class="col-12 mt-3 text-start">
+      <div class="row mt-5">
+        <div class="col-12 text-start">
           <button type="submit" class="btn btn-myprimary fw-bold w-25 mx-1" data-bs-toggle="tooltip"
             title="cliquer ici pour ajouter">
             Valider
           </button>
 
-          <button  class="btn btn-myprimary fw-bold w-25 mx-1" data-bs-toggle="tooltip"
+          <button  class="btn btn-mysecondary fw-bold w-25 mx-3" data-bs-toggle="tooltip"
             title="cliquer ici pour ajouter">
             Annuler
           </button>
@@ -268,4 +223,4 @@
       
   </div>
 
-</div> -->
+</div>
