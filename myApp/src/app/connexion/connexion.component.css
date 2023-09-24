@@ -1,9 +1,7 @@
 .arriere-plan {
-  position: absolute;
-  width: 100%;
-  height: 100%;
   /* background-image: url("../../assets/map1.jpg"); */
   background-image: url("../../assets/map.png");
+
 
   /* Center and scale the image nicely */
   background-position: center;

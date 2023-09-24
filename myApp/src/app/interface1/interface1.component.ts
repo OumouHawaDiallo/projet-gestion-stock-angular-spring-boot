@@ -34,6 +34,7 @@ export class Interface1Component implements AfterViewInit {
     }
 
 
+    // tableau
     this.dataSource.paginator = this.paginator;
   }
 
@@ -68,6 +69,12 @@ export class Interface1Component implements AfterViewInit {
   }
 
 
+
+
+
+
+  // tableau
+
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
 
@@ -78,6 +85,10 @@ export class Interface1Component implements AfterViewInit {
   // }
 
 }
+
+
+
+// tableau
 
 export interface PeriodicElement {
   name: string;

@@ -10,35 +10,40 @@
     "sidebar main main main"
     "sidebar main main main"
     "sidebar main main main"; /* Les noms d'aires pour chaque cellule de la grille */
-  grid-gap: 0.2rem; /* Espacement entre les cellules de la grille */
+  grid-gap: 0.1rem; /* Espacement entre les cellules de la grille */
 }
 
 /* Styles pour la barre de navigation */
 nav {
+  border: 2px solid grey;
   grid-area: nav; /* Occupe la zone "nav" de la grille */
   font-size: 1rem; /* Taille de police pour la barre de navigation */
 }
 
 /* Styles pour la section principale */
 main {
+  padding: 1.5rem;
+  overflow-y: auto;
   grid-area: main; /* Occupe la zone "main" de la grille */
   font-size: 1rem; /* Taille de police pour la section principale */
 }
 
 /* Styles pour la barre latérale */
 #sidebar {
-  overflow-y: scroll;
+  box-shadow: 0 4px 6px rgba(196, 164, 43, 0.1);
+  border: 2px solid grey;
+  overflow-y: auto;
   grid-area: sidebar; /* Occupe la zone "sidebar" de la grille */
-  font-size: 1rem; /* Taille de police pour la barre latérale */
+  font-size: 1.2rem; /* Taille de police pour la barre latérale */
 }
 
 /* Styles pour les liens */
 li a {
-  display: block;
+  /* display: block; */
   /* font-family: inherit; */
   text-decoration: none;
   font-weight: bold;
-  margin: 1rem;
+  margin: 0.5rem;
 }
 
 /* Media Query pour les écrans plus petits (largeur maximale de 550px) */
@@ -71,6 +76,42 @@ li a {
 .content {
   display: none;
   overflow: hidden;
-  background-color: #f1f1f1;
+  background-color: #f8f9fa;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 6px rgba(196, 164, 43, 0.1);
+  border-radius: 5px;
   margin: 0 20px 0 20px;
+  padding: 10px;
+}
+
+
+
+
+
+
+
+/* Stylisation du menu déroulant */
+.dropdown-menu1 {
+  width: 100%;
+  background-color: #f8f9fa; /* Couleur de fond */
+  border: 1px solid #ccc; /* Bordure */
+  box-shadow: 0 4px 6px rgba(196, 164, 43, 0.1); /* Ombre */
+  border-radius: 5px; /* Coins arrondis */
+  padding: 10px; /* Espacement interne */
+}
+
+/* Stylisation des éléments du menu */
+.dropdown-item1 {
+  margin: 3px;
+  text-align: start;
+  border: none;
+  width: 100%;
+  font-weight: bold; /* Texte en gras */
+  color: #000; /* Couleur du texte */
+}
+
+/* Style au survol des éléments */
+.dropdown-item1:hover {
+  background-color: #E7C133; /* Couleur de fond au survol */
+  color: #fff; /* Couleur du texte au survol */
 }

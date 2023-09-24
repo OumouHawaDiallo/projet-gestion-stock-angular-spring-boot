@@ -1,55 +1,35 @@
 <div class="container1 bg-mywhite">
-  <nav style="border: 2px solid grey;">
+
+  <nav>
 
     <div class="container-fluid">
       <div class="row">
-        <div class="col-12 d-flex justify-content-between p-1">
-          <img src="../../assets/douanes.jpeg" width="90" alt="logo douanes sénégalaise"
-            class="img-fluid img-thumbnail rounded">
+        <div class="col-12 d-flex justify-content-between p-2">
+
+          <img src="../../assets/douanes.jpeg" width="95" alt="logo douanes sénégalaise" class="img-fluid img-thumbnail rounded">
 
 
           <div ngbDropdown class="bg-mywhite rounded-pill my-auto"
-            style="box-shadow: #F5E0A7 0px 50px 100px -20px, #F5E0A7 0px 30px 60px -30px, #F5E0A7 0px -2px 6px 0px inset; outline: none;">
+            style="box-shadow: #E7C133 0px 50px 100px -20px, #E7C133 0px 30px 60px -30px, #E7C133 0px -2px 6px 0px inset; outline: none;">
 
             <button class="btn btn-primary rounded-pill" ngbDropdownToggle id="dropdownMenuButton1">
               <img src="../../assets/user.png" alt="User" style="max-height: 40px; max-width: 40px;">
               <span class="fw-bold mx-2">Administrateur</span>
             </button>
 
-            <ul ngbDropdownMenu aria-labelledby="dropdownMenuButton1" class="dropdown-menu">
-              <li><button class="dropdown-item fw-bold" type="button">Profil</button></li>
-              <li><button class="dropdown-item fw-bold" type="button">Paramètres</button></li>
-              <li><button class="dropdown-item fw-bold" type="button">Déconnexion</button></li>
+            <ul ngbDropdownMenu aria-labelledby="dropdownMenuButton1" class="dropdown-menu1">
+              <li><button class="dropdown-item1 fw-bold" type="button">Profil</button></li>
+              <li><button class="dropdown-item1 fw-bold" type="button">Paramètres</button></li>
+              <li><button class="dropdown-item1 fw-bold" type="button">Déconnexion</button></li>
             </ul>
+
           </div>
 
         </div>
-
-        <!--
-          <div class="col-2 my-auto text-center">
-              <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                  <div class="text-center align-middle">
-                    <img src="../../assets/user.png" alt="User" class="mx-2">
-                    administrateur
-                  </div>
-
-                </mat-expansion-panel-header>
-
-                <ng-template matExpansionPanelContent>
-                  <div class="floating-content">
-                    <button mat-button>Sous-bouton 1</button>
-                    <button mat-button>Sous-bouton 2</button>
-                  </div>
-                </ng-template>
-              </mat-expansion-panel>
-            </div>
-          -->
-
       </div>
     </div>
-  </nav>
 
+  </nav>
 
 
 
@@ -59,66 +39,68 @@
     <div class="container-fluid bg-mywhite h-100">
       <div class="row">
         <ul class="nav flex-column">
+
           <li class="nav-item mx-2">
-            <a mat-raised-button class="collapsible nav-link d-flex align-items-center justify-content-start">
-              <mat-icon>calendar_today</mat-icon> Gestion des stocks &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa-solid fa-chevron-right"></i>
+            <a mat-raised-button class="collapsible nav-link d-flex justify-content-start" style="position: relative;">
+              <mat-icon class="me-4">calendar_today</mat-icon> Gestion des stocks <span class="fa-solid fa-chevron-down ms-4"></span>
             </a>
             <div class="content">
-              <a mat-raised-button class="nav-link d-flex align-items-center justify-content-start" href="#">
+              <a mat-raised-button class="nav-link d-flex justify-content-start" href="#">
                 Gestion des ...
               </a>
-              <a mat-raised-button class="nav-link d-flex align-items-center justify-content-start" href="#">
+              <a mat-raised-button class="nav-link d-flex justify-content-start" href="#">
                 Gestion des ...
               </a>
-              <a mat-raised-button class="nav-link d-flex align-items-center justify-content-start" href="#">
+              <a mat-raised-button class="nav-link d-flex justify-content-start" href="#">
                 Gestion des ...
               </a>
             </div>
           </li>
 
+
           <li class="nav-item mx-2">
-            <a mat-raised-button class="nav-link d-flex align-items-center justify-content-start" href="#">
-              <mat-icon> local_shipping</mat-icon> Gestion des fournisseurs
+            <a mat-raised-button class="nav-link d-flex justify-content-start" href="#">
+              <mat-icon class="me-4">local_shipping</mat-icon> Gestion des fournisseurs
             </a>
           </li>
           <li class="nav-item mx-2">
-            <a mat-raised-button class="nav-link d-flex align-items-center justify-content-start" href="#">
-              <mat-icon>shopping_cart</mat-icon> Gestion des commandes
+            <a mat-raised-button class="nav-link d-flex justify-content-start" href="#">
+              <mat-icon class="me-4">shopping_cart</mat-icon> Gestion des commandes
             </a>
           </li>
           <li class="nav-item mx-2">
-            <a mat-raised-button class="nav-link d-flex align-items-center justify-content-start" href="#">
-              <mat-icon>poll</mat-icon> Analyse et rapports
+            <a mat-raised-button class="nav-link d-flex justify-content-start" href="#">
+              <mat-icon class="me-4">poll</mat-icon> Analyse et rapports
             </a>
           </li>
           <li class="nav-item mx-2">
-            <a mat-raised-button class="nav-link d-flex align-items-center justify-content-start" href="#">
-              <mat-icon>assignment</mat-icon> Gestion des demandes
+            <a mat-raised-button class="nav-link d-flex justify-content-start" href="#">
+              <mat-icon class="me-4">assignment</mat-icon> Gestion des demandes
             </a>
           </li>
           <li class="nav-item mx-2">
-            <a mat-raised-button class="nav-link d-flex align-items-center justify-content-start" href="#">
-              <mat-icon>open_in_new</mat-icon> retours et réparations
+            <a mat-raised-button class="nav-link d-flex justify-content-start" href="#">
+              <mat-icon class="me-4">open_in_new</mat-icon> retours et réparations
             </a>
           </li>
           <li class="nav-item mx-2">
-            <a mat-raised-button class="nav-link d-flex align-items-center justify-content-start" href="#">
-              <mat-icon>send</mat-icon> Transactions
+            <a mat-raised-button class="nav-link d-flex justify-content-start" href="#">
+              <mat-icon class="me-4">send</mat-icon> Transactions
             </a>
           </li>
 
           <li class="nav-item mx-2">
-            <a mat-raised-button class="collapsible nav-link d-flex align-items-center justify-content-start">
-              <mat-icon>assignment_ind</mat-icon> Gestion des utilisateurs &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa-solid fa-chevron-right"></i>
+            <a mat-raised-button class="collapsible nav-link d-flex justify-content-start">
+              <mat-icon class="me-4">assignment_ind</mat-icon> Gestion des utilisateurs <i class="fa-solid fa-chevron-down ms-4"></i>
             </a>
             <div class="content">
-              <a mat-raised-button class="nav-link d-flex align-items-center justify-content-start" href="#">
+              <a mat-raised-button class="nav-link d-flex justify-content-start" href="#">
                 Gestion des ...
               </a>
-              <a mat-raised-button class="nav-link d-flex align-items-center justify-content-start" href="#">
+              <a mat-raised-button class="nav-link d-flex justify-content-start" href="#">
                 Gestion des ...
               </a>
-              <a mat-raised-button class="nav-link d-flex align-items-center justify-content-start" href="#">
+              <a mat-raised-button class="nav-link d-flex justify-content-start" href="#">
                 Gestion des ...
               </a>
             </div>
@@ -134,7 +116,7 @@
 
   <main class="bg-mywhite">
 
-    <div class="shadow container bg-mywarning my-3 py-2">
+    <div class="container bg-myprimary bg-gradient my-3 py-2" style="box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);">
       <div class="row">
         <div class="col-12 text-center fw-bolder fs-5">
           Gestion des utilisateurs
@@ -146,7 +128,7 @@
       <div class="row">
 
         <div class="col-md-12">
-          <div class="input-group" style=" width: 300px;">
+          <div class="input-group" style=" width: 300px; box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);">
             <div class="input-group-prepend">
               <span class="input-group-text" style="box-shadow: #F5E0A7 0px 50px 100px -20px, #F5E0A7 0px 30px 60px -30px, #F5E0A7 0px -2px 6px 0px inset; outline: none;">
                 <mat-icon>search</mat-icon>
@@ -159,7 +141,7 @@
       </div>
     </div>
 
-    <div class="container">
+    <div class="container" style="text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);">
       <div class="row d-flex p-3 align-middle">
 
         <div class="col-4">
