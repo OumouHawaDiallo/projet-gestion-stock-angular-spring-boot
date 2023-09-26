@@ -24,7 +24,7 @@ public class Utilisateur{
     private Date dateNaissance;
 
     @Column(name = "lieu_naissance")
-    private Date lieuNaissance;
+    private  String lieuNaissance;
 
     @OneToMany(cascade = {
             CascadeType.PERSIST,
@@ -42,7 +42,7 @@ public class Utilisateur{
     public Utilisateur() {
     }
 
-    public Utilisateur(Long id, String username, String email, Date dateNaissance, Date lieuNaissance, List<Vehicule> vehicules) {
+    public Utilisateur(Long id, String username, String email, Date dateNaissance, String lieuNaissance, List<Vehicule> vehicules) {
         this.id = id;
         this.username = username;
         this.email = email;
@@ -83,11 +83,11 @@ public class Utilisateur{
         this.dateNaissance = dateNaissance;
     }
 
-    public Date getLieuNaissance() {
+    public String getLieuNaissance() {
         return lieuNaissance;
     }
 
-    public void setLieuNaissance(Date lieuNaissance) {
+    public void setLieuNaissance(String lieuNaissance) {
         this.lieuNaissance = lieuNaissance;
     }
 
@@ -98,6 +98,4 @@ public class Utilisateur{
     public void setVehicules(List<Vehicule> vehicules) {
         this.vehicules = vehicules;
     }
-
-
 }

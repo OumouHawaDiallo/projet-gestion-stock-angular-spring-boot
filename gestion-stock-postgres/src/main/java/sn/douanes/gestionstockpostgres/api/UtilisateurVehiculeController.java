@@ -43,6 +43,6 @@ public class UtilisateurVehiculeController {
         Vehicule vehicule = vehiculeService.getVehicule(vehicule_id);
 
         if(user != null && vehicule != null)
-            userVehiculeRepository.save(new UtilisateurVehicule(user,vehicule));
+            userVehiculeRepository.save(new UtilisateurVehicule(user.getId(),user,vehicule));
     }
 }
