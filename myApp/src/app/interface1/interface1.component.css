@@ -92,6 +92,7 @@ li a {
 
 /* Stylisation du menu déroulant */
 .dropdown-menu1 {
+  
   width: 100%;
   background-color: #f8f9fa; /* Couleur de fond */
   border: 1px solid #ccc; /* Bordure */
@@ -115,3 +116,13 @@ li a {
   background-color: #E7C133; /* Couleur de fond au survol */
   color: #fff; /* Couleur du texte au survol */
 }
+
+
+
+
+
+
+
+
+
+

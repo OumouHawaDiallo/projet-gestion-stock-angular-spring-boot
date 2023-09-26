@@ -3,8 +3,7 @@ package sn.douanes.gestionstockpostgres.persistence.entity;
 import jakarta.persistence.*;
 @Entity
 @Table(name = "utilisateurvehicule")
-
-public class UserVehicule {
+public class UtilisateurVehicule {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,23 +12,23 @@ public class UserVehicule {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
-    private User user;
+    private Utilisateur user;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "vehicule_id")
     private Vehicule vehicule;
 
 
-    public UserVehicule() {
+    public UtilisateurVehicule() {
     }
 
-    public UserVehicule(Long id, User user, Vehicule vehicule) {
+    public UtilisateurVehicule(Long id, Utilisateur user, Vehicule vehicule) {
         this.id = id;
         this.user = user;
         this.vehicule = vehicule;
     }
 
-    public UserVehicule(User user, Vehicule vehicule) {
+    public UtilisateurVehicule(Utilisateur user, Vehicule vehicule) {
         this.user = user;
         this.vehicule = vehicule;
     }
@@ -42,11 +41,11 @@ public class UserVehicule {
         this.id = id;
     }
 
-    public User getUser() {
+    public Utilisateur getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(Utilisateur user) {
         this.user = user;
     }
 

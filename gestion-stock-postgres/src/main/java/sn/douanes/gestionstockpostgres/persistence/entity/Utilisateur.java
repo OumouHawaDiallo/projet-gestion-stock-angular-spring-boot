@@ -7,7 +7,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "utilisateur")
-public class User{
+public class Utilisateur{
 
     @Id
     @Column(name = "user_id")
@@ -39,10 +39,10 @@ public class User{
     )
     private List<Vehicule> vehicules;
 
-    public User() {
+    public Utilisateur() {
     }
 
-    public User(Long id, String username, String email, Date dateNaissance, Date lieuNaissance, List<Vehicule> vehicules) {
+    public Utilisateur(Long id, String username, String email, Date dateNaissance, Date lieuNaissance, List<Vehicule> vehicules) {
         this.id = id;
         this.username = username;
         this.email = email;

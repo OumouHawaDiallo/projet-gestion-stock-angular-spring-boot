@@ -2,40 +2,42 @@ package sn.douanes.gestionstockpostgres.api;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import sn.douanes.gestionstockpostgres.persistence.entity.User;
-import sn.douanes.gestionstockpostgres.service.UserService;
+import sn.douanes.gestionstockpostgres.persistence.entity.Utilisateur;
+import sn.douanes.gestionstockpostgres.service.UtilisateurService;
 
 
 import java.util.List;
 
-public class UserController {
+@RestController
+@CrossOrigin("http://localhost:4200")
+public class UtilisateurController {
 
     @Autowired
-    UserService userService;
+    UtilisateurService userService;
 
     @GetMapping("/Users")
     @ResponseBody
-    public List<User> getAllUsers() {
-        List<User> list = userService.getAllUsers();
+    public List<Utilisateur> getAllUsers() {
+        List<Utilisateur> list = userService.getAllUsers();
         return list;
     }
 
     @GetMapping("/UserById/{id}")
     @ResponseBody
-    public User UserById(@PathVariable long id) {
-        User user = userService.getUser(id);
+    public Utilisateur UserById(@PathVariable long id) {
+        Utilisateur user = userService.getUser(id);
         return user;
     }
 
     @PostMapping("/AjouterUser")
     @ResponseBody
-    public User AjouterUser(@RequestBody User u) {
+    public Utilisateur AjouterUser(@RequestBody Utilisateur u) {
         return userService.saveUser(u);
     }
 
     @PutMapping("/ModifierUser/{id}")
     @ResponseBody
-    public User ModifierUser(@PathVariable long id, @RequestBody User u) {
+    public Utilisateur ModifierUser(@PathVariable long id, @RequestBody Utilisateur u) {
         u.setId(id);
         return userService.updateUser(u);
     }
