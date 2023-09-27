@@ -1,10 +1,11 @@
-package sn.douanes.gestionstockpostgres.service.Impl;
+package sn.douanes.gestionstockpostgres.services.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import sn.douanes.gestionstockpostgres.persistence.entity.Utilisateur;
-import sn.douanes.gestionstockpostgres.persistence.repository.UtilisateurRepository;
-import sn.douanes.gestionstockpostgres.service.UtilisateurService;
+import sn.douanes.gestionstockpostgres.entities.Utilisateur;
+import sn.douanes.gestionstockpostgres.repositories.UtilisateurRepository;
+import sn.douanes.gestionstockpostgres.services.UtilisateurService;
+
 
 import java.util.List;
 

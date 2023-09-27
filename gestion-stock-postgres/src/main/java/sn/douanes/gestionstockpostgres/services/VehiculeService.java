@@ -1,6 +1,8 @@
-package sn.douanes.gestionstockpostgres.service;
+package sn.douanes.gestionstockpostgres.services;
 
-import sn.douanes.gestionstockpostgres.persistence.entity.Vehicule;
+
+
+import sn.douanes.gestionstockpostgres.entities.Vehicule;
 
 import java.util.List;
 

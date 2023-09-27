@@ -1,9 +1,9 @@
-package sn.douanes.gestionstockpostgres.api;
+package sn.douanes.gestionstockpostgres.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import sn.douanes.gestionstockpostgres.persistence.entity.Vehicule;
-import sn.douanes.gestionstockpostgres.service.VehiculeService;
+import sn.douanes.gestionstockpostgres.entities.Vehicule;
+import sn.douanes.gestionstockpostgres.services.VehiculeService;
 
 
 import java.util.List;

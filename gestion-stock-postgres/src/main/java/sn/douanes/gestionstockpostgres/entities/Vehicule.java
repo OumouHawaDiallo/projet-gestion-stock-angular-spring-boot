@@ -1,4 +1,4 @@
-package sn.douanes.gestionstockpostgres.persistence.entity;
+package sn.douanes.gestionstockpostgres.entities;
 
 import jakarta.persistence.*;
 
