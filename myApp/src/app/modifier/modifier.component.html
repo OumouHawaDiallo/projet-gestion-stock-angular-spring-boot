@@ -11,14 +11,13 @@
 
     <form class="container px-3 py-2">
 
-      <div class="row g-4 mb-3">
+      <div class="row g-4 mb-3 my-auto">
 
         <div class="col-3 mx-auto">
-          <label for="applyNameId" class="form-label fw-bold">
-            N° de châssis
-          </label>
-          <input id="applyNameId" name="" type="text"
-            class="form-control bg-mywhite border border-myprimary fw-light" placeholder="123456">
+
+          <div class="text-success"><span class="fw-bold">N° de chassis:</span></div>
+          <div class="text-input px-1 text-uppercase">123456</div>
+
         </div>
 
         <div class="col-3 mx-auto">
@@ -26,7 +25,7 @@
             Couleur
           </label>
 
-          <select formControlName="Couleur" class="form-select bg-mywhite border border-myprimary fw-light">
+          <select formControlName="Couleur" class="text-input form-select  px-1 bg-mywhite border border-myprimary text-uppercase">
             <!-- <option selected>Selectionner une couleur</option> -->
             <option selected>Blanc</option>
             <!-- <option>Blanc</option> -->
@@ -50,28 +49,25 @@
             Date livraison
           </label>
           <input id="applyNameId" name="" type="date"
-            class="form-control bg-mywhite border border-myprimary fw-light" placeholder="10/09/2023">
+            class="text-input form-control  px-1 bg-mywhite border border-myprimary text-uppercase" placeholder="10/09/2023">
         </div>
 
       </div>
 
 
 
-      <div class="row g-4 mb-3">
+      <div class="row g-4 mb-3 my-auto">
 
         <div class="col-3 mx-auto">
-          <label for="applyNameId" class="form-label  fw-bold">
-            N° matricule
-          </label>
-          <input id="applyNameId" name="" type="text"
-            class="form-control bg-mywhite border border-myprimary fw-light" placeholder="1234">
+          <div class="text-success"><span class="fw-bold">N° matricule:</span></div>
+          <div class="text-input px-1 text-uppercase">1234</div>
         </div>
 
         <div class="col-3 mx-auto">
           <label for="applyNameId" class="form-label fw-bold">
             Transmission
           </label>
-          <select formControlName="Transmission" class="form-select bg-mywhite border border-myprimary fw-light">
+          <select formControlName="Transmission" class="text-input form-select px-1 bg-mywhite border border-myprimary text-uppercase">
             <!-- <option selected>Selectionner une transmission</option> -->
             <option selected>Automatique</option>
             <!-- <option>Automatique</option> -->
@@ -85,7 +81,7 @@
           <label for="applyNameId" class="form-label fw-bold">
             Energie
           </label>
-          <select formControlName="Energie" class="form-select bg-mywhite border border-myprimary fw-light">
+          <select formControlName="Energie" class="text-input form-select  px-1 bg-mywhite border border-myprimary text-uppercase">
             <!-- <option selected>Selectionner une energie</option> -->
             <option selected>Essence</option>
             <!-- <option>Essence</option> -->
@@ -106,29 +102,26 @@
       </div>
 
 
-      <div class="row g-4 mb-3">
+      <div class="row g-4 mb-3 my-auto">
 
         <div class="col-3 mx-auto">
           <label for="applyNameId" class="form-label fw-bold">
             Modèle
           </label>
           <input id="applyNameId" name="" type="text"
-            class="form-control bg-mywhite border border-myprimary fw-bold" placeholder="4x4">
+            class="text-input form-control px-1 bg-mywhite border border-myprimary text-uppercase" placeholder="4x4">
         </div>
 
         <div class="col-3 mx-auto">
-          <label for="applyNameId" class="form-label fw-bold">
-            Date fabrication
-          </label>
-          <input id="applyNameId" name="" type="date"
-            class="form-control bg-mywhite border border-myprimary fw-light" placeholder="04/09/2022">
+          <div class="text-success"><span class="fw-bold">Date fabrication:</span></div>
+            <div class="text-input px-2 text-uppercase">04/09/2022</div>
         </div>
 
         <div class="col-3 mx-auto">
           <label for="applyNameId" class="form-label fw-bold">
             Etat
           </label>
-          <select formControlName="Etat" class="form-select bg-mywhite border border-myprimary fw-light">
+          <select formControlName="Etat" class="text-input form-select px-1 bg-mywhite border border-myprimary text-uppercase">
             <!-- <option selected>Selectionner un etat</option> -->
             <option selected>Neuf</option>
             <option>Usagé</option>
@@ -142,13 +135,13 @@
 
 
 
-      <div class="row g-4 mb-3">
+      <div class="row g-4 mb-3 my-auto">
 
         <div class="col-3 mx-auto">
           <label for="applyNameId" class="form-label fw-bold">
             Marque
           </label>
-          <select formControlName="Energie" class="form-select bg-mywhite border border-myprimary fw-light">
+          <select formControlName="Energie" class="text-input form-select  px-1 bg-mywhite border border-myprimary text-uppercase">
             <!-- <option selected>Selectionner une marque </option> -->
             <option selected>Toyota</option>
             <!-- <option>Toyota</option> -->
@@ -182,14 +175,14 @@
             Date commande
           </label>
           <input id="applyNameId" name="" type="date"
-            class="form-control bg-mywhite border border-myprimary fw-light" placeholder="5/09/2023">
+            class="text-input form-control px-1 bg-mywhite border border-myprimary text-uppercase" placeholder="5/09/2023">
         </div>
 
         <div class="col-3 mx-auto">
           <label for="applyNameId" class="form-label fw-bold">
             Type vehicule
           </label>
-          <select formControlName="Type vehicule" class="form-select bg-mywhite border border-myprimary fw-light">
+          <select formControlName="Type vehicule" class="text-input form-select  px-1 bg-mywhite border border-myprimary text-uppercase">
             <option selected>Selectionner un type  vehicule</option>
             <option selected>Voiture</option>
             <!-- <option>Voiture</option> -->
