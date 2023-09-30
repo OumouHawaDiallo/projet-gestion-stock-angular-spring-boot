@@ -9,15 +9,23 @@
 
   <div class="card-body">
 
-    <form class="container px-3 py-2">
+    <form class="container px-3 py-2" novalidate (ngSubmit)="onSubmit()" [formGroup]="vehiculeForm">
 
-      <div class="row g-4 mb-3 my-auto">
+      <div class="row g-4 mb-3">
 
         <div class="col-3 mx-auto">
+          <label for="applyNameId" class="form-label fw-bold">
+            N° de châssis
+          </label>
+          <input id="applyNameId" name="numeroChassis" type="number" formControlName="numeroChassis" [ngClass]="{'is-invalid': (vehiculeForm.get('numeroChassis')?.touched || vehiculeForm.get('numeroChassis')?.dirty) && !vehiculeForm.get('numeroChassis')?.valid,
+          'is-valid': vehiculeForm.get('numeroChassis')?.valid}"
+            class="text-input form-control bg-mywhite border border-myprimary  px-1 text-uppercase">
+          <div class="invalid-feedback">
+            <span *ngIf="vehiculeForm.get('numeroChassis')?.errors?.['required']">
+              N° de châssis (Obligatoire)
+            </span>
 
-          <div class="text-success"><span class="fw-bold">N° de chassis:</span></div>
-          <div class="text-input px-1 text-uppercase">123456</div>
-
+          </div>
         </div>
 
         <div class="col-3 mx-auto">
@@ -25,22 +33,28 @@
             Couleur
           </label>
 
-          <select formControlName="Couleur" class="text-input form-select  px-1 bg-mywhite border border-myprimary text-uppercase">
-            <!-- <option selected>Selectionner une couleur</option> -->
-            <option selected>Blanc</option>
-            <!-- <option>Blanc</option> -->
-            <option>Noir</option>
-            <option>Gris</option>
-            <option>Rouge</option>
-            <option>Orange</option>
-            <option>Bleu</option>
-            <option>Vert</option>
-            <option>Rose</option>
-            <option>Maron</option>
-            <option>Jaune</option>
-            <option>Argent</option>
-            <option>Violet</option>
+          <select formControlName="couleur"
+            class="text-input form-select bg-mywhite border border-myprimary px-1 text-uppercase">
+            <option selected>Selectionner une couleur</option>
+            <option value="Blanche">Blanche</option>
+            <option value="Noire">Noire</option>
+            <option value="Grise">Gris</option>
+            <option value="Rouge">Rouge</option>
+            <option value="Orange">Orange</option>
+            <option value="Verte">Verte</option>
+            <option value="Bleu">Bleu</option>
+            <option value="Rose">Rose</option>
+            <option value="Marron">Marron</option>
+            <option value="Jaune">Jaune</option>
+            <option value="Argentée">Argentée</option>
+            <option value="Violette">Violette</option>
           </select>
+          <div class="invalid-feedback">
+            <span *ngIf="vehiculeForm.get('couleur')?.errors?.['required']">
+              Couleur (Obligatoire)
+            </span>
+
+          </div>
 
         </div>
 
@@ -48,32 +62,55 @@
           <label for="applyNameId" class="form-label fw-bold">
             Date livraison
           </label>
-          <input id="applyNameId" name="" type="date"
-            class="text-input form-control  px-1 bg-mywhite border border-myprimary text-uppercase" placeholder="10/09/2023">
+          <input id="applyNameId" name="dateLivraison" type="date" formControlName="dateLivraison" [ngClass]="{'is-invalid': (vehiculeForm.get('dateLivraison')?.touched || vehiculeForm.get('dateLivraison')?.dirty) && !vehiculeForm.get('dateLivraison')?.valid,
+          'is-valid': vehiculeForm.get('dateLivraison')?.valid}"
+            class="text-input form-control bg-mywhite border border-myprimary  px-1 text-uppercase">
+          <div class="invalid-feedback">
+            <span *ngIf="vehiculeForm.get('dateLivraison')?.errors?.['required']">
+              Date livraison (Obligatoire)
+            </span>
+
+          </div>
         </div>
 
       </div>
 
 
 
-      <div class="row g-4 mb-3 my-auto">
+      <div class="row g-4 mb-3">
 
         <div class="col-3 mx-auto">
-          <div class="text-success"><span class="fw-bold">N° matricule:</span></div>
-          <div class="text-input px-1 text-uppercase">1234</div>
+          <label for="applyNameId" class="form-label fw-bold">
+            N° matricule
+          </label>
+          <input id="applyNameId" name="numeroMatricule" type="number" formControlName="numeroMatricule" [ngClass]="{'is-invalid': (vehiculeForm.get('numeroMatricule')?.touched || vehiculeForm.get('numeroMatricule')?.dirty) && !vehiculeForm.get('numeroMatricule')?.valid,
+          'is-valid': vehiculeForm.get('numeroMatricule')?.valid}"
+            class="text-input form-control bg-mywhite border border-myprimary  px-1 text-uppercase">
+          <div class="invalid-feedback">
+            <span *ngIf="vehiculeForm.get('numeroMatricule')?.errors?.['required']">
+              N° matricule (Obligatoire)
+            </span>
+
+          </div>
         </div>
 
         <div class="col-3 mx-auto">
           <label for="applyNameId" class="form-label fw-bold">
             Transmission
           </label>
-          <select formControlName="Transmission" class="text-input form-select px-1 bg-mywhite border border-myprimary text-uppercase">
-            <!-- <option selected>Selectionner une transmission</option> -->
-            <option selected>Automatique</option>
-            <!-- <option>Automatique</option> -->
-            <option> Semi Automatique</option>
-            <option>Manuel</option>
+          <select formControlName="transmission"
+            class="text-input form-select display-4 bg-mywhite border border-myprimary px-0 text-uppercase">
+            <option selected>Selectionner une transmission</option>
+            <option value="Automatique">Automatique</option>
+            <option value="Semi Automatique"> Semi Automatique</option>
+            <option value="Manuel">Manuelle</option>
           </select>
+          <div class="invalid-feedback">
+            <span *ngIf="vehiculeForm.get('transmission')?.errors?.['required']">
+              Transmission (Obligatoire)
+            </span>
+
+          </div>
 
         </div>
 
@@ -81,137 +118,186 @@
           <label for="applyNameId" class="form-label fw-bold">
             Energie
           </label>
-          <select formControlName="Energie" class="text-input form-select  px-1 bg-mywhite border border-myprimary text-uppercase">
-            <!-- <option selected>Selectionner une energie</option> -->
-            <option selected>Essence</option>
-            <!-- <option>Essence</option> -->
-            <option>Diesel</option>
-            <option>Électricité</option>
-            <option>Hybride </option>
-            <option>Hybride rechargeable</option>
-            <option>Hydrogène</option>
-            <option>Gaz naturel</option>
-            <option>GPL (Gaz de pétrole liquéfié)</option>
-            <option>Biocarburants</option>
-            <option>Énergie solaire</option>
+          <select formControlName="energie"
+            class="text-input form-select bg-mywhite border border-myprimary px-1 text-uppercase">
+            <option selected>Selectionner une energie</option>
+            <option value="Essence">Essence</option>
+            <option value="Diesel">Diesel</option>
+            <option value="Électricitée">Électricitée</option>
+            <option value="Hybride">Hybride</option>
+            <option value="Hybride rechargeable">Hybride rechargeable</option>
+            <option value="Hydrogène">Hydrogène</option>
+            <option value="Gaz naturel">Gaz naturel</option>
+            <option value="GPL (Gaz de pétrole liquéfié)">GPL (Gaz de pétrole liquéfié)</option>
+            <option value="Biocarburants">Biocarburants</option>
+            <option value="Énergie solaire">Énergie solaire</option>
 
           </select>
+          <div class="invalid-feedback">
+            <span *ngIf="vehiculeForm.get('energie')?.errors?.['required']">
+              Energie (Obligatoire)
+            </span>
+
+          </div>
 
         </div>
 
       </div>
 
 
-      <div class="row g-4 mb-3 my-auto">
+      <div class="row g-4 mb-3">
 
         <div class="col-3 mx-auto">
           <label for="applyNameId" class="form-label fw-bold">
             Modèle
           </label>
-          <input id="applyNameId" name="" type="text"
-            class="text-input form-control px-1 bg-mywhite border border-myprimary text-uppercase" placeholder="4x4">
+          <input id="applyNameId" name="modele" type="text" formControlName="modele" [ngClass]="{'is-invalid': (vehiculeForm.get('modele')?.touched || vehiculeForm.get('modele')?.dirty) && !vehiculeForm.get('modele')?.valid,
+          'is-valid': vehiculeForm.get('modele')?.valid}"
+            class="text-input form-control bg-mywhite border border-myprimary  px-1 text-uppercase">
+          <div class="invalid-feedback">
+            <span *ngIf="vehiculeForm.get('modele')?.errors?.['required']">
+              Modèle (Obligatoire)
+            </span>
+
+          </div>
         </div>
 
         <div class="col-3 mx-auto">
-          <div class="text-success"><span class="fw-bold">Date fabrication:</span></div>
-            <div class="text-input px-2 text-uppercase">04/09/2022</div>
+          <label for="applyNameId" class="form-label fw-bold">
+            Date fabrication
+          </label>
+          <input id="applyNameId" name="dateFabrication" type="date" formControlName="dateFabrication" [ngClass]="{'is-invalid': (vehiculeForm.get('dateFabrication')?.touched || vehiculeForm.get('dateFabrication')?.dirty) && !vehiculeForm.get('dateFabrication')?.valid,
+          'is-valid': vehiculeForm.get('dateFabrication')?.valid}"
+            class="text-input form-control bg-mywhite border border-myprimary  px-1 text-uppercase">
+          <div class="invalid-feedback">
+            <span *ngIf="vehiculeForm.get('dateFabrication')?.errors?.['required']">
+              Date fabrication (Obligatoire)
+            </span>
+
+          </div>
+
         </div>
 
         <div class="col-3 mx-auto">
           <label for="applyNameId" class="form-label fw-bold">
             Etat
           </label>
-          <select formControlName="Etat" class="text-input form-select px-1 bg-mywhite border border-myprimary text-uppercase">
-            <!-- <option selected>Selectionner un etat</option> -->
-            <option selected>Neuf</option>
-            <option>Usagé</option>
-            <!-- <option>Neuf</option> -->
-            <option>Accidenté</option>
+          <select formControlName="etat"
+            class="text-input form-select bg-mywhite border border-myprimary px-1 text-uppercase">
+            <option selected>Selectionner un etat</option>
+            <option value="Usagé">Usagé</option>
+            <option value="Neuf">Neuf</option>
+            <option value="Accidenté">Accidenté</option>
 
           </select>
+          <div class="invalid-feedback">
+            <span *ngIf="vehiculeForm.get('etat')?.errors?.['required']">
+              Etat (Obligatoire)
+            </span>
+
+          </div>
         </div>
 
       </div>
 
 
 
-      <div class="row g-4 mb-3 my-auto">
+      <div class="row g-4 mb-3">
 
         <div class="col-3 mx-auto">
           <label for="applyNameId" class="form-label fw-bold">
             Marque
           </label>
-          <select formControlName="Energie" class="text-input form-select  px-1 bg-mywhite border border-myprimary text-uppercase">
-            <!-- <option selected>Selectionner une marque </option> -->
-            <option selected>Toyota</option>
-            <!-- <option>Toyota</option> -->
-            <option>Volkswagen </option>
-            <option>Ford</option>
-            <option>Chevrolet</option>
-            <option>Honda</option>
-            <option>Nissan</option>
-            <option>Mercedes-Benz</option>
-            <option>BMW</option>
-            <option>Audi</option>
-            <option>Hyundai</option>
-            <option>Kia</option>
-            <option>Subaru</option>
-            <option>Mazda</option>
-            <option>Jeep </option>
-            <option>Volvo</option>
-            <option>Tesla</option>
-            <option>Porsche</option>
-            <option>Lexus</option>
-            <option>Land Rover</option>
-            <option>Ferrari </option>
-            <option>Maserati</option>
-            <option>Jaguar </option>
+          <select formControlName="marque"
+            class="text-input form-select bg-mywhite border border-myprimary px-1 text-uppercase">
+            <option selected>Selectionner une marque </option>
+            <option value="Toyota">Toyota</option>
+            <option value="Volkswagen">Volkswagen</option>
+            <option value="Ford">Ford</option>
+            <option value="Chevrolet">Chevrolet</option>
+            <option value="Honda">Honda</option>
+            <option value="Nissan">Nissan</option>
+            <option value="Mercedes-Benz">Mercedes-Benz</option>
+            <option value="BMW">BMW</option>
+            <option value="Audi">Audi</option>
+            <option value="Hyundai">Hyundai</option>
+            <option value="Kia">Kia</option>
+            <option value="Subaru">Subaru</option>
+            <option value="Mazda">Mazda</option>
+            <option value="Jeep">Jeep</option>
+            <option value="Volvo">Volvo</option>
+            <option value="Tesla">Tesla</option>
+            <option value="Porsche">Porsche</option>
+            <option value="Lexus">Lexus</option>
+            <option value="Land Rover">Land Rover</option>
+            <option value="Ferrari">Ferrari</option>
+            <option value="Maserati">Maserati</option>
+            <option value="Jaguar">Jaguar</option>
 
           </select>
+          <div class="invalid-feedback">
+            <span *ngIf="vehiculeForm.get('marque')?.errors?.['required']">
+              Marque (Obligatoire)
+            </span>
+
+          </div>
         </div>
 
         <div class="col-3 mx-auto">
           <label for="applyNameId" class="form-label fw-bold">
             Date commande
           </label>
-          <input id="applyNameId" name="" type="date"
-            class="text-input form-control px-1 bg-mywhite border border-myprimary text-uppercase" placeholder="5/09/2023">
+          <input id="applyNameId" name="dateCommande" type="date" formControlName="dateCommande" [ngClass]="{'is-invalid': (vehiculeForm.get('dateCommande')?.touched || vehiculeForm.get('dateCommande')?.dirty) && !vehiculeForm.get('dateCommande')?.valid,
+          'is-valid': vehiculeForm.get('dateCommande')?.valid}"
+            class="text-input form-control bg-mywhite border border-myprimary  px-1 text-uppercase">
+          <div class="invalid-feedback">
+            <span *ngIf="vehiculeForm.get('dateCommande')?.errors?.['required']">
+              Date commande (Obligatoire)
+            </span>
+
+          </div>
         </div>
 
         <div class="col-3 mx-auto">
           <label for="applyNameId" class="form-label fw-bold">
             Type vehicule
           </label>
-          <select formControlName="Type vehicule" class="text-input form-select  px-1 bg-mywhite border border-myprimary text-uppercase">
-            <option selected>Selectionner un type  vehicule</option>
-            <option selected>Voiture</option>
-            <!-- <option>Voiture</option> -->
-            <option>Camion</option>
-            <option>Moto</option>
-            <option>Scooter </option>
-            <option>Cyclomoteur</option>
-            <option>Vélos</option>
-            <option>Bus</option>
-            <option>Train </option>
-            <option>Avion</option>
-            <option>Bateaux</option>
-            <option>Véhicule électrique</option>
+          <select formControlName="typeVehicule"
+            class="text-input form-select px-1 bg-mywhite border border-myprimary text-uppercase">
+            <option selected>Selectionner un type vehicule</option>
+            <option value="Voiture">Voiture</option>
+            <option value="Camion">Camion</option>
+            <option value="Moto">Moto</option>
+            <option value="Scooter">Scooter</option>
+            <option value="Cyclomoteur">Cyclomoteur</option>
+            <option value="Vélos">Vélos</option>
+            <option value="Bus">Bus</option>
+            <option value="Train">Train</option>
+            <option value="Avion">Avion</option>
+            <option value="Bateaux">Bateaux</option>
+            <option value="Véhicule électrique">Véhicule électrique</option>
 
           </select>
+          <div class="invalid-feedback">
+            <span *ngIf="vehiculeForm.get('typeVehicule')?.errors?.['required']">
+              Type vehicule (Obligatoire)
+            </span>
+
+          </div>
         </div>
 
       </div>
 
       <div class="row mt-5">
         <div class="col-12 text-end">
-          <button type="submit" class="btn btn-myprimary fw-bold w-25 mx-3" data-bs-toggle="tooltip"
-            title="cliquer ici pour ajouter">
-            Valider
+          <button type="submit" [disabled]="vehiculeForm.invalid"
+            class="btn btn-myprimary fw-bold w-25 mx-1" data-bs-toggle="tooltip" title="cliquer ici pour ajouter">
+            VALIDER
           </button>
 
-          <button  class="btn btn-mysecondary fw-bold w-25 mx-1" data-bs-toggle="tooltip"
+          <button (click)="popupFermer()" class="btn btn-mysecondary fw-bold w-25 mx-3" data-bs-toggle="tooltip"
             title="cliquer ici pour ajouter">
-           Retour
+            RETOUR
           </button>
         </div>
       </div>
@@ -219,6 +305,8 @@
     </form>
 
       
-  </div>
+      
+      
+  </div>
 
 </div>

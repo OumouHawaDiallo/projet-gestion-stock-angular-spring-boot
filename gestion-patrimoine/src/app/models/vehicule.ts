@@ -5,7 +5,7 @@ export interface IVehicule {
   numeroChassis: number;
   numeroMatricule: number;
   modele: string;
-  marque:string;
+  marque: string;
   couleur: string;
   transmission: string;
   dateFabrication: Date;

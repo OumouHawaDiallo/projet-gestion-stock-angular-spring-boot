@@ -25,11 +25,11 @@ public class Vehicule {
     @Column(name = "marque")
     private String marque;
 
-    @Column(name = "couleur")
-    private String couleur;
-
     @Column(name = "transmission")
     private String transmission;
+
+    @Column(name = "couleur")
+    private String couleur;
 
     @Column(name = "date_fabrication")
     private Date  dateFabrication;
@@ -49,15 +49,14 @@ public class Vehicule {
     @Column(name = "type_vehicule")
     private String typeVehicule;
 
-
-    public Vehicule(Long id, Integer numeroChassis, Integer numeroMatricule, String modele, String marque, String couleur, String transmission, Date dateFabrication, Date dateCommande, Date dateLivraison, String energie, String etat, String typeVehicule) {
+    public Vehicule(Long id, Integer numeroChassis, Integer numeroMatricule, String modele, String marque, String transmission, String couleur, Date dateFabrication, Date dateCommande, Date dateLivraison, String energie, String etat, String typeVehicule) {
         this.id = id;
         this.numeroChassis = numeroChassis;
         this.numeroMatricule = numeroMatricule;
         this.modele = modele;
         this.marque = marque;
-        this.couleur = couleur;
         this.transmission = transmission;
+        this.couleur = couleur;
         this.dateFabrication = dateFabrication;
         this.dateCommande = dateCommande;
         this.dateLivraison = dateLivraison;
@@ -89,6 +88,14 @@ public class Vehicule {
         return numeroMatricule;
     }
 
+    public String getMarque() {
+        return marque;
+    }
+
+    public void setMarque(String marque) {
+        this.marque = marque;
+    }
+
     public void setNumeroMatricule(Integer numeroMatricule) {
         this.numeroMatricule = numeroMatricule;
     }
@@ -101,12 +108,12 @@ public class Vehicule {
         this.modele = modele;
     }
 
-    public String getMarque() {
-        return marque;
+    public String getTransmission() {
+        return transmission;
     }
 
-    public void setMarque(String marque) {
-        this.marque = marque;
+    public void setTransmission(String transmission) {
+        this.transmission = transmission;
     }
 
     public String getCouleur() {
@@ -115,14 +122,6 @@ public class Vehicule {
 
     public void setCouleur(String couleur) {
         this.couleur = couleur;
-    }
-
-    public String getTransmission() {
-        return transmission;
-    }
-
-    public void setTransmission(String transmission) {
-        this.transmission = transmission;
     }
 
     public Date getDateFabrication() {

@@ -192,3 +192,15 @@ li a {
 
 
 
+.icon-button {
+  cursor: pointer;
+  font-size: 48px;
+  background-color: white;
+  color: #000;
+}
+
+.icon-button:hover {
+  color: #f0dd99;
+}
+
+
