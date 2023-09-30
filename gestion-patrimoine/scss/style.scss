@@ -1,0 +1,91 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$myApp-primary: mat.define-palette(mat.$indigo-palette);
+$myApp-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$myApp-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$myApp-theme: mat.define-light-theme((
+  color: (
+    primary: $myApp-primary,
+    accent: $myApp-accent,
+    warn: $myApp-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($myApp-theme);
+
+
+
+// $theme-colors: (
+//   "primary":    $primary,
+//   "secondary":  $secondary,
+//   "success":    $success,
+//   "info":       $info,
+//   "warning":    $warning,
+//   "danger":     $danger,
+//   "light":      $light,
+//   "dark":       $dark
+// ) !default;
+
+$blue:    #0d6efd;
+$indigo:  #6610f2;
+$purple:  #6f42c1;
+$pink:    #d63384;
+$red:     #dc3545;
+$orange:  #fd7e14;
+$yellow:  #ffc107;
+$green:   #198754;
+$teal:    #20c997;
+$cyan:    #0dcaf0;
+$black:    #000;
+
+
+$theme-colors: (
+  "myblue":    #0d6efd,
+  "myindigo":  #6610f2,
+  "mypurple":  #6f42c1,
+  "mypink":    #d63384,
+  "myred":     #dc3545,
+  "myorange":  #fd7e14,
+  "myyellow":  #ffc107,
+  "mygreen":   #198754,
+  "myteal":    #20c997,
+  "mycyan":    #0dcaf0,
+  "myblack":    #000,
+
+  "mybrown": rgb(185, 43, 39),
+  "mydark": rgb(40, 40, 41),
+  "mygrey": rgb(219, 215, 215),
+  "mywhite": white,
+
+  "myprimary": #f0dd99, //#E7C133 FFD845 C4A42B E7C133
+  "mysecondary": #D9D9D9,
+  "mywarning": #F9EFD2,
+);
+
+
+
+// $offcanvas-horizontal-width:        300px;
+// $zindex-offcanvas:                  1051;
+
+
+@import "../node_modules/bootstrap/scss/bootstrap";
