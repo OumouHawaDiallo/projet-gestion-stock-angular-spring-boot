@@ -36,7 +36,10 @@ export class VehiculeDetailComponent implements OnInit {
         }
       }
     );
+    this.fermerPopup();
   }
+
+
 
   fermerPopup() {
     this.dialogRef.close();

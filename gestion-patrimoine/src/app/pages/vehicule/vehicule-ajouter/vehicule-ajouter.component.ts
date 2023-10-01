@@ -16,9 +16,10 @@ export class VehiculeAjouterComponent implements OnInit {
 
 
     public vehiculeForm!: FormGroup;
+    concat!: string;
 
     constructor(
-      // private router: Router,
+      private router: Router,
       private serviceService: ServicesService,
       public dialogRef: MatDialogRef<VehiculeAjouterComponent>,
       private Ref: MatDialogRef<VehiculeAjouterComponent>,
@@ -32,6 +33,7 @@ export class VehiculeAjouterComponent implements OnInit {
             console.log(data);
             // this.goToVehiculeListe();
              this.popupFermer();
+             this.actualiserPage();
           },
           error: (erreurs: any) => {
             console.log(erreurs);
@@ -108,6 +110,16 @@ export class VehiculeAjouterComponent implements OnInit {
 
     popupFermer() {
       this.Ref.close();
+    }
+
+    actualiserPage() {
+      this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+      this.router.onSameUrlNavigation = 'reload';
+      this.router.navigate(['gestion-vehicule'], {
+        queryParams: {
+          concat: this.concat
+        }
+      })
     }
 
 

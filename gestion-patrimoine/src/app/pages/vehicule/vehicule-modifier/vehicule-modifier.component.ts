@@ -36,7 +36,10 @@ export class VehiculeModifierComponent {
 
       data => {
 
+        this.actualiserPage();
+
         this.popupFermer();
+         this.goToVehiculeListe();
       },
       erreurs =>  {
 
@@ -44,6 +47,10 @@ export class VehiculeModifierComponent {
       }
     );
   }
+
+  goToVehiculeListe() {
+      this.router.navigate(['gestion-vehicule']);
+    }
 
 
   ngOnInit(): void {
@@ -116,6 +123,17 @@ export class VehiculeModifierComponent {
   onSubmit(): void {
     // console.log(this.bureauForm.value);
     this.ModifierVehicule();
+  }
+
+  actualiserPage() {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
+    this.router.navigate(['gestion-vehicule'], {
+      queryParams: {
+        concat: this.concat
+      }
+    });
+
   }
 
 

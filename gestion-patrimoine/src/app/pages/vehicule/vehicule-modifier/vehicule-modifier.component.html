@@ -266,7 +266,7 @@
 
       <div class="row mt-5">
         <div class="col-12 text-end">
-          <button  type="submit" [disabled]="vehiculeForm.invalid"
+          <button (click)="goToVehiculeListe()"  type="submit" [disabled]="vehiculeForm.invalid"
             class="btn btn-myprimary fw-bold w-25 mx-1" data-bs-toggle="tooltip" title="cliquer ici pour ajouter">
             VALIDER
           </button>
