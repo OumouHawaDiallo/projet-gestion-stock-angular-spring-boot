@@ -24,14 +24,14 @@ export class VehiculeAjouterComponent implements OnInit {
       private Ref: MatDialogRef<VehiculeAjouterComponent>,
     ) { }
 
-    ajouterVehicule() {
+    AjouterVehicule() {
       this.serviceService.postVehicule(this.vehiculeForm.value).subscribe(
         {
           next: (data: IVehicule) => {
             this.vehicule = data;
             console.log(data);
             // this.goToVehiculeListe();
-            this.popupFermer();
+             this.popupFermer();
           },
           error: (erreurs: any) => {
             console.log(erreurs);
@@ -101,16 +101,19 @@ export class VehiculeAjouterComponent implements OnInit {
     }
 
 
-
-
     onSubmit(): void {
-      console.log(this.vehiculeForm.value);
-      this.ajouterVehicule();
+      // console.log(this.vehiculeForm.value);
+      this.AjouterVehicule();
     }
 
-  popupFermer() {
-    this.dialogRef.close();
-  }
+    popupFermer() {
+      this.Ref.close();
+    }
+
+
+
+
+
 
 
 

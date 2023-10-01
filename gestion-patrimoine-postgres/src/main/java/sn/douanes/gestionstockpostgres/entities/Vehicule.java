@@ -2,6 +2,7 @@ package sn.douanes.gestionstockpostgres.entities;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -32,13 +33,13 @@ public class Vehicule {
     private String couleur;
 
     @Column(name = "date_fabrication")
-    private Date  dateFabrication;
+    private LocalDate dateFabrication;
 
     @Column(name = "date_commande")
-    private Date  dateCommande;
+    private LocalDate  dateCommande;
 
     @Column(name = "date_livraison")
-    private Date dateLivraison;
+    private LocalDate dateLivraison;
 
     @Column(name = "energie")
     private String energie;
@@ -49,7 +50,7 @@ public class Vehicule {
     @Column(name = "type_vehicule")
     private String typeVehicule;
 
-    public Vehicule(Long id, Integer numeroChassis, Integer numeroMatricule, String modele, String marque, String transmission, String couleur, Date dateFabrication, Date dateCommande, Date dateLivraison, String energie, String etat, String typeVehicule) {
+    public Vehicule(Long id, Integer numeroChassis, Integer numeroMatricule, String modele, String marque, String transmission, String couleur, LocalDate dateFabrication, LocalDate dateCommande, LocalDate dateLivraison, String energie, String etat, String typeVehicule) {
         this.id = id;
         this.numeroChassis = numeroChassis;
         this.numeroMatricule = numeroMatricule;
@@ -88,14 +89,6 @@ public class Vehicule {
         return numeroMatricule;
     }
 
-    public String getMarque() {
-        return marque;
-    }
-
-    public void setMarque(String marque) {
-        this.marque = marque;
-    }
-
     public void setNumeroMatricule(Integer numeroMatricule) {
         this.numeroMatricule = numeroMatricule;
     }
@@ -106,6 +99,14 @@ public class Vehicule {
 
     public void setModele(String modele) {
         this.modele = modele;
+    }
+
+    public String getMarque() {
+        return marque;
+    }
+
+    public void setMarque(String marque) {
+        this.marque = marque;
     }
 
     public String getTransmission() {
@@ -124,27 +125,27 @@ public class Vehicule {
         this.couleur = couleur;
     }
 
-    public Date getDateFabrication() {
+    public LocalDate getDateFabrication() {
         return dateFabrication;
     }
 
-    public void setDateFabrication(Date dateFabrication) {
+    public void setDateFabrication(LocalDate dateFabrication) {
         this.dateFabrication = dateFabrication;
     }
 
-    public Date getDateCommande() {
+    public LocalDate getDateCommande() {
         return dateCommande;
     }
 
-    public void setDateCommande(Date dateCommande) {
+    public void setDateCommande(LocalDate dateCommande) {
         this.dateCommande = dateCommande;
     }
 
-    public Date getDateLivraison() {
+    public LocalDate getDateLivraison() {
         return dateLivraison;
     }
 
-    public void setDateLivraison(Date dateLivraison) {
+    public void setDateLivraison(LocalDate dateLivraison) {
         this.dateLivraison = dateLivraison;
     }
 

@@ -32,11 +32,11 @@ export class VehiculeModifierComponent {
 
   ModifierVehicule() {
 
-    this.serviceService.putVehicule(this.vehiculeForm.value, this.vehicule.vehicule.id).subscribe(
+    this.serviceService.putVehicule(this.vehiculeForm.value, this.vehicule.element.id).subscribe(
 
       data => {
 
-
+        this.popupFermer();
       },
       erreurs =>  {
 
@@ -53,17 +53,58 @@ export class VehiculeModifierComponent {
     // console.log(this.bureauEdit.bureau);
 
     this.vehiculeForm = this.fb.group({
-      numeroChassis: new FormControl( this.vehicule.vehicule.numeroChassis, [
-        Validators.required,
 
-      ]),
-      couleur: new FormControl( this.vehicule.vehicule.couleur, [
-        Validators.required,
+      numeroChassis: new FormControl(this.vehicule.element.numeroChassis, [
+        Validators.required
 
       ]),
 
+      couleur: new FormControl(this.vehicule.element.couleur, [
+        Validators.required,
 
+      ]),
+      dateLivraison: new FormControl(this.vehicule.element.dateLivraison, [
+        Validators.required,
 
+      ]),
+      numeroMatricule: new FormControl(this.vehicule.element.numeroMatricule, [
+        Validators.required
+
+      ]),
+
+      transmission: new FormControl(this.vehicule.element.transmission, [
+        Validators.required,
+
+      ]),
+      energie: new FormControl(this.vehicule.element.energie, [
+        Validators.required,
+
+      ]),
+      modele: new FormControl(this.vehicule.element.modele, [
+        Validators.required,
+
+      ]),
+      dateFabrication: new FormControl(this.vehicule.element.dateFabrication, [
+        Validators.required,
+
+      ]),
+
+      etat: new FormControl(this.vehicule.element.etat, [
+        Validators.required,
+
+      ]),
+      marque: new FormControl(this.vehicule.element.marque, [
+        Validators.required,
+
+      ]),
+      dateCommande: new FormControl(this.vehicule.element.dateCommande, [
+        Validators.required,
+
+      ]),
+      typeVehicule: new FormControl(this.vehicule.element.typeVehicule, [
+        Validators.required,
+
+      ])
 
     });
   }

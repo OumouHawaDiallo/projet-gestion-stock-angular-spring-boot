@@ -86,12 +86,14 @@
             SUPPRIMER
           </button>
 
-          <button (click)="popupModifier()" class="btn btn-myprimary fw-bold w-25 mx-2" data-bs-toggle="tooltip"
+            <!-- dans notre popupModifier() on met comme paramétre  ce qui nous permet de récupérer les données de notre classe -->
+
+          <button (click)="popupModifier(vehicule.element)" class="btn btn-myprimary fw-bold w-25 mx-2" data-bs-toggle="tooltip"
             title="cliquer ici pour modifier">
             MODIFIER
           </button>
 
-          <button (click)="fermerPopup()" class="btn btn-mysecondary fw-bold w-25 mx-2" data-bs-toggle="tooltip" title="cliquer ici pour ajouter">
+          <button (click)="fermerPopup()" class="btn btn-mysecondary fw-bold w-25 mx-2" data-bs-toggle="tooltip" title="cliquer ici pour retourner">
             RETOUR
           </button>
         </div>

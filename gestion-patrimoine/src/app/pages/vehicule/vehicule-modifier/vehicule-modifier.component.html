@@ -14,18 +14,10 @@
       <div class="row g-4 mb-3">
 
         <div class="col-3 mx-auto">
-          <label for="applyNameId" class="form-label fw-bold">
-            N° de châssis
-          </label>
-          <input id="applyNameId" name="numeroChassis" type="number" formControlName="numeroChassis" [ngClass]="{'is-invalid': (vehiculeForm.get('numeroChassis')?.touched || vehiculeForm.get('numeroChassis')?.dirty) && !vehiculeForm.get('numeroChassis')?.valid,
-          'is-valid': vehiculeForm.get('numeroChassis')?.valid}"
-            class="text-input form-control bg-mywhite border border-myprimary  px-1 text-uppercase">
-          <div class="invalid-feedback">
-            <span *ngIf="vehiculeForm.get('numeroChassis')?.errors?.['required']">
-              N° de châssis (Obligatoire)
-            </span>
 
-          </div>
+          <div class="text-success"><span class="fw-bold">N° de chassis:</span></div>
+          <div class="text-input px-1 text-uppercase">{{ vehicule.element.numeroChassis }}</div>
+
         </div>
 
         <div class="col-3 mx-auto">
@@ -38,7 +30,7 @@
             <option selected>Selectionner une couleur</option>
             <option value="Blanche">Blanche</option>
             <option value="Noire">Noire</option>
-            <option value="Grise">Gris</option>
+            <option value="Grise">Grise</option>
             <option value="Rouge">Rouge</option>
             <option value="Orange">Orange</option>
             <option value="Verte">Verte</option>
@@ -79,19 +71,11 @@
 
       <div class="row g-4 mb-3">
 
-        <div class="col-3 mx-auto">
-          <label for="applyNameId" class="form-label fw-bold">
-            N° matricule
-          </label>
-          <input id="applyNameId" name="numeroMatricule" type="number" formControlName="numeroMatricule" [ngClass]="{'is-invalid': (vehiculeForm.get('numeroMatricule')?.touched || vehiculeForm.get('numeroMatricule')?.dirty) && !vehiculeForm.get('numeroMatricule')?.valid,
-          'is-valid': vehiculeForm.get('numeroMatricule')?.valid}"
-            class="text-input form-control bg-mywhite border border-myprimary  px-1 text-uppercase">
-          <div class="invalid-feedback">
-            <span *ngIf="vehiculeForm.get('numeroMatricule')?.errors?.['required']">
-              N° matricule (Obligatoire)
-            </span>
 
-          </div>
+        <div class="col-3 mx-auto">
+          <div class="text-success"><span class="fw-bold">N° matricule:</span></div>
+          <div class="text-input px-1 text-uppercase">{{ vehicule.element.numeroMatricule }}</div>
+
         </div>
 
         <div class="col-3 mx-auto">
@@ -147,6 +131,13 @@
 
       <div class="row g-4 mb-3">
 
+
+        <div class="col-3 mx-auto">
+          <div class="text-success"><span class="fw-bold">Date fabrication:</span></div>
+           <div class="text-input px-1 text-uppercase">{{ vehicule.element.dateFabrication | date: 'dd MMM yy' }}</div>
+
+        </div>
+
         <div class="col-3 mx-auto">
           <label for="applyNameId" class="form-label fw-bold">
             Modèle
@@ -162,21 +153,6 @@
           </div>
         </div>
 
-        <div class="col-3 mx-auto">
-          <label for="applyNameId" class="form-label fw-bold">
-            Date fabrication
-          </label>
-          <input id="applyNameId" name="dateFabrication" type="date" formControlName="dateFabrication" [ngClass]="{'is-invalid': (vehiculeForm.get('dateFabrication')?.touched || vehiculeForm.get('dateFabrication')?.dirty) && !vehiculeForm.get('dateFabrication')?.valid,
-          'is-valid': vehiculeForm.get('dateFabrication')?.valid}"
-            class="text-input form-control bg-mywhite border border-myprimary  px-1 text-uppercase">
-          <div class="invalid-feedback">
-            <span *ngIf="vehiculeForm.get('dateFabrication')?.errors?.['required']">
-              Date fabrication (Obligatoire)
-            </span>
-
-          </div>
-
-        </div>
 
         <div class="col-3 mx-auto">
           <label for="applyNameId" class="form-label fw-bold">
@@ -290,13 +266,13 @@
 
       <div class="row mt-5">
         <div class="col-12 text-end">
-          <button type="submit" [disabled]="vehiculeForm.invalid"
+          <button  type="submit" [disabled]="vehiculeForm.invalid"
             class="btn btn-myprimary fw-bold w-25 mx-1" data-bs-toggle="tooltip" title="cliquer ici pour ajouter">
             VALIDER
           </button>
 
-          <button (click)="popupFermer()" class="btn btn-mysecondary fw-bold w-25 mx-3" data-bs-toggle="tooltip"
-            title="cliquer ici pour ajouter">
+          <button (click)="popupFermer()" type="reset" class="btn btn-mysecondary fw-bold w-25 mx-3" data-bs-toggle="tooltip"
+            title="cliquer ici pour retourner">
             RETOUR
           </button>
         </div>

@@ -77,7 +77,7 @@ export class VehiculeListeComponent implements OnInit, AfterViewInit {
     this.matDialog.open(
       VehiculeAjouterComponent,
       {
-        width:'70%',
+        width:'80%',
 
         enterAnimationDuration:'1000ms',
         exitAnimationDuration:'2000ms',
@@ -92,7 +92,7 @@ export class VehiculeListeComponent implements OnInit, AfterViewInit {
     this.matDialog.open(
       VehiculeDetailComponent,
       {
-        width:'70%',
+        width:'80%',
         enterAnimationDuration:'1000ms',
         exitAnimationDuration:'2000ms',
         data: {
