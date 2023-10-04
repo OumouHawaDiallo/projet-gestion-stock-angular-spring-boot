@@ -2,7 +2,9 @@ import { Component,Inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
+import { IVehicule } from 'src/app/models/vehicule';
 import { ServicesService } from 'src/app/services/services.service';
+import { VehiculeDetailComponent } from '../vehicule-detail/vehicule-detail.component';
 
 @Component({
   selector: 'app-modifier',
@@ -25,32 +27,57 @@ export class VehiculeModifierComponent {
     private fb: FormBuilder,
     private serviceService: ServicesService,
     private Ref: MatDialogRef<VehiculeModifierComponent>,
+    private Ref1: MatDialogRef<VehiculeDetailComponent>,
     @Inject(MAT_DIALOG_DATA) public data: string, // recuperer les donnees du bouton popup
 
   ) { }
 
 
+  // ModifierVehicule() {
+
+  //   this.serviceService.putVehicule(this.vehiculeForm.value, this.vehicule.element.id).subscribe(
+
+  //     data => {
+
+
+
+  //      this.Ref.close();
+  //      this.Ref1.close();
+  //      this.actualiserPage();
+
+
+
+
+
+  //     },
+  //     erreurs =>  {
+
+  //       console.log(erreurs);
+  //     }
+  //   );
+  // }
+
+
   ModifierVehicule() {
-
-    this.serviceService.putVehicule(this.vehiculeForm.value, this.vehicule.element.id).subscribe(
-
-      data => {
-
+    this.serviceService.putVehicule(this.vehiculeForm.value, this.vehicule.element.id).subscribe({
+      next: (donnee: IVehicule) => {
+        this.Ref.close();
         this.actualiserPage();
 
-        this.popupFermer();
-         this.goToVehiculeListe();
       },
-      erreurs =>  {
-
+      error: (erreurs: any) => {
         console.log(erreurs);
-      }
-    );
+      },
+    });
   }
 
+
+
   goToVehiculeListe() {
-      this.router.navigate(['gestion-vehicule']);
-    }
+    this.router.navigate(['/gestion-vehicule']);
+  }
+
+
 
 
   ngOnInit(): void {
@@ -118,14 +145,21 @@ export class VehiculeModifierComponent {
 
   popupFermer() {
     this.Ref.close();
+
   }
+
+
+
 
   onSubmit(): void {
     // console.log(this.bureauForm.value);
     this.ModifierVehicule();
+    this.Ref1.close();
+
   }
 
   actualiserPage() {
+
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     this.router.onSameUrlNavigation = 'reload';
     this.router.navigate(['gestion-vehicule'], {

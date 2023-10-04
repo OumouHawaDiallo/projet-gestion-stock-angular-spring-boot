@@ -24,8 +24,9 @@ import { CommonModule, registerLocaleData } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { MatTableExporterModule } from 'mat-table-exporter';
 import localeFr from '@angular/common/locales/fr';
+
 
 // the second parameter 'fr' is optional
 registerLocaleData(localeFr, 'fr');
@@ -38,7 +39,8 @@ registerLocaleData(localeFr, 'fr');
     VehiculeListeComponent,
     VehiculeAjouterComponent,
     VehiculeDetailComponent,
-    VehiculeModifierComponent
+    VehiculeModifierComponent,
+    VehiculeListeComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +65,9 @@ registerLocaleData(localeFr, 'fr');
     MatButtonModule,
     MatIconModule,
     MatDividerModule,
+    MatTableExporterModule,
     MatDialogModule,
+
 
     // MDCDialog
   ],

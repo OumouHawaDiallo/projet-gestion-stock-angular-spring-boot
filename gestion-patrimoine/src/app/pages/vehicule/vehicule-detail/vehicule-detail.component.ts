@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { VehiculeModifierComponent } from '../vehicule-modifier/vehicule-modifier.component';
 import { IVehicule } from 'src/app/models/vehicule';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-detail',
@@ -11,10 +12,13 @@ import { IVehicule } from 'src/app/models/vehicule';
 export class VehiculeDetailComponent implements OnInit {
 
   vehicule: any;
+  concat!: string;
+
 
   constructor(
     // private dialogService: DialogService,
     public dialogRef: MatDialogRef<VehiculeDetailComponent>,
+    private router: Router,
     @Inject(MAT_DIALOG_DATA) public data: string,
     private matDialog: MatDialog
   ) { }
@@ -29,20 +33,42 @@ export class VehiculeDetailComponent implements OnInit {
       VehiculeModifierComponent,
       {
         width:'80%',
-        enterAnimationDuration:'1000ms',
-        exitAnimationDuration:'2000ms',
+        enterAnimationDuration:'500ms',
+        exitAnimationDuration:'500ms',
         data: {
           element
+
         }
       }
+
     );
-    this.fermerPopup();
+
+
+
+
+
+
   }
 
 
 
   fermerPopup() {
-    this.dialogRef.close();
+
+      this.dialogRef.close();
+
   }
+
+
+  actualiserPage() {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
+    this.router.navigate(['gestion-vehicule'], {
+      queryParams: {
+        concat: this.concat
+      }
+    });
+
+  }
+
 
 }

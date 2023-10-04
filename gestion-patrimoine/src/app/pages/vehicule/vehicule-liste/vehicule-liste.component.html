@@ -152,9 +152,9 @@
 
         <div class="col-3 d-flex justify-content-end">
 
-          <span (click)="popupAjouter()" class="material-icons icon-button">add_circle_outline</span>
-          <i class="fa-regular fa-file-excel icon-button ms-3"></i>
-          <i class="fa-regular fa-file-pdf icon-button ms-2"></i>
+          <span  class="material-icons icon-button">add_circle_outline</span>
+          <i  (click)="exporter.exportTable('xlsx')" class="fa-regular fa-file-excel icon-button ms-3"></i>
+          <i  class="fa-regular fa-file-pdf icon-button ms-2"></i>
           <!-- <span class="material-icons icon-button">picture_as_pdf</span> -->
           <!-- <button class="fw-bold mx-1 bg-mywhite shadow" style="border: none;"><i class="fa-regular fa-file-pdf fs-3"></i></button>
           <button class="fw-bold mx-1 bg-mywhite shadow" style="border: none;"><i class="fa-regular fa-file-excel fs-3"></i></button> -->
@@ -166,18 +166,37 @@
 
     <div class="container">
       <div class="mat-elevation-z8">
-        <table mat-table [dataSource]="dataSource">
-          <!-- Define columns and cells for IVehicule properties -->
-          <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column">
-            <th mat-header-cell *matHeaderCellDef> {{ column }} </th>
-            <td mat-cell *matCellDef="let element" (click)="popupDetail(element)" style="cursor: pointer;"> {{ element[column] }} </td>
+        <table mat-table matTableExporter [dataSource]="dataSource"  #exporter="matTableExporter" class="mat-elevation-z8">
+
+
+          <ng-container matColumnDef="numeroChassis">
+            <th mat-header-cell *matHeaderCellDef>N° </th>
+            <td mat-cell *matCellDef="let element"> {{element.numeroChassis}} </td>
           </ng-container>
 
-          <!-- Header row -->
+
+          <ng-container matColumnDef="numeroMatricule">
+            <th mat-header-cell *matHeaderCellDef> Numéro matricule </th>
+            <td mat-cell *matCellDef="let element"> {{element.numeroMatricule}}</td>
+          </ng-container>
+
+
+          <ng-container matColumnDef="couleur">
+            <th mat-header-cell *matHeaderCellDef>Couleur</th>
+            <td mat-cell *matCellDef="let element"> {{element.couleur}} </td>
+          </ng-container>
+
+
+          <ng-container matColumnDef="modele">
+            <th mat-header-cell *matHeaderCellDef>Modéle  </th>
+            <td mat-cell *matCellDef="let element"> {{element.modele}} </td>
+          </ng-container>
+
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-          <!-- Data rows -->
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
+
+
 
         <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of vehicles">
         </mat-paginator>

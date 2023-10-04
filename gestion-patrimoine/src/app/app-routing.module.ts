@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ConnexionComponent } from './pages/connexion/connexion.component';
 import { ErreurComponent } from './pages/erreur/erreur.component';
 import { VehiculeListeComponent } from './pages/vehicule/vehicule-liste/vehicule-liste.component';
+import { VehiculeDetailComponent } from './pages/vehicule/vehicule-detail/vehicule-detail.component';
 
 const routes: Routes = [
   { path: 'connexion', component: ConnexionComponent },
