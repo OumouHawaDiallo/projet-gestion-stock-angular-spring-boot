@@ -1,3 +1,4 @@
+/* ----------------------------------------------------------------------------------------- */
 /* Styles pour le conteneur principal */
 .container1 {
   /* overflow: hidden; */
@@ -64,28 +65,28 @@ li a {
     font-size: 0.8rem; /* Taille de police pour les écrans plus petits */
   }
 }
+/* ----------------------------------------------------------------------------------------- */
 
 
 
 
 
 
-
-
+/* ----------------------------------------------------------------------------------------- */
 .menu-button {
   font-size: 1.2rem;
-  margin: 3px 0 3px 0;
+  /* margin: 5px 0 5px 0; */
   background-color: #fff; /* Couleur de fond du bouton */
   color: black; /* Couleur du texte */
   padding: 10px 20px; /* Espacement interne */
   border: none;
   /* border: 1px solid #e7e7e7; */
   /* border-radius: 5px; */
-  text-align: left; /* Alignement du texte à gauche */
+  /* text-align: left; */
   width: 100%; /* Largeur du bouton à 100% */
   cursor: pointer; /* Curseur en forme de main pour indiquer qu'il est cliquable */
-  display: flex; /* Affiche le contenu en tant que flexbox */
-  justify-content: start; /* Place le contenu à l'extrémité droite du bouton */
+  display: flex;
+  /* justify-content: start; */
   align-items: center; /* Centre verticalement le contenu */
   transition: background-color 0.3s ease; /* Transition de couleur de fond */
 }
@@ -95,9 +96,10 @@ li a {
   border-radius: 5px;
 }
 
+/* ----------------------------------------------------------------------------------------- */
 
 
-
+/* ----------------------------------------------------------------------------------------- */
 /* Style the collapsible content. Note: hidden by default */
 .content {
   display: none;
@@ -110,19 +112,13 @@ li a {
   /* margin: 0 20px 0 20px; */
   /* padding: 10px; */
 }
-
-
-
-
-
+/* ----------------------------------------------------------------------------------------- */
 
 
 
 /* ----------------------------------------------------------------------------------------- */
-
 /* Stylisation du menu déroulant */
 .dropdown-menu1 {
-
   width: 100%;
   background-color: #ffffff; /* Couleur de fond */
   border: 1px solid #e7e7e7; /* Bordure */
@@ -183,7 +179,27 @@ li a {
   background-color: #fff; /* Couleur de fond en focus */
   color: #000; /* Couleur du texte en focus */
 }
+/* ----------------------------------------------------------------------------------------- */
 
+
+
+
+
+
+/* ----------------------------------------------------------------------------------------- */
+.icon-button {
+  cursor: pointer;
+  width: 52px;
+  height: 52px;
+  margin-left: 10px;
+  /* font-size: 48px; */
+  /* background-color: white; */
+  /* color: #000; */
+}
+
+.icon-button:hover {
+  color: #f0dd99;
+}
 /* ----------------------------------------------------------------------------------------- */
 
 
@@ -192,15 +208,5 @@ li a {
 
 
 
-.icon-button {
-  cursor: pointer;
-  font-size: 48px;
-  background-color: white;
-  color: #000;
-}
-
-.icon-button:hover {
-  color: #f0dd99;
-}
 
 

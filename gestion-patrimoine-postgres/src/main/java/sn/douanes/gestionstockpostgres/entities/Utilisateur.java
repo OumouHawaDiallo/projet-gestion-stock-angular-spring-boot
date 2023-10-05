@@ -2,7 +2,6 @@ package sn.douanes.gestionstockpostgres.entities;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -22,10 +21,10 @@ public class Utilisateur{
     private String email;
 
     @Column(name = "date_naissance")
-    private LocalDate dateNaissance;
+    private Date dateNaissance;
 
     @Column(name = "lieu_naissance")
-    private String lieuNaissance;
+    private Date lieuNaissance;
 
     @OneToMany(cascade = {
             CascadeType.PERSIST,
@@ -43,7 +42,7 @@ public class Utilisateur{
     public Utilisateur() {
     }
 
-    public Utilisateur(Long id, String username, String email, LocalDate dateNaissance, String lieuNaissance, List<Vehicule> vehicules) {
+    public Utilisateur(Long id, String username, String email, Date dateNaissance, Date lieuNaissance, List<Vehicule> vehicules) {
         this.id = id;
         this.username = username;
         this.email = email;
@@ -76,19 +75,19 @@ public class Utilisateur{
         this.email = email;
     }
 
-    public LocalDate getDateNaissance() {
+    public Date getDateNaissance() {
         return dateNaissance;
     }
 
-    public void setDateNaissance(LocalDate dateNaissance) {
+    public void setDateNaissance(Date dateNaissance) {
         this.dateNaissance = dateNaissance;
     }
 
-    public String getLieuNaissance() {
+    public Date getLieuNaissance() {
         return lieuNaissance;
     }
 
-    public void setLieuNaissance(String lieuNaissance) {
+    public void setLieuNaissance(Date lieuNaissance) {
         this.lieuNaissance = lieuNaissance;
     }
 
@@ -99,4 +98,6 @@ public class Utilisateur{
     public void setVehicules(List<Vehicule> vehicules) {
         this.vehicules = vehicules;
     }
+
+
 }

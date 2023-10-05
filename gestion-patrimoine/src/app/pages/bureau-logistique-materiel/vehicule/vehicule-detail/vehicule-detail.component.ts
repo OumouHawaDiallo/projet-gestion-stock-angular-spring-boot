@@ -1,7 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { VehiculeModifierComponent } from '../vehicule-modifier/vehicule-modifier.component';
-import { IVehicule } from 'src/app/models/vehicule';
+import { VehiculeService } from 'src/app/services/vehicule.service';
+import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,63 +13,54 @@ import { Router } from '@angular/router';
 export class VehiculeDetailComponent implements OnInit {
 
   vehicule: any;
-  concat!: string;
-
 
   constructor(
-    // private dialogService: DialogService,
+    // private router: Router,
+    private vehiculeService: VehiculeService,
     public dialogRef: MatDialogRef<VehiculeDetailComponent>,
-    private router: Router,
     @Inject(MAT_DIALOG_DATA) public data: string,
     private matDialog: MatDialog
   ) { }
 
 
   ngOnInit(): void {
+
     this.vehicule = this.data;
+
   }
+
+  supprimerVehiculeById(idVehicule: number) {
+    this.vehiculeService.deleteVehicule(idVehicule).subscribe({
+      next: () => {
+
+      },
+      error: (erreurs: HttpErrorResponse) => {
+        console.log(erreurs);
+      }
+    });
+    this.fermerPopup();
+  }
+
+
 
   popupModifier(element: any) {
     this.matDialog.open(
       VehiculeModifierComponent,
       {
         width:'80%',
-        enterAnimationDuration:'500ms',
-        exitAnimationDuration:'500ms',
+        enterAnimationDuration: '100ms',
+        exitAnimationDuration: '100ms',
         data: {
           element
-
         }
       }
-
     );
-
-
-
-
-
-
   }
-
-
 
   fermerPopup() {
-
-      this.dialogRef.close();
-
+    this.dialogRef.close();
   }
 
-
-  actualiserPage() {
-    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-    this.router.onSameUrlNavigation = 'reload';
-    this.router.navigate(['gestion-vehicule'], {
-      queryParams: {
-        concat: this.concat
-      }
-    });
-
-  }
 
 
 }

@@ -6,10 +6,10 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ConnexionComponent } from './pages/connexion/connexion.component';
 import { ErreurComponent } from './pages/erreur/erreur.component';
-import { VehiculeListeComponent } from './pages/vehicule/vehicule-liste/vehicule-liste.component';
-import { VehiculeAjouterComponent } from './pages/vehicule/vehicule-ajouter/vehicule-ajouter.component';
-import { VehiculeDetailComponent } from './pages/vehicule/vehicule-detail/vehicule-detail.component';
-import { VehiculeModifierComponent } from './pages/vehicule/vehicule-modifier/vehicule-modifier.component';
+import { VehiculeListeComponent } from './pages/bureau-logistique-materiel/vehicule/vehicule-liste/vehicule-liste.component';
+import { VehiculeAjouterComponent } from './pages/bureau-logistique-materiel/vehicule/vehicule-ajouter/vehicule-ajouter.component';
+import { VehiculeDetailComponent } from './pages/bureau-logistique-materiel/vehicule/vehicule-detail/vehicule-detail.component';
+import { VehiculeModifierComponent } from './pages/bureau-logistique-materiel/vehicule/vehicule-modifier/vehicule-modifier.component';
 
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
@@ -24,8 +24,10 @@ import { CommonModule, registerLocaleData } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { MatTableExporterModule } from 'mat-table-exporter';
+
+
 import localeFr from '@angular/common/locales/fr';
+import { MatTableExporterModule } from 'mat-table-exporter';
 
 
 // the second parameter 'fr' is optional
@@ -39,8 +41,7 @@ registerLocaleData(localeFr, 'fr');
     VehiculeListeComponent,
     VehiculeAjouterComponent,
     VehiculeDetailComponent,
-    VehiculeModifierComponent,
-    VehiculeListeComponent
+    VehiculeModifierComponent
   ],
   imports: [
     BrowserModule,
@@ -65,9 +66,9 @@ registerLocaleData(localeFr, 'fr');
     MatButtonModule,
     MatIconModule,
     MatDividerModule,
-    MatTableExporterModule,
     MatDialogModule,
 
+    MatTableExporterModule
 
     // MDCDialog
   ],
