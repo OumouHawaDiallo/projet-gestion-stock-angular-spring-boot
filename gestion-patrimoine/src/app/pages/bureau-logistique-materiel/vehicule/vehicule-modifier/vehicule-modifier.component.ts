@@ -5,7 +5,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SelectEnum } from 'src/app/enum/select-enum';
 import { IVehicule } from 'src/app/models/vehicule';
@@ -34,22 +34,19 @@ export class VehiculeModifierComponent {
 
   constructor(
     // private router: Router,
+    private matDialog: MatDialog,
     private vehiculeService: VehiculeService,
     private router: Router,
     private validationService: ValidationService,
     public dialogRef: MatDialogRef<VehiculeModifierComponent>,
-    public dialogRef1: MatDialogRef<VehiculeDetailComponent>,
     @Inject(MAT_DIALOG_DATA) public data: string
   ) {}
 
   ModifierVehicule() {
-    this.vehiculeService.putVehicule(this.vehiculeForm.value, this.vehicule.element.id).subscribe({
+    this.vehiculeService.putVehicule(this.vehiculeForm.value, this.vehicule.id).subscribe({
       next: (donnee: IVehicule) => {
-
-       this.actualiserPage();
         this.dialogRef.close();
-
-
+        this.actualiserPage();
       },
       error: (erreurs: any) => {
         console.log(erreurs);
@@ -62,47 +59,47 @@ export class VehiculeModifierComponent {
 
     this.vehiculeForm = new FormGroup({
 
-      numeroChassis: new FormControl(this.vehicule.element.numeroChassis, [
+      numeroChassis: new FormControl(this.vehicule.numeroChassis, [
         Validators.required,
         Validators.pattern('^[0-9]{5}$'),
       ]),
-      couleur: new FormControl(this.vehicule.element.couleur, [
+      couleur: new FormControl(this.vehicule.couleur, [
         Validators.required,
         this.validationService.validateCouleurSelection,
       ]),
-      dateLivraison: new FormControl(this.formatDate(this.vehicule.element.dateLivraison), [
+      dateLivraison: new FormControl(this.formatDate(this.vehicule.dateLivraison), [
         Validators.required,
       ]),
-      numeroMatricule: new FormControl(this.vehicule.element.numeroMatricule, [
+      numeroMatricule: new FormControl(this.vehicule.numeroMatricule, [
         Validators.required,
         Validators.pattern('^[0-9]{5}$'),
       ]),
-      transmission: new FormControl(this.vehicule.element.transmission, [
+      transmission: new FormControl(this.vehicule.transmission, [
         Validators.required,
         this.validationService.validateTransmissionSelection,
       ]),
-      energie: new FormControl(this.vehicule.element.energie, [
+      energie: new FormControl(this.vehicule.energie, [
         Validators.required,
         this.validationService.validateEnergieSelection,
       ]),
-      modele: new FormControl(this.vehicule.element.modele, [
+      modele: new FormControl(this.vehicule.modele, [
         Validators.required,
       ]),
-      dateFabrication: new FormControl(this.formatDate(this.vehicule.element.dateFabrication), [
+      dateFabrication: new FormControl(this.formatDate(this.vehicule.dateFabrication), [
         Validators.required,
       ]),
-      etat: new FormControl(this.vehicule.element.etat, [
+      etat: new FormControl(this.vehicule.etat, [
         Validators.required,
         this.validationService.validateEtatSelection,
       ]),
-      marque: new FormControl(this.vehicule.element.marque, [
+      marque: new FormControl(this.vehicule.marque, [
         Validators.required,
         this.validationService.validateMarqueSelection,
       ]),
-      dateCommande: new FormControl(this.formatDate(this.vehicule.element.dateCommande), [
+      dateCommande: new FormControl(this.formatDate(this.vehicule.dateCommande), [
         Validators.required,
       ]),
-      typeVehicule: new FormControl(this.vehicule.element.typeVehicule, [
+      typeVehicule: new FormControl(this.vehicule.typeVehicule, [
         Validators.required,
         this.validationService.validateTypeVehiculeSelection,
       ])
@@ -112,16 +109,36 @@ export class VehiculeModifierComponent {
   onSubmit(): void {
     // console.log(this.vehiculeForm.value);
     this.ModifierVehicule();
-    this.dialogRef1.close();
   }
 
   fermerPopup() {
     this.dialogRef.close();
+    const dialogRef = this.matDialog.open(
+      VehiculeDetailComponent,
+      {
+        width: '80%',
+        enterAnimationDuration: '100ms',
+        exitAnimationDuration: '100ms',
+        data: this.vehicule
+      }
+    );
+
+    dialogRef.afterClosed().subscribe(() => {
+      this.ngOnInit();
+    });
   }
 
   // goToGestionVehicule() {
   //   this.router.navigate(['gestion-vehicule']);
   // }
+
+  actualiserPage() {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
+    this.router.navigate(['gestion-vehicule'], {
+
+    })
+  }
 
 
 
@@ -141,13 +158,5 @@ export class VehiculeModifierComponent {
 
     const formattedDate = `${year}-${month}-${day}`;
     return formattedDate; // Affiche "2023-09-21"
-  }
-
-  actualiserPage() {
-    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-    this.router.onSameUrlNavigation = 'reload';
-    this.router.navigate(['gestion-vehicule'], {
-
-    })
   }
 }

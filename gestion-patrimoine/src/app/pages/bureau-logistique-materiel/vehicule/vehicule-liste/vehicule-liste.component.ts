@@ -9,15 +9,11 @@ import { IVehicule } from 'src/app/models/vehicule';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Observable, Subject, debounceTime, distinctUntilChanged, of, switchMap } from 'rxjs';
 import { Router } from '@angular/router';
+
 import * as pdfMake from 'pdfmake/build/pdfmake';
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 import { Margins } from 'pdfmake/interfaces';
-
-
-
-
 (pdfMake as any).vfs = pdfFonts.pdfMake.vfs;
-
 
 @Component({
   selector: 'app-interface1',
@@ -25,92 +21,6 @@ import { Margins } from 'pdfmake/interfaces';
   styleUrls: ['./vehicule-liste.component.css']
 })
 export class VehiculeListeComponent implements OnInit, AfterViewInit {
-
-
-
-
-  //exporter au format PDF
-
-  generatePDF() {
-    // Préparez les données de votre tableau
-    const vehiculesData = this.vehicules.map((vehicule) => {
-
-
-
-      return [
-        vehicule.numeroChassis,
-        vehicule.numeroMatricule,
-        vehicule.modele,
-        vehicule.marque,
-        vehicule.couleur,
-        vehicule.transmission,
-        new Date(vehicule.dateFabrication).toLocaleDateString(), // Convertir la date au format souhaité
-        new Date(vehicule.dateCommande).toLocaleDateString(),
-        new Date(vehicule.dateLivraison).toLocaleDateString(),
-        vehicule.energie,
-        vehicule.etat,
-        vehicule.typeVehicule
-      ];
-    });
-
-    const documentDefinition = {
-      pageSize: { width: 1000, height: 1000 },
-
-
-      content: [
-        { text: 'Liste des véhicules', style: 'header', absolutePosition: { x:35, y:10 }, },
-        {
-          table: {
-            style:'tableStyle',
-            headerRows: 1,
-            widths: ['auto', 'auto', 'auto', 'auto', 'auto', 'auto', 'auto', 'auto', 'auto', 'auto', 'auto', 'auto'],
-            // margin: [80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80],
-
-            body: [
-              [
-                { text: 'N° Châssis', style: 'header' },
-                { text: 'N° Matricule', style: 'header' },
-                { text: 'Modèle', style: 'header' },
-                { text: 'Marque', style: 'header' },
-                { text: 'Couleur', style: 'header' },
-                { text: 'Transmission', style: 'header' },
-                { text: 'Date Fabrication', style: 'header' },
-                { text: 'Date Commande', style: 'header' },
-                { text: 'Date Livraison', style: 'header' },
-                { text: 'Énergie', style: 'header' },
-                { text: 'État', style: 'header' },
-                { text: 'Type Véhicule', style: 'header' },
-              ],
-              ...vehiculesData,
-
-            ],
-          },
-          layout: 'lightHorizontalLines', // Option de mise en forme du tableau
-        },
-      ],
-      styles: {
-        header: {
-          fontSize: 15,
-          bold: true,
-
-        },
-
-
-      },
-      tableStyle: {
-        tableWidth: 'auto', // Largeur du tableau (utilisez 'auto' pour l'ajuster automatiquement)
-        cellPadding: 6, // Rembourrage des cellules
-        // margin: [null, 40, null, null],
-
-      },
-
-
-    };
-
-    pdfMake.createPdf(documentDefinition).open();
-  }
-
-
 
   /* ----------------------------------------------------------------------------------------- */
   focusOnInput: boolean = false;
@@ -185,17 +95,16 @@ export class VehiculeListeComponent implements OnInit, AfterViewInit {
     "N°",
     "N° châssis",
     "N° matricule",
-    "Modele",
+    "Modèle",
     "Marque",
     "Couleur",
     "Transmission",
     "Date Fabrication",
     "Date Commande",
     "Date Livraison",
-    "Energie",
-    "Etat",
-    "Type Vehicule"
-
+    "Énergie",
+    "État",
+    "Type Véhicule"
   ];
 
   /* ----------------------------------------------------------------------------------------- */
@@ -229,6 +138,7 @@ export class VehiculeListeComponent implements OnInit, AfterViewInit {
 
 
   ngOnInit(): void {
+
     /* ----------------------------------------------------------------------------------------- */
     this.recupererVehicules();
     /* ----------------------------------------------------------------------------------------- */
@@ -247,6 +157,88 @@ export class VehiculeListeComponent implements OnInit, AfterViewInit {
     /* ----------------------------------------------------------------------------------------- */
   }
 
+  generatePDF() {
+
+    const months = [
+      'JANV.',
+      'FÉVR.',
+      'MARS',
+      'AVR.',
+      'MAI',
+      'JUIN',
+      'JUIL.',
+      'AOÛT',
+      'SEPT.',
+      'OCT.',
+      'NOV.',
+      'DÉC.'
+    ];
+
+    const vehiculesData = this.vehicules.map((vehicule) => {
+      return [
+        vehicule.numeroChassis,
+        vehicule.numeroMatricule,
+        vehicule.modele,
+        vehicule.marque,
+        vehicule.couleur,
+        vehicule.transmission,
+        `${new Date(vehicule.dateFabrication).getDate()} ${months[new Date(vehicule.dateFabrication).getMonth()]} ${new Date(vehicule.dateFabrication).getFullYear() % 100}`,
+        `${new Date(vehicule.dateCommande).getDate()} ${months[new Date(vehicule.dateCommande).getMonth()]} ${new Date(vehicule.dateCommande).getFullYear() % 100}`,
+        `${new Date(vehicule.dateLivraison).getDate()} ${months[new Date(vehicule.dateLivraison).getMonth()]} ${new Date(vehicule.dateLivraison).getFullYear() % 100}`,
+        vehicule.energie,
+        vehicule.etat,
+        vehicule.typeVehicule
+      ];
+    });
+
+    const documentDefinition = {
+
+      pageSize: { width: 1000, height: 1000 },
+      content: [
+        { text: 'Liste des véhicules', style: 'header', absolutePosition: { x:35, y:10 }, },
+        {
+          table: {
+            style:'tableStyle',
+            headerRows: 1,
+            widths: ['auto', 'auto', 'auto', 'auto', 'auto', 'auto', 'auto', 'auto', 'auto', 'auto', 'auto', 'auto'],
+            // margin: [80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80],
+            body: [
+              [
+                { text: 'N° Châssis', style: 'header' },
+                { text: 'N° Matricule', style: 'header' },
+                { text: 'Modèle', style: 'header' },
+                { text: 'Marque', style: 'header' },
+                { text: 'Couleur', style: 'header' },
+                { text: 'Transmission', style: 'header' },
+                { text: 'Date Fabrication', style: 'header' },
+                { text: 'Date Commande', style: 'header' },
+                { text: 'Date Livraison', style: 'header' },
+                { text: 'Énergie', style: 'header' },
+                { text: 'État', style: 'header' },
+                { text: 'Type Véhicule', style: 'header' },
+              ],
+              ...vehiculesData,
+            ]
+          },
+          layout: 'lightHorizontalLines', // Option de mise en forme du tableau
+        }
+      ],
+      styles: {
+        header: {
+          fontSize: 15,
+          bold: true
+        },
+      },
+      tableStyle: {
+        tableWidth: 'auto', // Largeur du tableau (utilisez 'auto' pour l'ajuster automatiquement)
+        cellPadding: 6, // Rembourrage des cellules
+        // margin: [null, 40, null, null],
+      },
+    };
+
+    pdfMake.createPdf(documentDefinition).open();
+  }
+
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -255,7 +247,7 @@ export class VehiculeListeComponent implements OnInit, AfterViewInit {
   recupererVehicules() {
     this.vehiculeService.getVehicules().subscribe({
       next: (donnees: IVehicule[]) => {
-        this.vehicules = donnees;
+        this.vehicules = donnees.sort((a, b) => a.numeroChassis - b.numeroChassis);
 
         // this.dataSource = new MatTableDataSource<IVehicule>(this.vehicules);
         this.dataSource = new MatTableDataSource<IVehicule>(this.vehicules.map((item) => ({
@@ -263,8 +255,8 @@ export class VehiculeListeComponent implements OnInit, AfterViewInit {
           rowNumber: this.rowNumber++
         })));
 
+        // console.log(this.dataSource.data);
         this.dataSource.paginator = this.paginator;
-
       },
       error: (erreurs: HttpErrorResponse) => {
         console.log(erreurs);
@@ -278,7 +270,7 @@ export class VehiculeListeComponent implements OnInit, AfterViewInit {
 
 
   popupAjouter() {
-    this.matDialog.open(
+    const dialogRef = this.matDialog.open(
       VehiculeAjouterComponent,
       {
         width: '80%',
@@ -286,20 +278,26 @@ export class VehiculeListeComponent implements OnInit, AfterViewInit {
         exitAnimationDuration: '100ms'
       }
     );
+
+    dialogRef.afterClosed().subscribe(() => {
+      this.ngOnInit();
+    });
   }
 
   popupDetail(element: any) {
-    this.matDialog.open(
+    const dialogRef = this.matDialog.open(
       VehiculeDetailComponent,
       {
         width: '80%',
         enterAnimationDuration: '100ms',
         exitAnimationDuration: '100ms',
-        data: {
-          element
-        }
+        data: element
       }
     );
+
+    dialogRef.afterClosed().subscribe(() => {
+      this.ngOnInit();
+    });
   }
 
 

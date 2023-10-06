@@ -17,6 +17,7 @@ export class VehiculeDetailComponent implements OnInit {
   constructor(
     // private router: Router,
     private vehiculeService: VehiculeService,
+    private router: Router,
     public dialogRef: MatDialogRef<VehiculeDetailComponent>,
     @Inject(MAT_DIALOG_DATA) public data: string,
     private matDialog: MatDialog
@@ -24,35 +25,32 @@ export class VehiculeDetailComponent implements OnInit {
 
 
   ngOnInit(): void {
-
     this.vehicule = this.data;
-
   }
 
   supprimerVehiculeById(idVehicule: number) {
     this.vehiculeService.deleteVehicule(idVehicule).subscribe({
       next: () => {
-
+        this.dialogRef.close();
+        this.actualiserPage();
       },
       error: (erreurs: HttpErrorResponse) => {
         console.log(erreurs);
       }
     });
-    this.fermerPopup();
   }
 
 
 
   popupModifier(element: any) {
+    this.dialogRef.close(); // fermer le popup detail avant
     this.matDialog.open(
       VehiculeModifierComponent,
       {
         width:'80%',
         enterAnimationDuration: '100ms',
         exitAnimationDuration: '100ms',
-        data: {
-          element
-        }
+        data: element
       }
     );
   }
@@ -61,6 +59,12 @@ export class VehiculeDetailComponent implements OnInit {
     this.dialogRef.close();
   }
 
+  actualiserPage() {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
+    this.router.navigate(['gestion-vehicule'], {
 
+    })
+  }
 
 }

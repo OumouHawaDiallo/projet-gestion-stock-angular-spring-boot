@@ -156,7 +156,7 @@
 
           <div *ngIf="focusOnInput" style="position: absolute; background-color: #e7e7e7;">
             <a *ngFor="let vehicle of vehicules$ | async" (click)="popupDetail(vehicle)"
-              style="cursor: pointer; display: block; color: #f0dd99; background-color: #fff; margin: 5px; text-decoration: none;">
+              style="cursor: pointer; display: block; color: gray; background-color: #fff; margin: 5px; text-decoration: none;">
               {{ vehicle.marque }} {{ vehicle.modele }} {{ vehicle.couleur }} {{ vehicle.etat }} {{ vehicle.energie }}
             </a>
           </div>
@@ -171,14 +171,14 @@
           <!-- <img (click)="popupAjouter()" src="../../../../../assets/add1.png" alt="" class="icon-button"> -->
           <img (click)="popupAjouter()" src="../../../../../assets/add.png" alt="" class="icon-button">
           <!-- <img (click)="popupAjouter()" src="../../../../../assets/plus.png" alt="" class="icon-button"> -->
-          <img   (click)="generatePDF()" src="../../../../../assets/fichier-pdf.png" alt="" class="icon-button">
+          <img (click)="generatePDF()" src="../../../../../assets/fichier-pdf.png" alt="" class="icon-button">
           <!-- <img (click)="exporter.exportTable('xlsx')" src="../../../../../assets/exceller.png" alt="" class="icon-button"> -->
           <img (click)="exporter.exportTable('xlsx')" src="../../../../../assets/xls.png" alt="" class="icon-button">
 
 
           <!-- <span (click)="popupAjouter()" class="material-icons icon-button">add_circle_outline</span>
           <i (click)="exporter.exportTable('xlsx')" class="fa-regular fa-file-excel icon-button ms-3"></i>
-          <i class="fa-regular fa-file-pdf icon-button ms-2"></i> -->
+          <i (click)="generatePDF()" class="fa-regular fa-file-pdf icon-button ms-2"></i> -->
         </div>
 
       </div>
@@ -213,7 +213,7 @@
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table> -->
 
-        <table mat-table [dataSource]="dataSource" matTableExporter  #exporter="matTableExporter">
+        <table mat-table [dataSource]="dataSource" matTableExporter #exporter="matTableExporter">
           <!-- Define columns and cells for IVehicule properties -->
           <ng-container *ngFor="let column of displayedColumns let i = index" [matColumnDef]="column">
             <!-- <th mat-header-cell *matHeaderCellDef class="fw-bold"> {{ column }} </th> -->
@@ -230,7 +230,7 @@
               <!-- Check if the current column is the "N°" column -->
               <!-- <ng-container *ngIf="columnsDateFormat.includes(column)">{{ element[column] }}</ng-container> -->
               <ng-container *ngIf="columnsDateFormat.includes(column); else normalCell">
-                {{ element[column] | date: 'dd MMM yy' }}
+                {{ element[column] | date: 'dd MMM yy' | uppercase }}
               </ng-container>
               <ng-template #normalCell>
                 <ng-container *ngIf="column === 'N°'; else normalCell">{{ element.rowNumber }}</ng-container>

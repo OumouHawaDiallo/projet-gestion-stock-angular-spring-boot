@@ -1,6 +1,5 @@
 
 export interface IVehicule {
-
   id: number;
   numeroChassis: number;
   numeroMatricule: number;
