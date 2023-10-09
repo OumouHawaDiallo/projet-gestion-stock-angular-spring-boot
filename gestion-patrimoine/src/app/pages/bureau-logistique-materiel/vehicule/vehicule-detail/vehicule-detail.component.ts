@@ -17,7 +17,6 @@ export class VehiculeDetailComponent implements OnInit {
   constructor(
     // private router: Router,
     private vehiculeService: VehiculeService,
-    private router: Router,
     public dialogRef: MatDialogRef<VehiculeDetailComponent>,
     @Inject(MAT_DIALOG_DATA) public data: string,
     private matDialog: MatDialog
@@ -32,7 +31,6 @@ export class VehiculeDetailComponent implements OnInit {
     this.vehiculeService.deleteVehicule(idVehicule).subscribe({
       next: () => {
         this.dialogRef.close();
-        this.actualiserPage();
       },
       error: (erreurs: HttpErrorResponse) => {
         console.log(erreurs);
@@ -57,14 +55,6 @@ export class VehiculeDetailComponent implements OnInit {
 
   fermerPopup() {
     this.dialogRef.close();
-  }
-
-  actualiserPage() {
-    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-    this.router.onSameUrlNavigation = 'reload';
-    this.router.navigate(['gestion-vehicule'], {
-
-    })
   }
 
 }

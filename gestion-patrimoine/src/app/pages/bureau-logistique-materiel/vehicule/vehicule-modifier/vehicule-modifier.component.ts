@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -6,20 +6,21 @@ import {
   Validators,
 } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { SelectEnum } from 'src/app/enum/select-enum';
-import { IVehicule } from 'src/app/models/vehicule';
 import { ValidationService } from 'src/app/services/validation.service';
 import { VehiculeService } from 'src/app/services/vehicule.service';
-import { VehiculeAjouterComponent } from '../vehicule-ajouter/vehicule-ajouter.component';
 import { VehiculeDetailComponent } from '../vehicule-detail/vehicule-detail.component';
+import { VehiculeListeComponent } from '../vehicule-liste/vehicule-liste.component';
+
 
 @Component({
   selector: 'app-modifier',
   templateUrl: './vehicule-modifier.component.html',
   styleUrls: ['./vehicule-modifier.component.css'],
 })
-export class VehiculeModifierComponent {
+
+export class VehiculeModifierComponent implements OnInit {
 
   selectCouleur: string = SelectEnum.COULEUR;
   selectTransmission: string = SelectEnum.TRANSMISSION;
@@ -34,9 +35,9 @@ export class VehiculeModifierComponent {
 
   constructor(
     // private router: Router,
+    // private route: ActivatedRoute,
     private matDialog: MatDialog,
     private vehiculeService: VehiculeService,
-    private router: Router,
     private validationService: ValidationService,
     public dialogRef: MatDialogRef<VehiculeModifierComponent>,
     @Inject(MAT_DIALOG_DATA) public data: string
@@ -44,7 +45,7 @@ export class VehiculeModifierComponent {
 
   ModifierVehicule() {
     this.vehiculeService.putVehicule(this.vehiculeForm.value, this.vehicule.id).subscribe({
-      next: (donnee: IVehicule) => {
+      next: () => {
         this.dialogRef.close();
         this.actualiserPage();
       },
@@ -113,7 +114,7 @@ export class VehiculeModifierComponent {
 
   fermerPopup() {
     this.dialogRef.close();
-    const dialogRef = this.matDialog.open(
+    this.matDialog.open(
       VehiculeDetailComponent,
       {
         width: '80%',
@@ -122,23 +123,11 @@ export class VehiculeModifierComponent {
         data: this.vehicule
       }
     );
-
-    dialogRef.afterClosed().subscribe(() => {
-      this.ngOnInit();
-    });
   }
 
   // goToGestionVehicule() {
   //   this.router.navigate(['gestion-vehicule']);
   // }
-
-  actualiserPage() {
-    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-    this.router.onSameUrlNavigation = 'reload';
-    this.router.navigate(['gestion-vehicule'], {
-
-    })
-  }
 
 
 
@@ -159,4 +148,18 @@ export class VehiculeModifierComponent {
     const formattedDate = `${year}-${month}-${day}`;
     return formattedDate; // Affiche "2023-09-21"
   }
+
+
+  actualiserPage() {
+    //   this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    //   this.router.onSameUrlNavigation = 'reload';
+    //   this.router.navigate(['gestion-vehicule']);
+
+    location.reload();
+
+  }
+
+
+
+
 }

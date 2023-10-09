@@ -126,7 +126,7 @@
       style="box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3); width: 98%;">
       <div class="row">
         <div class="col-12 text-center fw-bolder fs-5">
-          Gestion des véhicules
+          Gestion des roles
         </div>
       </div>
     </div>
@@ -149,17 +149,17 @@
               aria-label="Search"
               style="box-shadow: #F5E0A7 0px 50px 100px -20px, #F5E0A7 0px 30px 60px -30px, #F5E0A7 0px -2px 6px 0px inset; outline: none;"> -->
 
-            <input matInput (input)="applyFilter($event)" #searchBox (input)="search(searchBox.value)"
+            <!-- <input matInput (input)="applyFilter($event)" #searchBox (input)="search(searchBox.value)"
               class="form-control input-sm bg-mywhite border-0" type="search" placeholder="Rechercher"
               aria-label="Search"
-              style="box-shadow: #F5E0A7 0px 50px 100px -20px, #F5E0A7 0px 30px 60px -30px, #F5E0A7 0px -2px 6px 0px inset; outline: none;">
+              style="box-shadow: #F5E0A7 0px 50px 100px -20px, #F5E0A7 0px 30px 60px -30px, #F5E0A7 0px -2px 6px 0px inset; outline: none;"> -->
           </div>
 
-          <div *ngIf="focusOnInput" style="position: absolute; background-color: #e7e7e7;">
-            <a *ngFor="let vehicle of vehicules$ | async" (click)="popupDetail(vehicle)"
+          <div  style="position: absolute; background-color: #e7e7e7;">
+            <!-- <a *ngFor="let utilisateur of utilisateurs$ | async"
               style="cursor: pointer; display: block; color: gray; background-color: #fff; margin: 5px; text-decoration: none;">
-              {{ vehicle.marque }} {{ vehicle.modele }} {{ vehicle.couleur }} {{ vehicle.etat }} {{ vehicle.energie }}
-            </a>
+              {{ utilisateur.username }} {{ utilisateur.email }} {{ utilisateur.dateNaissance }} {{ utilisateur.lieuNaissance }}
+            </a> -->
           </div>
         </div>
 
@@ -172,7 +172,7 @@
           <!-- <img (click)="popupAjouter()" src="../../../../../assets/add1.png" alt="" class="icon-button"> -->
           <img (click)="popupAjouter()" src="../../../../../assets/add.png" alt="" class="icon-button">
           <!-- <img (click)="popupAjouter()" src="../../../../../assets/plus.png" alt="" class="icon-button"> -->
-          <img (click)="generatePDF()" src="../../../../../assets/fichier-pdf.png" alt="" class="icon-button">
+          <img  src="../../../../../assets/fichier-pdf.png" alt="" class="icon-button">
           <!-- <img (click)="exporter.exportTable('xlsx')" src="../../../../../assets/exceller.png" alt="" class="icon-button"> -->
           <img (click)="exporter.exportTable('xlsx')" src="../../../../../assets/xls.png" alt="" class="icon-button">
 
@@ -218,7 +218,7 @@
           <!-- Define columns and cells for IVehicule properties -->
           <ng-container *ngFor="let column of displayedColumns let i = index" [matColumnDef]="column">
             <!-- <th mat-header-cell *matHeaderCellDef class="fw-bold"> {{ column }} </th> -->
-            <th mat-header-cell *matHeaderCellDef class="fw-bold" [style.display]="columnsToHide.includes(column) ? 'none' : 'table-cell'">
+            <th mat-header-cell *matHeaderCellDef class="fw-bold">
               {{ displayedColumnsCustom[i] }}
             </th>
 
@@ -227,7 +227,7 @@
             </td> -->
 
 
-            <td mat-cell *matCellDef="let element" (click)="popupDetail(element)" style="cursor: pointer;" [style.display]="columnsToHide.includes(column) ? 'none' : 'table-cell'" >
+            <td mat-cell *matCellDef="let element"  style="cursor: pointer;" >
               <!-- Check if the current column is the "N°" column -->
               <!-- <ng-container *ngIf="columnsDateFormat.includes(column)">{{ element[column] }}</ng-container> -->
               <ng-container *ngIf="columnsDateFormat.includes(column); else normalCell">
@@ -247,7 +247,7 @@
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
 
-        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of vehicles">
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of utilisateurs">
         </mat-paginator>
       </div>
     </div>
@@ -256,3 +256,4 @@
 
 
 </div>
+

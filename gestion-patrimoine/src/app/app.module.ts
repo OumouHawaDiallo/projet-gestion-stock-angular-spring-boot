@@ -28,6 +28,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import localeFr from '@angular/common/locales/fr';
 import { MatTableExporterModule } from 'mat-table-exporter';
+import { UtilisateurAjouterComponent } from './pages/utilisateur/utilisateur-ajouter/utilisateur-ajouter.component';
+import { UtilisateurDetailComponent } from './pages/utilisateur/utilisateur-detail/utilisateur-detail.component';
+import { UtilisateurListeComponent } from './pages/utilisateur/utilisateur-liste/utilisateur-liste.component';
+import { UtilisateurModifierComponent } from './pages/utilisateur/utilisateur-modifier/utilisateur-modifier.component';
 
 
 // the second parameter 'fr' is optional
@@ -41,7 +45,11 @@ registerLocaleData(localeFr, 'fr');
     VehiculeListeComponent,
     VehiculeAjouterComponent,
     VehiculeDetailComponent,
-    VehiculeModifierComponent
+    VehiculeModifierComponent,
+    UtilisateurAjouterComponent,
+    UtilisateurDetailComponent,
+    UtilisateurListeComponent,
+    UtilisateurModifierComponent
   ],
   imports: [
     BrowserModule,

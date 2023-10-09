@@ -9,10 +9,11 @@ import { IVehicule } from 'src/app/models/vehicule';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Observable, Subject, debounceTime, distinctUntilChanged, of, switchMap } from 'rxjs';
 import { Router } from '@angular/router';
+import { Margins } from 'pdfmake/interfaces';
 
 import * as pdfMake from 'pdfmake/build/pdfmake';
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
-import { Margins } from 'pdfmake/interfaces';
+
 (pdfMake as any).vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
@@ -59,7 +60,7 @@ export class VehiculeListeComponent implements OnInit, AfterViewInit {
 
   /* ----------------------------------------------------------------------------------------- */
   // tableau
-  rowNumber: number = 1; // Initialize it with 1
+  rowNumber!: number; // numéro de ligne pour le tableau
   columnsDateFormat: string[] = [
     "dateFabrication",
     "dateCommande",
@@ -139,6 +140,7 @@ export class VehiculeListeComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
 
+
     /* ----------------------------------------------------------------------------------------- */
     this.recupererVehicules();
     /* ----------------------------------------------------------------------------------------- */
@@ -193,15 +195,22 @@ export class VehiculeListeComponent implements OnInit, AfterViewInit {
 
     const documentDefinition = {
 
-      pageSize: { width: 1000, height: 1000 },
+      // page: {
+      //   margins: [20, 20 ],
+      // },
+
+
+      pageSize: { width: 1200, height: 1200 },
+
       content: [
-        { text: 'Liste des véhicules', style: 'header', absolutePosition: { x:35, y:10 }, },
+        { text: 'Liste des véhicules', style: 'header', absolutePosition: { x:20, y:10 }, },
         {
           table: {
             style:'tableStyle',
             headerRows: 1,
-            widths: ['auto', 'auto', 'auto', 'auto', 'auto', 'auto', 'auto', 'auto', 'auto', 'auto', 'auto', 'auto'],
-            // margin: [80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80],
+            // widths: ['auto', 'auto', 'auto', 'auto', 'auto', 'auto', 'auto', 'auto', 'auto', 'auto', 'auto', 'auto'],
+            widths: [82, 82, 82, 82, 82, 82, 82, 82, 82, 82, 82, 82],
+            // padding: [null, 40, null, 40],
             body: [
               [
                 { text: 'N° Châssis', style: 'header' },
@@ -225,14 +234,15 @@ export class VehiculeListeComponent implements OnInit, AfterViewInit {
       ],
       styles: {
         header: {
-          fontSize: 15,
-          bold: true
+          fontSize: 10,
+          bold: true,
+
         },
       },
       tableStyle: {
         tableWidth: 'auto', // Largeur du tableau (utilisez 'auto' pour l'ajuster automatiquement)
-        cellPadding: 6, // Rembourrage des cellules
-        // margin: [null, 40, null, null],
+        // cellPadding: 3, // Rembourrage des cellules
+        // padding: [0, 0, 0, 20],
       },
     };
 
@@ -248,6 +258,8 @@ export class VehiculeListeComponent implements OnInit, AfterViewInit {
     this.vehiculeService.getVehicules().subscribe({
       next: (donnees: IVehicule[]) => {
         this.vehicules = donnees.sort((a, b) => a.numeroChassis - b.numeroChassis);
+
+        this.rowNumber = 1;
 
         // this.dataSource = new MatTableDataSource<IVehicule>(this.vehicules);
         this.dataSource = new MatTableDataSource<IVehicule>(this.vehicules.map((item) => ({
