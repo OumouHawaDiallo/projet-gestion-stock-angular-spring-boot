@@ -200,7 +200,7 @@ export class VehiculeListeComponent implements OnInit, AfterViewInit {
       // },
 
 
-      pageSize: { width: 1200, height: 1200 },
+      pageSize: { width: 1251, height: 1251 },
 
       content: [
         { text: 'Liste des véhicules', style: 'header', absolutePosition: { x:20, y:10 }, },

@@ -1,1 +1,106 @@
-<p>utilisateur-ajouter works!</p>
+<div class="card shadow">
+
+  <div class="card-header text-center fw-bold bg-myprimary fs-5">
+    Ajouter un utilisateur
+  </div>
+
+
+  <div class="card-body">
+    <form class="container px-3 py-2" novalidate (ngSubmit)="onSubmit()" [formGroup]="utilisateurForm">
+
+      <div class="row g-4 mb-3">
+
+        <div class="col-3 mx-auto">
+          <label for="username" class="form-label fw-bold">
+            Username
+          </label>
+
+          <input id="username" name="username" type="text" formControlName="username" [ngClass]="{'is-invalid': (utilisateurForm.get('username')?.touched || utilisateurForm.get('username')?.dirty) && !utilisateurForm.get('username')?.valid,
+          'is-valid': utilisateurForm.get('username')?.valid}"
+            class="text-input form-control bg-mywhite border border-myprimary px-1 text-uppercase" placeholder="Entrer le username">
+
+          <div class="invalid-feedback">
+            <span *ngIf="utilisateurForm.get('username')?.errors?.['required']">
+              <sup class="fw-bold">*</sup> Username (Obligatoire)
+            </span>
+          </div>
+        </div>
+
+        <div class="col-3 mx-auto">
+
+            <label for="email" class="form-label fw-bold">
+             Email
+            </label>
+
+            <input id="email" name="email" type="text" formControlName="email" [ngClass]="{'is-invalid': (utilisateurForm.get('email')?.touched || utilisateurForm.get('email')?.dirty) && !utilisateurForm.get('email')?.valid,
+            'is-valid': utilisateurForm.get('email')?.valid}"
+              class="text-input form-control bg-mywhite border border-myprimary px-1 text-uppercase" placeholder="Entrer E-mail">
+
+            <div class="invalid-feedback">
+              <span *ngIf="utilisateurForm.get('email')?.errors?.['required']">
+                <sup class="fw-bold">*</sup> Email (Obligatoire)
+              </span>
+            </div>
+          </div>
+
+          <div class="col-3 mx-auto">
+            <label for="dateNaissance" class="form-label fw-bold">
+              Date naissance
+            </label>
+
+            <input id="dateNaissance" name="dateNaissance" type="date" formControlName="dateNaissance" [ngClass]="{'is-invalid': (utilisateurForm.get('dateNaissance')?.touched || utilisateurForm.get('dateNaissance')?.dirty) && !utilisateurForm.get('dateNaissance')?.valid,
+            'is-valid': utilisateurForm.get('dateNaissance')?.valid}"
+              class="text-input form-control bg-mywhite border border-myprimary  px-1 text-uppercase">
+
+            <div class="invalid-feedback">
+              <span *ngIf="utilisateurForm.get('dateNaissance')?.errors?.['required']">
+                <sup class="fw-bold">*</sup> Date naissance (Obligatoire)
+              </span>
+            </div>
+          </div>
+
+
+      </div>
+
+
+      <div class="row g-4 mb-3">
+        <div class="col-3 mx-5">
+          <label for="lieuNaissance" class="form-label fw-bold">
+            Lieu naissance
+          </label>
+
+          <input id="lieuNaissance" name="lieuNaissance" type="text" formControlName="lieuNaissance" [ngClass]="{'is-invalid': ( utilisateurForm.get('lieuNaissance')?.touched ||  utilisateurForm.get('lieuNaissance')?.dirty) && ! utilisateurForm.get('lieuNaissance')?.valid,
+          'is-valid':  utilisateurForm.get('lieuNaissance')?.valid}"
+            class="text-input form-control bg-mywhite border border-myprimary px-1 text-uppercase" placeholder="Entrer le lieu de naissance">
+
+          <div class="invalid-feedback">
+            <span *ngIf=" utilisateurForm.get('lieuNaissance')?.errors?.['required']">
+              <sup class="fw-bold">*</sup> Lieu naissance (Obligatoire)
+            </span>
+          </div>
+        </div>
+
+
+      </div>
+
+
+      <div class="row mt-5">
+
+        <div class="col-12 text-end">
+          <button type="submit" [disabled]="utilisateurForm.invalid" class="btn btn-myprimary fw-bold w-25 mx-2"
+            data-bs-toggle="tooltip" title="cliquer ici pour ajouter">
+            VALIDER
+          </button>
+
+          <button (click)="popupFermer()" type="button" class="btn btn-mysecondary fw-bold w-25 mx-2"
+            data-bs-toggle="tooltip" title="cliquer ici pour retourner">
+            RETOUR
+          </button>
+        </div>
+
+      </div>
+
+    </form>
+  </div>
+
+</div>

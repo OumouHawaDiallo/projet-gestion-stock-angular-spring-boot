@@ -7,6 +7,8 @@ import { Router } from '@angular/router';
 import { IUtilisateur } from 'src/app/models/utilisateur';
 import { UtilisateurService } from 'src/app/services/utilisateur.service';
 import { UtilisateurAjouterComponent } from '../utilisateur-ajouter/utilisateur-ajouter.component';
+import { Observable, Subject, debounceTime, distinctUntilChanged, of, switchMap } from 'rxjs';
+import * as pdfMake from 'pdfmake/build/pdfmake';
 
 @Component({
   selector: 'app-utilisateur-liste',
@@ -32,7 +34,7 @@ export class UtilisateurListeComponent {
     // Vérifie si le clic a eu lieu en dehors de l'élément monDiv
     if (!this.monDiv?.nativeElement.contains(event.target)) {
       // Code à exécuter lorsque le clic est en dehors de monDiv
-      // console.log('Clic en dehors de monDiv détecté.');
+      console.log('Clic en dehors de monDiv détecté.');
       this.focusOnInput = false;
     }
   }
@@ -43,8 +45,8 @@ export class UtilisateurListeComponent {
 
   /* ----------------------------------------------------------------------------------------- */
   // rechercher
-  // searchTerms = new Subject<string>();
-  // vehicules$: Observable<IVehicule[]> = of();
+  searchTerms = new Subject<string>();
+  utilisateurs$: Observable<IUtilisateur[]> = of();
   /* ----------------------------------------------------------------------------------------- */
 
 
@@ -124,107 +126,99 @@ export class UtilisateurListeComponent {
 
     /* ----------------------------------------------------------------------------------------- */
     // rechercher
-    // this.vehicules$ = this.searchTerms.pipe(
+    this.utilisateurs$ = this.searchTerms.pipe(
       // {...."ab"..."abz"."ab"...."abc"......}
-      // debounceTime(300),
+      debounceTime(300),
       // {......"ab"...."ab"...."abc"......}
-      // distinctUntilChanged(),
+      distinctUntilChanged(),
       // {......"ab"..........."abc"......}
-      // switchMap((term) => this.vehiculeService.searchVehiculeList(term, this.vehicules))
+      switchMap((term) => this.utilisateurService.searchUtilisateurList(term, this.utilisateurs))
       // {.....List(ab)............List(abc)......}
-    // );
+    );
     /* ----------------------------------------------------------------------------------------- */
   }
 
-//   generatePDF() {
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+}
 
-//     const months = [
-//       'JANV.',
-//       'FÉVR.',
-//       'MARS',
-//       'AVR.',
-//       'MAI',
-//       'JUIN',
-//       'JUIL.',
-//       'AOÛT',
-//       'SEPT.',
-//       'OCT.',
-//       'NOV.',
-//       'DÉC.'
-//     ];
+ /* ----------------------------------------------------------------------------------------- */
 
-//     const vehiculesData = this.vehicules.map((vehicule) => {
-//       return [
-//         vehicule.numeroChassis,
-//         vehicule.numeroMatricule,
-//         vehicule.modele,
-//         vehicule.marque,
-//         vehicule.couleur,
-//         vehicule.transmission,
-//         `${new Date(vehicule.dateFabrication).getDate()} ${months[new Date(vehicule.dateFabrication).getMonth()]} ${new Date(vehicule.dateFabrication).getFullYear() % 100}`,
-//         `${new Date(vehicule.dateCommande).getDate()} ${months[new Date(vehicule.dateCommande).getMonth()]} ${new Date(vehicule.dateCommande).getFullYear() % 100}`,
-//         `${new Date(vehicule.dateLivraison).getDate()} ${months[new Date(vehicule.dateLivraison).getMonth()]} ${new Date(vehicule.dateLivraison).getFullYear() % 100}`,
-//         vehicule.energie,
-//         vehicule.etat,
-//         vehicule.typeVehicule
-//       ];
-//     });
+//  générer un pdf avec Pdfmake
 
-//     const documentDefinition = {
+  generatePDF() {
 
+    const months = [
+      'JANV.',
+      'FÉVR.',
+      'MARS',
+      'AVR.',
+      'MAI',
+      'JUIN',
+      'JUIL.',
+      'AOÛT',
+      'SEPT.',
+      'OCT.',
+      'NOV.',
+      'DÉC.'
+    ];
+
+    const utilisateursData = this.utilisateurs.map((utilisateur) => {
+      return [
+        utilisateur.username,
+        utilisateur.email,
+        `${new Date(utilisateur.dateNaissance).getDate()} ${months[new Date(utilisateur.dateNaissance).getMonth()]} ${new Date(utilisateur.dateNaissance).getFullYear() % 100}`,
+        utilisateur.lieuNaissance
+
+      ];
+    });
+
+    const documentDefinition = {
 
 
-//       pageSize: { width: 1200, height: 1200 },
 
-//       content: [
-//         { text: 'Liste des véhicules', style: 'header', absolutePosition: { x:20, y:10 }, },
-//         {
-//           table: {
-//             style:'tableStyle',
-//             headerRows: 1,
+      pageSize: { width: 460, height: 460 },
 
-//             widths: [82, 82, 82, 82, 82, 82, 82, 82, 82, 82, 82, 82],
+      content: [
+        { text: 'Liste des utilisateurs', style: 'header', absolutePosition: { x:20, y:10 }, },
+        {
+          table: {
+            style:'tableStyle',
+            headerRows: 1,
 
-//             body: [
-//               [
-//                 { text: 'N° Châssis', style: 'header' },
-//                 { text: 'N° Matricule', style: 'header' },
-//                 { text: 'Modèle', style: 'header' },
-//                 { text: 'Marque', style: 'header' },
-//                 { text: 'Couleur', style: 'header' },
-//                 { text: 'Transmission', style: 'header' },
-//                 { text: 'Date Fabrication', style: 'header' },
-//                 { text: 'Date Commande', style: 'header' },
-//                 { text: 'Date Livraison', style: 'header' },
-//                 { text: 'Énergie', style: 'header' },
-//                 { text: 'État', style: 'header' },
-//                 { text: 'Type Véhicule', style: 'header' },
-//               ],
-//               ...vehiculesData,
-//             ]
-//           },
-//           layout: 'lightHorizontalLines',
-//         }
-//       ],
-//       styles: {
-//         header: {
-//           fontSize: 10,
-//           bold: true,
+            widths: [82, 82, 82, 82],
 
-//         },
-//       },
-//       tableStyle: {
-//         tableWidth: 'auto',
-//       },
-//     };
+            body: [
+              [
+                { text: 'Username', style: 'header' },
+                { text: 'Email', style: 'header' },
+                { text: 'Date Naissance', style: 'header' },
+                { text: 'Lieu Naissancee', style: 'header' },
 
-//     pdfMake.createPdf(documentDefinition).open();
-//   }
+              ],
+              ...utilisateursData,
+            ]
+          },
+          layout: 'lightHorizontalLines',
+        }
+      ],
+      styles: {
+        header: {
+          fontSize: 10,
+          bold: true,
 
-  // applyFilter(event: Event) {
-  //   const filterValue = (event.target as HTMLInputElement).value;
-  //   this.dataSource.filter = filterValue.trim().toLowerCase();
-  // }
+        },
+      },
+      tableStyle: {
+        tableWidth: 'auto',
+      },
+    };
+
+    pdfMake.createPdf(documentDefinition).open();
+  }
+
+
 
   recupererUtilisateurs() {
     this.utilisateurService.getUtilisateurs().subscribe({
@@ -248,9 +242,9 @@ export class UtilisateurListeComponent {
     });
   }
 
-  // search(term: string) {
-  //   this.searchTerms.next(term);
-  // }
+  search(term: string) {
+    this.searchTerms.next(term);
+  }
 
 
   popupAjouter() {
@@ -263,9 +257,9 @@ export class UtilisateurListeComponent {
       }
     );
 
-    dialogRef.afterClosed().subscribe(() => {
-      this.ngOnInit();
-    });
+    // dialogRef.afterClosed().subscribe(() => {
+    //   this.ngOnInit();
+    // });
   }
 
 
