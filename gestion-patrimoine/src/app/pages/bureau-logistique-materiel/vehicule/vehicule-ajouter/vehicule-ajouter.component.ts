@@ -49,6 +49,7 @@ export class VehiculeAjouterComponent implements OnInit {
       numeroChassis: new FormControl(null, [
         Validators.required,
         Validators.pattern('^[0-9]{5}$'),
+        // Validators.pattern('^[0-9]{5}[A-HJ-NPR-Z0-9]{12}$'),
       ]),
       couleur: new FormControl(this.selectCouleur, [
         Validators.required,

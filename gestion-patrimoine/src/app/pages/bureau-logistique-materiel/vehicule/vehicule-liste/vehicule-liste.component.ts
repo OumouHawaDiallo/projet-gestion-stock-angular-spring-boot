@@ -193,6 +193,10 @@ export class VehiculeListeComponent implements OnInit, AfterViewInit {
       ];
     });
 
+
+
+
+
     const documentDefinition = {
 
       // page: {
@@ -203,7 +207,8 @@ export class VehiculeListeComponent implements OnInit, AfterViewInit {
       pageSize: { width: 1251, height: 1251 },
 
       content: [
-        { text: 'Liste des véhicules', style: 'header', absolutePosition: { x:20, y:10 }, },
+        { text: 'Liste des véhicules', style: 'header', absolutePosition: { x:20, y:17 }, },
+        // { text: 'Liste des véhicules', style: 'header', absolutePosition: { x:600, y:10 }, },
         {
           table: {
             style:'tableStyle',
@@ -227,6 +232,8 @@ export class VehiculeListeComponent implements OnInit, AfterViewInit {
                 { text: 'Type Véhicule', style: 'header' },
               ],
               ...vehiculesData,
+
+
             ]
           },
           layout: 'lightHorizontalLines', // Option de mise en forme du tableau
@@ -236,6 +243,7 @@ export class VehiculeListeComponent implements OnInit, AfterViewInit {
         header: {
           fontSize: 10,
           bold: true,
+
 
         },
       },

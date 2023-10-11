@@ -169,19 +169,27 @@ export class UtilisateurListeComponent {
         utilisateur.username,
         utilisateur.email,
         `${new Date(utilisateur.dateNaissance).getDate()} ${months[new Date(utilisateur.dateNaissance).getMonth()]} ${new Date(utilisateur.dateNaissance).getFullYear() % 100}`,
-        utilisateur.lieuNaissance
+        utilisateur.lieuNaissance,
+
+
+
+
+
 
       ];
+
     });
 
     const documentDefinition = {
 
 
 
+
+
       pageSize: { width: 460, height: 460 },
 
       content: [
-        { text: 'Liste des utilisateurs', style: 'header', absolutePosition: { x:20, y:10 }, },
+        { text: 'Liste des utilisateurs', style: 'header', absolutePosition: { x:20, y:17 }, },
         {
           table: {
             style:'tableStyle',
@@ -198,6 +206,9 @@ export class UtilisateurListeComponent {
 
               ],
               ...utilisateursData,
+
+
+
             ]
           },
           layout: 'lightHorizontalLines',
@@ -266,11 +277,7 @@ export class UtilisateurListeComponent {
 
 
 
-  // actualiserPage() {
-  //   this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-  //   this.router.onSameUrlNavigation = 'reload';
-  //   this.router.navigate(['gestion-vehicule']);
-  // }
+
 
 
 
