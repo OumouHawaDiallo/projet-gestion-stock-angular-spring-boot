@@ -6,6 +6,9 @@ import { SelectEnum } from 'src/app/enum/select-enum';
 import { IVehicule } from 'src/app/models/vehicule';
 import { VehiculeService } from 'src/app/services/vehicule.service';
 import { ValidationService } from 'src/app/services/validation.service';
+import { ToastrService } from 'ngx-toastr';
+// import { ToastsManager } from 'ng2-toastr';
+// import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-ajouter',
@@ -28,13 +31,21 @@ export class VehiculeAjouterComponent implements OnInit {
     // private router: Router,
     private vehiculeService: VehiculeService,
     private validationService: ValidationService,
-    public dialogRef: MatDialogRef<VehiculeAjouterComponent>
+    public dialogRef: MatDialogRef<VehiculeAjouterComponent>,
+    private toastrService:ToastrService
+
   ) {}
+
+  showToast(){
+    this.toastrService.success('un vehicule a été ajouté !','',{ positionClass:'custom-toast-position',timeOut:5000})
+  }
 
   AjouterVehicule() {
     this.vehiculeService.postVehicule(this.vehiculeForm.value).subscribe({
       next: (donnee: IVehicule) => {
         this.popupFermer();
+        this.showToast();
+
       },
       error: (erreurs: any) => {
         console.log(erreurs);

@@ -32,6 +32,9 @@ import { UtilisateurAjouterComponent } from './pages/utilisateur/utilisateur-ajo
 import { UtilisateurDetailComponent } from './pages/utilisateur/utilisateur-detail/utilisateur-detail.component';
 import { UtilisateurListeComponent } from './pages/utilisateur/utilisateur-liste/utilisateur-liste.component';
 import { UtilisateurModifierComponent } from './pages/utilisateur/utilisateur-modifier/utilisateur-modifier.component';
+import { ToastrModule } from 'ngx-toastr';
+
+
 
 
 // the second parameter 'fr' is optional
@@ -75,8 +78,11 @@ registerLocaleData(localeFr, 'fr');
     MatIconModule,
     MatDividerModule,
     MatDialogModule,
+    MatTableExporterModule,
+    BrowserAnimationsModule ,  // module d'animations requis
+    ToastrModule. forRoot ( ),  // ToastrModule ajouté
 
-    MatTableExporterModule
+
 
     // MDCDialog
   ],

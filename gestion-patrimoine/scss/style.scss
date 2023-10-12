@@ -82,6 +82,20 @@ $theme-colors: (
   "mywarning": #F9EFD2,
 );
 
+/* Déplace légèrement le toast vers le bas */
+.custom-toast-position {
+  position: fixed;
+  right: 20px; /* Ajustez la valeur pour déplacer le toast vers la droite */
+  bottom: 500px; /* Ajustez la valeur pour déplacer le toast vers le bas */
+  height: 100px;
+};
+
+// .custom-toast-height {
+//   height: 40px;
+// }
+
+
+
 
 
 // $offcanvas-horizontal-width:        300px;
@@ -89,3 +103,8 @@ $theme-colors: (
 
 
 @import "../node_modules/bootstrap/scss/bootstrap";
+// @import  ' ngx-toastr/toastr ' ;
+
+@import  "../node_modules/ngx-toastr/toastr";//pour avoir des messages de validation ou de suppression sous forme de poppup
+
+

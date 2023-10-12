@@ -4,6 +4,7 @@ import { VehiculeModifierComponent } from '../vehicule-modifier/vehicule-modifie
 import { VehiculeService } from 'src/app/services/vehicule.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-detail',
@@ -11,6 +12,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./vehicule-detail.component.css']
 })
 export class VehiculeDetailComponent implements OnInit {
+  [x: string]: any;
 
   vehicule: any;
 
@@ -19,7 +21,9 @@ export class VehiculeDetailComponent implements OnInit {
     private vehiculeService: VehiculeService,
     public dialogRef: MatDialogRef<VehiculeDetailComponent>,
     @Inject(MAT_DIALOG_DATA) public data: string,
-    private matDialog: MatDialog
+    private matDialog: MatDialog,
+    private toastrService:ToastrService
+
   ) { }
 
 
@@ -27,10 +31,15 @@ export class VehiculeDetailComponent implements OnInit {
     this.vehicule = this.data;
   }
 
+  showToast(){
+    this.toastrService.error('un vehicule a été supprimé !','',{ positionClass:'custom-toast-position',timeOut:2000})
+  }
+
   supprimerVehiculeById(idVehicule: number) {
     this.vehiculeService.deleteVehicule(idVehicule).subscribe({
       next: () => {
         this.dialogRef.close();
+        this.showToast();
       },
       error: (erreurs: HttpErrorResponse) => {
         console.log(erreurs);
