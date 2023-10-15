@@ -172,9 +172,9 @@
           <!-- <img (click)="popupAjouter()" src="../../../../../assets/add1.png" alt="" class="icon-button"> -->
           <img (click)="popupAjouter()" src="../../../../../assets/add.png" alt="" class="icon-button">
           <!-- <img (click)="popupAjouter()" src="../../../../../assets/plus.png" alt="" class="icon-button"> -->
-          <img (click)="generatePDF()" src="../../../../../assets/fichier-pdf.png" alt="" class="icon-button">
+          <img  (click)="generatePDF()"  src="../../../../../assets/fichier-pdf.png" alt="" class="icon-button">
           <!-- <img (click)="exporter.exportTable('xlsx')" src="../../../../../assets/exceller.png" alt="" class="icon-button"> -->
-          <img (click)="exporter.exportTable('xlsx')" src="../../../../../assets/xls.png" alt="" class="icon-button">
+          <img (click)="exporter.exportTable('xlsx',{fileName:'liste_vehicule'})" src="../../../../../assets/xls.png" alt="" class="icon-button">
 
 
           <!-- <span (click)="popupAjouter()" class="material-icons icon-button">add_circle_outline</span>
@@ -186,7 +186,7 @@
     </div>
 
 
-    <div class="container">
+    <div #table class="container">
       <div class="mat-elevation-z8">
 
         <!-- <table mat-table matTableExporter [dataSource]="dataSource"  #exporter="matTableExporter" class="mat-elevation-z8">
@@ -214,7 +214,7 @@
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table> -->
 
-        <table mat-table [dataSource]="dataSource" matTableExporter #exporter="matTableExporter">
+        <table #table mat-table [dataSource]="dataSource" matTableExporter #exporter="matTableExporter" id="table">
           <!-- Define columns and cells for IVehicule properties -->
           <ng-container *ngFor="let column of displayedColumns let i = index" [matColumnDef]="column">
             <!-- <th mat-header-cell *matHeaderCellDef class="fw-bold"> {{ column }} </th> -->
@@ -234,7 +234,7 @@
                 {{ element[column] | date: 'dd MMM yy' | uppercase }}
               </ng-container>
               <ng-template #normalCell>
-                <ng-container *ngIf="column === 'N°'; else normalCell">{{ element.rowNumber }}</ng-container>
+                <ng-container  *ngIf="column === 'N°'; else normalCell">{{ element.rowNumber }}</ng-container>
                 <ng-template #normalCell>{{ element[column] }}</ng-template>
               </ng-template>
 
