@@ -1,1 +1,61 @@
-<p>utilisateur-detail works!</p>
+<div class="container">
+
+
+  <div *ngIf="utilisateur" class="row">
+    <div class="col-12 col-md-8 offset-md-2">
+      <h2 class="text-center">{{ utilisateur.username }}</h2>
+      <div class="card mb-3">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <!-- <img [src]="utilisateur.picture"> -->
+            <img src="../../../../assets/profil.png" alt="profil" class="img-fluid" />
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <table class="table">
+                <tbody>
+                  <tr>
+                    <td>Nom</td>
+                    <td><strong>{{ utilisateur.username }}</strong></td>
+                  </tr>
+                  <tr>
+                    <td>Points de vie</td>
+                    <td><strong>{{ utilisateur.email }}</strong></td>
+                  </tr>
+                  <tr>
+                    <td>Dégâts</td>
+                    <td><strong>{{ utilisateur.dateNaissance }}</strong></td>
+                  </tr>
+                  <tr>
+                    <td>Dégâts</td>
+                    <td><strong>{{ utilisateur.lieuNaissance }}</strong></td>
+                  </tr>
+                  <tr>
+                    <td>Types</td>
+                    <td>
+                      <span *ngFor="let vehicule of utilisateur.vehicules">{{ vehicule }}</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Date de création</td>
+                    <td><em>{{ utilisateur.dateEnregistrement | date:"dd/MM/yyyy" }}</em></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="card-footer">
+              <a (click)="goToUtilisateurList()" class="btn btn-primary me-2">Retour</a>
+              <a (click)="goToModifierUtilisateur(utilisateur.utilisateurId)" class="btn btn-secondary me-2">Éditer</a>
+              <a (click)="supprimerUtilisateurById(utilisateur.utilisateurId)" class="btn btn-danger">Supprimer</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div *ngIf='!utilisateur' style="display: flex; align-items: center; justify-content: center; height: 100%;">
+  <app-loader></app-loader>
+</div>

@@ -1,8 +1,9 @@
 import { IVehicule } from "./vehicule";
 
 export interface IUtilisateur {
-
-  id: number;
+  rowNumber:number;
+  utilisateurId: string;
+  dateEnregistrement: Date;
   username: string;
   email: string;
   dateNaissance: Date;

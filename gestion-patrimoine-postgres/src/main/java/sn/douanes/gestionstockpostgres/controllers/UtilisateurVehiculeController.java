@@ -17,32 +17,29 @@ import java.util.List;
 public class UtilisateurVehiculeController {
 
     @Autowired
-    UtilisateurVehiculeRepository userVehiculeRepository;
+    UtilisateurVehiculeService utilisateurVehiculeService;
 
     @Autowired
-    UtilisateurVehiculeService userVehiculeService;
-
-    @Autowired
-    UtilisateurService userService;
+    UtilisateurService utilisateurService;
 
     @Autowired
     VehiculeService vehiculeService;
 
-    @GetMapping("/userVehicules")
+    @GetMapping("/UtilisateurVehicules")
     @ResponseBody
-    public List<UtilisateurVehicule> getAlluserVehicules() {
-        List<UtilisateurVehicule> list = userVehiculeService.getAllUserVehicules();
+    public List<UtilisateurVehicule> getAllUtilisateurVehicules() {
+        List<UtilisateurVehicule> list = utilisateurVehiculeService.getAllUtilisateurVehicules();
         return list;
     }
 
-    @PostMapping("/AjouterUserVehiculeById/{user_id}/{vehicule_id}")
+    @PostMapping("/AjouterUtilisateurVehiculeById/{utilisateur_id}/{vehicule_id}")
     @ResponseBody
     public void AjouterUserVehiculeById(@PathVariable long user_id, @PathVariable long vehicule_id) {
 
-        Utilisateur user = userService.getUser(user_id);
+        Utilisateur user = utilisateurService.getUtilisateur(user_id);
         Vehicule vehicule = vehiculeService.getVehicule(vehicule_id);
 
         if(user != null && vehicule != null)
-            userVehiculeRepository.save(new UtilisateurVehicule(user.getId(), user, vehicule));
+            utilisateurVehiculeService.saveUtilisateurVehicule(new UtilisateurVehicule(user.getId(), user, vehicule));
     }
 }

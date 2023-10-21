@@ -23,7 +23,6 @@
               <li><button class="dropdown-item1 fw-bold" type="button">Paramètres</button></li>
               <li><button class="dropdown-item1 fw-bold" type="button">Déconnexion</button></li>
             </ul>
-
           </div>
         </div>
 
@@ -46,13 +45,13 @@
             </button>
 
             <div class="content">
-              <button [routerLink]="'/gestion-vehicule'" class="menu-button" href="#" style="margin-left: 90px;" >
+              <button [routerLink]="'/gestion-vehicule'" class="menu-button" href="#" style="padding-left: 90px;">
                 Gestion des véhicules
               </button>
-              <button class="menu-button" href="#" style="margin-left: 90px;">
+              <button class="menu-button" href="#" style="padding-left: 90px;">
                 Gestion des ...
               </button>
-              <button class="menu-button" href="#" style="margin-left: 90px;">
+              <button class="menu-button" href="#" style="padding-left: 90px;">
                 Gestion des ...
               </button>
             </div>
@@ -95,19 +94,18 @@
           </li>
 
           <li class="my-2">
-
-            <button class="collapsible menu-button" type="button">
+            <button class="collapsible menu-button">
               <mat-icon class="me-4">assignment</mat-icon> Gestion des utilisateurs <mat-icon class="fa-solid fa-chevron-down ms-auto">expand_more</mat-icon>
             </button>
 
             <div class="content">
-              <button [routerLink]="'/gestion-utilisateur'" class="menu-button" href="#" style="margin-left: 90px;">
+              <button [routerLink]="'/gestion-utilisateur'" class="menu-button" href="#" style="padding-left: 90px;">
                 Gestion des personnels
               </button>
-              <button class="menu-button" href="#" style="margin-left: 90px;">
+              <button class="menu-button" href="#" style="padding-left: 90px;">
                 Gestion des roles
               </button>
-              <button class="menu-button" href="#" style="margin-left: 90px;">
+              <button class="menu-button" href="#" style="padding-left: 90px;">
                 Gestion des ...
               </button>
             </div>
@@ -149,18 +147,56 @@
               aria-label="Search"
               style="box-shadow: #F5E0A7 0px 50px 100px -20px, #F5E0A7 0px 30px 60px -30px, #F5E0A7 0px -2px 6px 0px inset; outline: none;"> -->
 
-            <input matInput (input)="applyFilter($event)" #searchBox (input)="search(searchBox.value)"
+            <input id="myInputSearch" #myInputSearch matInput (input)="applyFilter($event)" #searchBox (input)="search(searchBox.value)"
               class="form-control input-sm bg-mywhite border-0" type="search" placeholder="Rechercher"
               aria-label="Search"
               style="box-shadow: #F5E0A7 0px 50px 100px -20px, #F5E0A7 0px 30px 60px -30px, #F5E0A7 0px -2px 6px 0px inset; outline: none;">
           </div>
 
-          <div *ngIf="focusOnInput" style="position: absolute; background-color: #e7e7e7;">
-            <a *ngFor="let vehicle of vehicules$ | async" (click)="popupDetail(vehicle)"
-              style="cursor: pointer; display: block; color: gray; background-color: #fff; margin: 5px; text-decoration: none;">
-              {{ vehicle.marque }} {{ vehicle.modele }} {{ vehicle.couleur }} {{ vehicle.etat }} {{ vehicle.energie }}
+          <!-- <div *ngIf="focusOnInput" style="position: absolute; background-color: #e7e7e7;">
+            <a *ngFor="let vehicle of vehicules$ | async" style="cursor: pointer; display: block; color: gray; background-color: #fff; margin: 5px; text-decoration: none;">
+              <span *ngIf="isNumber(termeRecherche)">
+                {{ vehicle?.numeroMatricule }}
+              </span>
+              <span *ngIf="!isNumber(termeRecherche)">
+                {{ vehicle?.marque }}
+              </span>
             </a>
+          </div> -->
+          <!-- <div *ngIf="focusOnInput" style="position: absolute; background-color: #e7e7e7;">
+            <a *ngFor="let vehicle of vehicules$ | async" style="cursor: pointer; display: block; color: gray; background-color: #fff; margin: 5px; text-decoration: none;">
+              <ng-container *ngIf="isNumber(termeRecherche); else nonNumeric">
+                <ng-container *ngIf="vehicle?.numeroMatricule as matricule;">
+                  {{ matricule }}
+                </ng-container>
+              </ng-container>
+              <ng-template #nonNumeric>
+                <ng-container *ngIf="vehicle?.marque as marque;">
+                  {{ marque }}
+                </ng-container>
+              </ng-template>
+            </a>
+          </div> -->
+          <div *ngIf="focusOnInput" style="position: absolute; background-color: #e7e7e7;">
+            <ng-container *ngFor="let vehicle of vehiculeFilterDoubleMatriculeMarque$ | async;" style="cursor: pointer; display: block; color: gray; background-color: #fff; margin: 5px; text-decoration: none;">
+              <ng-container *ngIf="isNumber(termeRechercheMatriculeMarque); else nonNumeric">
+                <ng-container *ngIf="vehicle?.numeroMatricule as matricule;">
+                    <a (click)="FilterDoubleMatriculeMarque(matricule.toString())" style="cursor: pointer; display: block; color: gray; background-color: #fff; margin: 5px; text-decoration: none;">
+                      {{ matricule }}
+                    </a>
+                </ng-container>
+              </ng-container>
+              <ng-template #nonNumeric>
+                <ng-container *ngIf="vehicle?.marque as marque;">
+                  <a (click)="FilterDoubleMatriculeMarque(marque)" style="cursor: pointer; display: block; color: gray; background-color: #fff; margin: 5px; text-decoration: none;">
+                    {{ marque }}
+                  </a>
+                </ng-container>
+              </ng-template>
+            </ng-container>
           </div>
+
+
         </div>
 
         <div class="col-5 text-center">
@@ -172,7 +208,7 @@
           <!-- <img (click)="popupAjouter()" src="../../../../../assets/add1.png" alt="" class="icon-button"> -->
           <img (click)="popupAjouter()" src="../../../../../assets/add.png" alt="" class="icon-button">
           <!-- <img (click)="popupAjouter()" src="../../../../../assets/plus.png" alt="" class="icon-button"> -->
-          <img  (click)="generatePDF()"  src="../../../../../assets/fichier-pdf.png" alt="" class="icon-button">
+          <img (click)="generatePDF()" src="../../../../../assets/fichier-pdf.png" alt="" class="icon-button">
           <!-- <img (click)="exporter.exportTable('xlsx')" src="../../../../../assets/exceller.png" alt="" class="icon-button"> -->
           <img (click)="exporter.exportTable('xlsx',{fileName:'liste_vehicule'})" src="../../../../../assets/xls.png" alt="" class="icon-button">
 
@@ -186,7 +222,7 @@
     </div>
 
 
-    <div #table class="container">
+    <div class="container">
       <div class="mat-elevation-z8">
 
         <!-- <table mat-table matTableExporter [dataSource]="dataSource"  #exporter="matTableExporter" class="mat-elevation-z8">
@@ -214,7 +250,7 @@
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table> -->
 
-        <table #table mat-table [dataSource]="dataSource" matTableExporter #exporter="matTableExporter" id="table">
+        <table mat-table [dataSource]="dataSource" matTableExporter #exporter="matTableExporter">
           <!-- Define columns and cells for IVehicule properties -->
           <ng-container *ngFor="let column of displayedColumns let i = index" [matColumnDef]="column">
             <!-- <th mat-header-cell *matHeaderCellDef class="fw-bold"> {{ column }} </th> -->
@@ -234,11 +270,11 @@
                 {{ element[column] | date: 'dd MMM yy' | uppercase }}
               </ng-container>
               <ng-template #normalCell>
-                <ng-container  *ngIf="column === 'N°'; else normalCell">{{ element.rowNumber }}</ng-container>
+                <ng-container *ngIf="column === 'N°'; else normalCell">{{ element.rowNumber }}</ng-container>
                 <ng-template #normalCell>{{ element[column] }}</ng-template>
               </ng-template>
-
             </td>
+
           </ng-container>
 
           <!-- Header row -->

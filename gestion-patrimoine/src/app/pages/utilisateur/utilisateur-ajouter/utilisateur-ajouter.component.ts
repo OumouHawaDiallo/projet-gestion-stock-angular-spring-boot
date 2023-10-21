@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { Subscription } from 'rxjs';
 import { IUtilisateur } from 'src/app/models/utilisateur';
 import { UtilisateurService } from 'src/app/services/utilisateur.service';
 import { ValidationService } from 'src/app/services/validation.service';
@@ -10,8 +11,9 @@ import { ValidationService } from 'src/app/services/validation.service';
   templateUrl: './utilisateur-ajouter.component.html',
   styleUrls: ['./utilisateur-ajouter.component.css']
 })
-export class UtilisateurAjouterComponent {
+export class UtilisateurAjouterComponent implements OnInit, OnDestroy {
 
+  private subscriptions: Subscription[] = [];
 
 
   public utilisateurForm!: FormGroup;
@@ -19,20 +21,21 @@ export class UtilisateurAjouterComponent {
   constructor(
     // private router: Router,
     private utilisateurService: UtilisateurService,
-    private validationService: ValidationService,
+    // private validationService: ValidationService,
     public dialogRef: MatDialogRef<UtilisateurAjouterComponent>
   ) {}
 
-  AjouterUtilisateur() {
-    this.utilisateurService.postUtilisateur(this.utilisateurForm.value).subscribe({
-      next: (donnee: IUtilisateur) => {
+  AjouterUtilisateur(): void {
+    const subscription = this.utilisateurService.postUtilisateur(this.utilisateurForm.value).subscribe({
+      next: () => {
         this.popupFermer();
-        this.actualiserPage();
       },
       error: (erreurs: any) => {
         console.log(erreurs);
       },
     });
+
+    this.subscriptions.push(subscription);
   }
 
   ngOnInit(): void {
@@ -40,43 +43,31 @@ export class UtilisateurAjouterComponent {
     this.utilisateurForm = new FormGroup({
 
       username: new FormControl('', [
-        Validators.required,
-
+        Validators.required
       ]),
       email: new FormControl('', [
-        Validators.required,
-
+        Validators.required
       ]),
-
       dateNaissance: new FormControl('', [
         Validators.required
       ]),
       lieuNaissance: new FormControl('', [
-        Validators.required,
-
+        Validators.required
       ])
-
     });
   }
 
   onSubmit(): void {
-    // console.log(this.vehiculeForm.value);
+    // console.log(this.utilisateurForm.value);
     this.AjouterUtilisateur();
   }
 
-  popupFermer() {
+  popupFermer(): void {
     this.dialogRef.close();
-
   }
 
-  actualiserPage() {
-    //   this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-    //   this.router.onSameUrlNavigation = 'reload';
-    //   this.router.navigate(['gestion-vehicule']);
-
-    location.reload();
-
+  ngOnDestroy(): void {
+    this.subscriptions.forEach(sub => sub.unsubscribe());
   }
-
 
 }

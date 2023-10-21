@@ -16,12 +16,12 @@
           </label>
 
           <input id="username" name="username" type="text" formControlName="username" [ngClass]="{'is-invalid': (utilisateurForm.get('username')?.touched || utilisateurForm.get('username')?.dirty) && !utilisateurForm.get('username')?.valid,
-          'is-valid': utilisateurForm.get('username')?.valid}"
-            class="text-input form-control bg-mywhite border border-myprimary px-1 text-uppercase" placeholder="Entrer le username">
+            'is-valid': utilisateurForm.get('username')?.valid}"
+            class="text-input form-control bg-mywhite border border-myprimary px-1 text-uppercase">
 
           <div class="invalid-feedback">
             <span *ngIf="utilisateurForm.get('username')?.errors?.['required']">
-              <sup class="fw-bold">*</sup> Username (Obligatoire)
+              <sup class="fw-bold">*</sup>Obligatoire
             </span>
           </div>
         </div>
@@ -34,11 +34,11 @@
 
             <input id="email" name="email" type="text" formControlName="email" [ngClass]="{'is-invalid': (utilisateurForm.get('email')?.touched || utilisateurForm.get('email')?.dirty) && !utilisateurForm.get('email')?.valid,
             'is-valid': utilisateurForm.get('email')?.valid}"
-              class="text-input form-control bg-mywhite border border-myprimary px-1 text-uppercase" placeholder="Entrer E-mail">
+              class="text-input form-control bg-mywhite border border-myprimary px-1 text-uppercase">
 
             <div class="invalid-feedback">
               <span *ngIf="utilisateurForm.get('email')?.errors?.['required']">
-                <sup class="fw-bold">*</sup> Email (Obligatoire)
+                <sup class="fw-bold">*</sup>Obligatoire
               </span>
             </div>
           </div>
@@ -54,7 +54,7 @@
 
             <div class="invalid-feedback">
               <span *ngIf="utilisateurForm.get('dateNaissance')?.errors?.['required']">
-                <sup class="fw-bold">*</sup> Date naissance (Obligatoire)
+                <sup class="fw-bold">*</sup>Obligatoire
               </span>
             </div>
           </div>
@@ -70,12 +70,12 @@
           </label>
 
           <input id="lieuNaissance" name="lieuNaissance" type="text" formControlName="lieuNaissance" [ngClass]="{'is-invalid': ( utilisateurForm.get('lieuNaissance')?.touched ||  utilisateurForm.get('lieuNaissance')?.dirty) && ! utilisateurForm.get('lieuNaissance')?.valid,
-          'is-valid':  utilisateurForm.get('lieuNaissance')?.valid}"
-            class="text-input form-control bg-mywhite border border-myprimary px-1 text-uppercase" placeholder="Entrer le lieu de naissance">
+            'is-valid':  utilisateurForm.get('lieuNaissance')?.valid}"
+            class="text-input form-control bg-mywhite border border-myprimary px-1 text-uppercase">
 
           <div class="invalid-feedback">
             <span *ngIf=" utilisateurForm.get('lieuNaissance')?.errors?.['required']">
-              <sup class="fw-bold">*</sup> Lieu naissance (Obligatoire)
+              <sup class="fw-bold">*</sup>Obligatoire
             </span>
           </div>
         </div>

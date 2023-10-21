@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -7,11 +7,13 @@ import {
 } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
-import { SelectEnum } from 'src/app/enum/select-enum';
+import { SelectEnum } from 'src/app/enum/select-enum.enum';
 import { ValidationService } from 'src/app/services/validation.service';
 import { VehiculeService } from 'src/app/services/vehicule.service';
 import { VehiculeDetailComponent } from '../vehicule-detail/vehicule-detail.component';
 import { VehiculeListeComponent } from '../vehicule-liste/vehicule-liste.component';
+import { IVehicule } from 'src/app/models/vehicule';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -19,8 +21,9 @@ import { VehiculeListeComponent } from '../vehicule-liste/vehicule-liste.compone
   templateUrl: './vehicule-modifier.component.html',
   styleUrls: ['./vehicule-modifier.component.css'],
 })
+export class VehiculeModifierComponent implements OnInit, OnDestroy {
 
-export class VehiculeModifierComponent implements OnInit {
+  private subscriptions: Subscription[] = [];
 
   selectCouleur: string = SelectEnum.COULEUR;
   selectTransmission: string = SelectEnum.TRANSMISSION;
@@ -43,8 +46,9 @@ export class VehiculeModifierComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: string
   ) {}
 
-  ModifierVehicule() {
-    this.vehiculeService.putVehicule(this.vehiculeForm.value, this.vehicule.id).subscribe({
+  ModifierVehicule(): void {
+
+    const subscription = this.vehiculeService.putVehicule(this.vehiculeForm.value).subscribe({
       next: () => {
         this.dialogRef.close();
         this.actualiserPage();
@@ -53,13 +57,19 @@ export class VehiculeModifierComponent implements OnInit {
         console.log(erreurs);
       },
     });
+
+    this.subscriptions.push(subscription);
   }
 
   ngOnInit(): void {
+
     this.vehicule = this.data;
 
     this.vehiculeForm = new FormGroup({
 
+      vehiculeId: new FormControl(this.vehicule.vehiculeId, [
+        Validators.required
+      ]),
       numeroChassis: new FormControl(this.vehicule.numeroChassis, [
         Validators.required,
         Validators.pattern('^[0-9]{5}$'),
@@ -112,7 +122,7 @@ export class VehiculeModifierComponent implements OnInit {
     this.ModifierVehicule();
   }
 
-  fermerPopup() {
+  fermerPopup(): void {
     this.dialogRef.close();
     this.matDialog.open(
       VehiculeDetailComponent,
@@ -125,7 +135,7 @@ export class VehiculeModifierComponent implements OnInit {
     );
   }
 
-  // goToGestionVehicule() {
+  // goToGestionVehicule(): void {
   //   this.router.navigate(['gestion-vehicule']);
   // }
 
@@ -150,16 +160,17 @@ export class VehiculeModifierComponent implements OnInit {
   }
 
 
-  actualiserPage() {
+  actualiserPage(): void {
     //   this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     //   this.router.onSameUrlNavigation = 'reload';
     //   this.router.navigate(['gestion-vehicule']);
-
     location.reload();
-
   }
 
 
+  ngOnDestroy(): void {
+    this.subscriptions.forEach(sub => sub.unsubscribe());
+  }
 
 
 }

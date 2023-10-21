@@ -11,25 +11,25 @@ public class UtilisateurVehicule {
     private Long  id;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id")
-    private Utilisateur user;
+    @JoinColumn(name = "identifiant_utilisateur")
+    private Utilisateur utilisateur;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "vehicule_id")
+    @JoinColumn(name = "identifiant_vehicule")
     private Vehicule vehicule;
 
 
     public UtilisateurVehicule() {
     }
 
-    public UtilisateurVehicule(Long id, Utilisateur user, Vehicule vehicule) {
+    public UtilisateurVehicule(Long id, Utilisateur utilisateur, Vehicule vehicule) {
         this.id = id;
-        this.user = user;
+        this.utilisateur = utilisateur;
         this.vehicule = vehicule;
     }
 
-    public UtilisateurVehicule(Utilisateur user, Vehicule vehicule) {
-        this.user = user;
+    public UtilisateurVehicule(Utilisateur utilisateur, Vehicule vehicule) {
+        this.utilisateur = utilisateur;
         this.vehicule = vehicule;
     }
 
@@ -41,12 +41,12 @@ public class UtilisateurVehicule {
         this.id = id;
     }
 
-    public Utilisateur getUser() {
-        return user;
+    public Utilisateur getUtilisateur() {
+        return utilisateur;
     }
 
-    public void setUser(Utilisateur user) {
-        this.user = user;
+    public void setUtilisateur(Utilisateur utilisateur) {
+        this.utilisateur = utilisateur;
     }
 
     public Vehicule getVehicule() {

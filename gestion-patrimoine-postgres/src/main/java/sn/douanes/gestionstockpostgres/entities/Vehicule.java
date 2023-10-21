@@ -1,5 +1,6 @@
 package sn.douanes.gestionstockpostgres.entities;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -9,9 +10,17 @@ import java.util.Date;
 public class Vehicule {
 
     @Id
-    @Column(name = "vehicule_id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    // @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "identifiant_vehicule", nullable = false, updatable = false)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Long id;
+
+    @Column(name = "vehicule_id")
+    private String vehiculeId;
+
+    @Column(name = "date_enregistrement")
+    private Date dateEnregistrement = new Date();
 
     @Column(name = "numero_chassis")
     private Integer numeroChassis;
@@ -49,8 +58,13 @@ public class Vehicule {
     @Column(name = "type_vehicule")
     private String typeVehicule;
 
-    public Vehicule(Long id, Integer numeroChassis, Integer numeroMatricule, String modele, String marque, String transmission, String couleur, Date dateFabrication, Date dateCommande, Date dateLivraison, String energie, String etat, String typeVehicule) {
+    public Vehicule() {
+    }
+
+    public Vehicule(Long id, String vehiculeId, Date dateEnregistrement, Integer numeroChassis, Integer numeroMatricule, String modele, String marque, String transmission, String couleur, Date dateFabrication, Date dateCommande, Date dateLivraison, String energie, String etat, String typeVehicule) {
         this.id = id;
+        this.vehiculeId = vehiculeId;
+        this.dateEnregistrement = dateEnregistrement;
         this.numeroChassis = numeroChassis;
         this.numeroMatricule = numeroMatricule;
         this.modele = modele;
@@ -65,15 +79,28 @@ public class Vehicule {
         this.typeVehicule = typeVehicule;
     }
 
-    public Vehicule() {
-    }
-
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getVehiculeId() {
+        return vehiculeId;
+    }
+
+    public void setVehiculeId(String vehiculeId) {
+        this.vehiculeId = vehiculeId;
+    }
+
+    public Date getDateEnregistrement() {
+        return dateEnregistrement;
+    }
+
+    public void setDateEnregistrement(Date dateEnregistrement) {
+        this.dateEnregistrement = dateEnregistrement;
     }
 
     public Integer getNumeroChassis() {
@@ -88,14 +115,6 @@ public class Vehicule {
         return numeroMatricule;
     }
 
-    public String getMarque() {
-        return marque;
-    }
-
-    public void setMarque(String marque) {
-        this.marque = marque;
-    }
-
     public void setNumeroMatricule(Integer numeroMatricule) {
         this.numeroMatricule = numeroMatricule;
     }
@@ -106,6 +125,14 @@ public class Vehicule {
 
     public void setModele(String modele) {
         this.modele = modele;
+    }
+
+    public String getMarque() {
+        return marque;
+    }
+
+    public void setMarque(String marque) {
+        this.marque = marque;
     }
 
     public String getTransmission() {
@@ -170,5 +197,26 @@ public class Vehicule {
 
     public void setTypeVehicule(String typeVehicule) {
         this.typeVehicule = typeVehicule;
+    }
+
+    @Override
+    public String toString() {
+        return "Vehicule{" +
+                "id=" + id +
+                ", vehiculeId='" + vehiculeId + '\'' +
+                ", dateEnregistrement=" + dateEnregistrement +
+                ", numeroChassis=" + numeroChassis +
+                ", numeroMatricule=" + numeroMatricule +
+                ", modele='" + modele + '\'' +
+                ", marque='" + marque + '\'' +
+                ", transmission='" + transmission + '\'' +
+                ", couleur='" + couleur + '\'' +
+                ", dateFabrication=" + dateFabrication +
+                ", dateCommande=" + dateCommande +
+                ", dateLivraison=" + dateLivraison +
+                ", energie='" + energie + '\'' +
+                ", etat='" + etat + '\'' +
+                ", typeVehicule='" + typeVehicule + '\'' +
+                '}';
     }
 }

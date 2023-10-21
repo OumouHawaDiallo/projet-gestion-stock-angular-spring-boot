@@ -2,40 +2,61 @@ import { HttpClient, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { IVehicule } from '../models/vehicule';
+import { environment } from 'src/environments/environment';
+import { CustomHttpRespone } from '../models/custom-http-response';
 
 @Injectable({
   providedIn: 'root',
 })
 export class VehiculeService {
-  private urlServeur = 'http://localhost:8081';
+
+  private urlServeur = environment.apiUrl;
 
   constructor(private httpClient: HttpClient) {}
 
   // ----------------------------------------------------------------------------
-  // RECHERCHER VEHICULE
-  public searchVehiculeList(
-    term: string,
-    listeVehicules: IVehicule[]
-  ): Observable<IVehicule[]> {
+  // RECHERCHER VEHICULE SANS DOUBLONS
+  public searchVehiculeListFilterDouble(term: string, listeVehicules: IVehicule[]): Observable<IVehicule[]> {
+
     if (term.length <= 1) {
       return of([]);
     }
 
     // Filtrer la liste de vehicule en fonction du terme de recherche
-    const filteredVehicule = listeVehicules.filter((vehicule) =>
+    const filteredVehicules = listeVehicules.filter((vehicule) =>
+      vehicule.numeroMatricule.toString().includes(term.toLowerCase()) || vehicule.marque.toLowerCase().includes(term.toLowerCase())
+    );
+
+    // Utilisation de la méthode filter() pour éliminer les doublons
+    const filteredVehicules1: IVehicule[] = filteredVehicules.filter((item, index, self) =>
+      index === self.findIndex((t) => (
+          t.marque === item.marque || t.numeroMatricule === item.numeroMatricule
+      ))
+    );
+
+    return of(filteredVehicules1);
+  }
+
+  // RECHERCHER VEHICULE
+  public searchVehiculeList(term: string, listeVehicules: IVehicule[]): Observable<IVehicule[]> {
+    if (term.length <= 1) {
+      return of([]);
+    }
+
+    // Filtrer la liste de vehicule en fonction du terme de recherche
+    const filteredVehicules = listeVehicules.filter((vehicule) =>
       this.doesVehiculeMatchTerm(vehicule, term)
     );
 
-    return of(filteredVehicule);
+    return of(filteredVehicules);
   }
 
   private doesVehiculeMatchTerm(vehicule: IVehicule, term: string): boolean {
     // Vérifier si le terme de recherche correspond à n'importe lequel des attributs du Pokémon
     const termLowerCase = term.toLowerCase();
     return (
-      vehicule.couleur.toLowerCase().includes(termLowerCase) ||
-      vehicule.transmission.toLowerCase().includes(termLowerCase) ||
-      vehicule.modele.toLowerCase().includes(termLowerCase)
+      vehicule.numeroMatricule.toString().includes(termLowerCase)
+      || vehicule.marque.toLowerCase().includes(termLowerCase)
       // Ajoutez d'autres attributs à vérifier si nécessaire
     );
   }
@@ -56,24 +77,23 @@ export class VehiculeService {
   }
 
   public putVehicule(
-    vehicule: IVehicule,
-    idVehicule: number
+    vehicule: IVehicule
   ): Observable<IVehicule> {
     return this.httpClient.put<IVehicule>(
-      `${this.urlServeur}/ModifierVehicule/${idVehicule}`,
+      `${this.urlServeur}/ModifierVehicule`,
       vehicule
     );
   }
 
-  public deleteVehicule(idVehicule: number): Observable<void> {
-    return this.httpClient.delete<void>(
-      `${this.urlServeur}/SupprimerVehicule/${idVehicule}`
+  public deleteVehicule(vehiculeId: String): Observable<CustomHttpRespone> {
+    return this.httpClient.delete<CustomHttpRespone>(
+      `${this.urlServeur}/SupprimerVehiculeByVehiculeId/${vehiculeId}`
     );
   }
 
-  public getVehiculeByIdvehicule(idVehicule: number): Observable<IVehicule> {
+  public getVehiculeByVehiculeId(vehiculeId: String): Observable<IVehicule> {
     return this.httpClient.get<IVehicule>(
-      `${this.urlServeur}/VehiculeById/${idVehicule}`
+      `${this.urlServeur}/VehiculeByVehiculeId/${vehiculeId}`
     );
   }
 }

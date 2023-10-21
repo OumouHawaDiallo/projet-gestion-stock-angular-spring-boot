@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 import { IVehicule } from '../models/vehicule';
 import { Observable, of } from 'rxjs';
-import { SelectEnum } from '../enum/select-enum';
+import { SelectEnum } from '../enum/select-enum.enum';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ValidationService {
-
 
   // ----------------------------------------------------------------------------
   // Fonction de validation personnalisée pour chaque select

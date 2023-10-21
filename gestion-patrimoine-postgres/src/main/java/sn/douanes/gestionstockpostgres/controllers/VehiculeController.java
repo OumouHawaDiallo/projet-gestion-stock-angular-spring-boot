@@ -1,16 +1,25 @@
 package sn.douanes.gestionstockpostgres.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import sn.douanes.gestionstockpostgres.entities.HttpResponse;
 import sn.douanes.gestionstockpostgres.entities.Vehicule;
 import sn.douanes.gestionstockpostgres.services.VehiculeService;
 
 
+import java.io.IOException;
 import java.util.List;
+
+import static org.springframework.http.HttpStatus.OK;
 
 @RestController
 @CrossOrigin("http://localhost:4200")
 public class VehiculeController {
+
+    public static final String VEHICULE_DELETED_SUCCESSFULLY = "Suppression réussie d'un véhicule.";
+
 
     @Autowired
     VehiculeService vehiculeService;
@@ -22,10 +31,10 @@ public class VehiculeController {
         return list;
     }
 
-    @GetMapping("/VehiculeById/{id}")
+    @GetMapping("/VehiculeByVehiculeId/{vehiculeId}")
     @ResponseBody
-    public Vehicule VehiculeById(@PathVariable long id) {
-        Vehicule vehicule = vehiculeService.getVehicule(id);
+    public Vehicule VehiculeByVehiculeId(@PathVariable String vehiculeId) {
+        Vehicule vehicule = vehiculeService.findByVehiculeId(vehiculeId);
         return vehicule;
     }
 
@@ -35,17 +44,25 @@ public class VehiculeController {
         return vehiculeService.saveVehicule(v);
     }
 
-    @PutMapping("/ModifierVehicule/{id}")
+
+    @PutMapping("/ModifierVehicule")
     @ResponseBody
-    public Vehicule ModifierVehicule(@PathVariable long id, @RequestBody Vehicule v) {
-        v.setId(id);
+    public Vehicule ModifierVehicule(@RequestBody Vehicule v) {
         return vehiculeService.updateVehicule(v);
     }
 
-    @DeleteMapping("SupprimerVehicule/{id}")
-    public void SupprimerVehicule(@PathVariable("id") Long Id_vehicule) {
-        vehiculeService.deleteVehiculeById(Id_vehicule);
+    @DeleteMapping("SupprimerVehiculeByVehiculeId/{vehiculeId}")
+    public ResponseEntity<HttpResponse> SupprimerVehiculeByVehiculeId(@PathVariable("vehiculeId") String vehiculeId) throws IOException {
+        vehiculeService.deleteVehiculeById(vehiculeService.findByVehiculeId(vehiculeId).getId());
+        return response(OK, VEHICULE_DELETED_SUCCESSFULLY);
     }
 
+
+    private ResponseEntity<HttpResponse> response(HttpStatus httpStatus, String message) {
+        return new ResponseEntity<>(
+                new HttpResponse(httpStatus.value(), httpStatus, httpStatus.getReasonPhrase().toUpperCase(), message),
+                httpStatus
+        );
+    }
 
 }

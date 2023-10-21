@@ -6,12 +6,14 @@ import java.util.List;
 
 public interface UtilisateurService {
 
-    Utilisateur saveUser(Utilisateur u);
-    Utilisateur updateUser(Utilisateur u);
-    void deleteUser(Utilisateur u);
-    void deleteUserById(Long id);
-    Utilisateur getUser(Long id);
-    List<Utilisateur> getAllUsers();
+    Utilisateur saveUtilisateur(Utilisateur u);
+    Utilisateur updateUtilisateur(Utilisateur u);
+    void deleteUtilisateur(Utilisateur u);
+    void deleteUtilisateurById(Long id);
+    Utilisateur getUtilisateur(Long id);
+    List<Utilisateur> getAllUtilisateurs();
 
+
+    Utilisateur findByUtilisateurId(String utilisateurId);
 
 }

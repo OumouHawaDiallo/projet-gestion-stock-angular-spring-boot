@@ -25,34 +25,31 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-
 import localeFr from '@angular/common/locales/fr';
 import { MatTableExporterModule } from 'mat-table-exporter';
 import { UtilisateurAjouterComponent } from './pages/utilisateur/utilisateur-ajouter/utilisateur-ajouter.component';
-import { UtilisateurDetailComponent } from './pages/utilisateur/utilisateur-detail/utilisateur-detail.component';
 import { UtilisateurListeComponent } from './pages/utilisateur/utilisateur-liste/utilisateur-liste.component';
 import { UtilisateurModifierComponent } from './pages/utilisateur/utilisateur-modifier/utilisateur-modifier.component';
-import { ToastrModule } from 'ngx-toastr';
-
-
+import { UtilisateurDetailComponent } from './pages/utilisateur/utilisateur-detail/utilisateur-detail.component';
+import { BureauLogistiqueMaterielModule } from './pages/bureau-logistique-materiel/bureau-logistique-materiel.module';
+import { LoaderComponent } from './pages/loader.component';
 
 
 // the second parameter 'fr' is optional
 registerLocaleData(localeFr, 'fr');
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
     ConnexionComponent,
     ErreurComponent,
-    VehiculeListeComponent,
-    VehiculeAjouterComponent,
-    VehiculeDetailComponent,
-    VehiculeModifierComponent,
     UtilisateurAjouterComponent,
-    UtilisateurDetailComponent,
     UtilisateurListeComponent,
-    UtilisateurModifierComponent
+    UtilisateurModifierComponent,
+    UtilisateurDetailComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
@@ -62,8 +59,11 @@ registerLocaleData(localeFr, 'fr');
     BrowserAnimationsModule,
     HttpClientModule, // pour le backend
 
+
+
     NgbModule, // dropdown
 
+    BureauLogistiqueMaterielModule,
     AppRoutingModule,
 
 
@@ -78,9 +78,8 @@ registerLocaleData(localeFr, 'fr');
     MatIconModule,
     MatDividerModule,
     MatDialogModule,
+
     MatTableExporterModule,
-    BrowserAnimationsModule ,  // module d'animations requis
-    ToastrModule. forRoot ( ),  // ToastrModule ajouté
 
 
 
