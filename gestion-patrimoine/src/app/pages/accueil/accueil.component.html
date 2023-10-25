@@ -1,0 +1,349 @@
+<div class="container1 bg-mywhite">
+
+  <nav>
+    <div class="container-fluid">
+      <div class="row">
+
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 p-2 d-flex align-items-center">
+          <img src="../../assets/douanes.jpeg" alt="logo douanes sénégalaise" class="img-fluid" width="15%">
+        </div>
+
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 p-2 d-flex align-items-center justify-content-end">
+          <div ngbDropdown class="bg-mywhite rounded-pill"
+            style="width: 30%; height: 80%; box-shadow: #E7C133 0px 10px 20px -10px, #E7C133 0px 10px 20px -15px, #E7C133 0px -2px 6px 0px inset;">
+
+            <button class="btn btn-primary rounded-pill w-100 dropdown-button" ngbDropdownToggle
+              id="dropdownMenuButton1">
+              <img src="../../assets/user.png" alt="User">
+              <span class="fw-bold mx-2">Administrateur</span>
+            </button>
+
+            <ul ngbDropdownMenu aria-labelledby="dropdownMenuButton1" class="dropdown-menu1">
+              <li><button class="dropdown-item1 fw-bold" type="button">Profil</button></li>
+              <li><button class="dropdown-item1 fw-bold" type="button">Paramètres</button></li>
+              <li><button class="dropdown-item1 fw-bold" type="button">Déconnexion</button></li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </nav>
+
+
+
+
+
+  <div id="sidebar">
+    <div class="container-fluid bg-mywhite h-100">
+      <div class="row">
+
+        <ul style="list-style-type: none; margin: 0; padding: 0;">
+          <li class="my-2">
+            <button class="collapsible menu-button">
+              <mat-icon class="me-4">assignment</mat-icon> Gestion des stocks <mat-icon class="fa-solid fa-chevron-down ms-auto">expand_more</mat-icon>
+            </button>
+
+            <div class="content">
+              <button [routerLink]="'/gestion-vehicule'" class="menu-button" href="#" style="padding-left: 90px;">
+                Gestion des véhicules
+              </button>
+              <button class="menu-button" href="#" style="padding-left: 90px;">
+                Gestion des ...
+              </button>
+              <button class="menu-button" href="#" style="padding-left: 90px;">
+                Gestion des ...
+              </button>
+            </div>
+          </li>
+
+          <li class="my-2">
+            <button class="menu-button" href="#">
+              <mat-icon class="me-4">assignment</mat-icon> Gestion des fournisseurs
+            </button>
+          </li>
+
+          <li class="my-2">
+            <button class="menu-button" href="#">
+              <mat-icon class="me-4">assignment</mat-icon> Gestion des commandes
+            </button>
+          </li>
+
+          <li class="my-2">
+            <button class="menu-button" href="#">
+              <mat-icon class="me-4">poll</mat-icon> Analyse et rapports
+            </button>
+          </li>
+
+          <li class="my-2">
+            <button class="menu-button" href="#">
+              <mat-icon class="me-4">assignment</mat-icon> Gestion des demandes
+            </button>
+          </li>
+
+          <li class="my-2">
+            <button class="menu-button" href="#">
+              <mat-icon class="me-4">open_in_new</mat-icon> retours et réparations
+            </button>
+          </li>
+
+          <li class="my-2">
+            <button class="menu-button" href="#">
+              <mat-icon class="me-4">send</mat-icon> Transactions
+            </button>
+          </li>
+
+          <li class="my-2">
+            <button class="collapsible menu-button">
+              <mat-icon class="me-4">assignment</mat-icon> Gestion des utilisateurs <mat-icon class="fa-solid fa-chevron-down ms-auto">expand_more</mat-icon>
+            </button>
+
+            <div class="content">
+              <button [routerLink]="'/gestion-utilisateur'" class="menu-button" href="#" style="padding-left: 90px;">
+                Gestion des personnels
+              </button>
+              <button class="menu-button" href="#" style="padding-left: 90px;">
+                Gestion des roles
+              </button>
+              <button class="menu-button" href="#" style="padding-left: 90px;">
+                Gestion des ...
+              </button>
+            </div>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+  </div>
+
+
+
+  <main class="bg-mywhite">
+
+    <div class="container">
+
+      <div class="row">
+        <div class="col-12 text-center fw-bolder fs-5 border border-4 border-myprimary p-1">
+         Gestion des stocks
+        </div>
+
+      </div>
+
+
+      <div class="row mt-3">
+
+        <div  [routerLink]="'/gestion-vehicule'" class="col-3 text-center fw-bolder fs-5 lien">
+          <p class="border border-3 border-myprimary">Gestion des véhicules</p>
+        </div>
+
+
+        <div class="col-3 text-center fw-bolder fs-5 py-0 ">
+          <p class="border border-3 border-myprimary">Gestion des ....</p>
+        </div>
+        <div class="col-3 text-center fw-bolder fs-5 py-0">
+          <p class="border border-3 border-myprimary">Gestion des ....</p>
+        </div>
+
+        <div class="col-3 text-center fw-bolder fs-5 py-0">
+          <p class="border border-3 border-myprimary">Gestion des ...</p>
+        </div>
+      </div>
+
+      <div class="row mt-0">
+        <div class="col-12 text-center fw-bolder fs-5  p-1 border border-4 border-myprimary">
+          Gestion des fournisseurs
+        </div>
+
+      </div>
+
+      <div class="row mt-3">
+        <div class="col-12 text-center fw-bolder fs-5  p-1 border border-4 border-myprimary">
+          Gestion des commandes
+        </div>
+
+      </div>
+
+      <div class="row mt-3">
+        <div class="col-12 text-center fw-bolder fs-5  p-1 border border-4 border-myprimary">
+          Analyse et rapports
+        </div>
+
+      </div>
+
+      <div class="row mt-3">
+        <div class="col-12 text-center fw-bolder fs-5  p-1 border border-4 border-myprimary">
+          Gestion des demandes
+        </div>
+
+      </div>
+
+      <div class="row mt-3">
+        <div class="col-12 text-center fw-bolder fs-5  p-1 border border-4 border-myprimary">
+          retours et réparations
+        </div>
+
+      </div>
+      <div class="row mt-3">
+        <div class="col-12 text-center fw-bolder fs-5  p-1 border border-4 border-myprimary">
+          Transactions
+        </div>
+
+      </div>
+
+      <div class="row mt-3">
+        <div class="col-12 text-center fw-bolder fs-5  p-1 border border-4 border-myprimary">
+          Gestion des utilisateurs
+        </div>
+
+      </div>
+
+       <div class="row mt-3">
+
+        <div  [routerLink]="'/gestion-utilisateur'" class="col-3 text-center fw-bolder fs-5 lien">
+          <p class="border border-3 border-myprimary py-0">Gestion des personnels</p>
+        </div>
+
+        <div class="col-3 text-center fw-bolder fs-5 py-0 ">
+          <p class="border border-3 border-myprimary">Gestion des roles</p>
+        </div>
+        <div class="col-3 text-center fw-bolder fs-5 py-0">
+          <p class="border border-3 border-myprimary">Gestion des ...</p>
+        </div>
+
+        <div class="col-3 text-center fw-bolder fs-5 py-0">
+          <p class="border border-4 border-myprimary">Gestion des ...</p>
+        </div>
+      </div>
+
+
+
+    </div>
+
+
+
+
+
+    <!-- <div class="container">
+
+      <div class="row">
+
+        <div class="col-3 text-center fw-bolder fs-5  mt-2">
+          <p class="bg-myprimary bg-gradient py-0">Gestion des stocks</p>
+        </div>
+
+        <div class="col-3 text-center fw-bolder fs-5 py-0  mt-2">
+          <p class="bg-myprimary bg-gradient">Gestion des stocks</p>
+        </div>
+        <div class="col-3 text-center fw-bolder fs-5 py-0 mt-2">
+          <p class="bg-myprimary bg-gradient">Gestion des stocks</p>
+        </div>
+
+        <div class="col-3 text-center fw-bolder fs-5 py-0 mt-2">
+          <p class="bg-myprimary bg-gradient">Gestion des stocks</p>
+        </div>
+      </div>
+
+
+    </div>
+
+
+
+    <div class="container my-0">
+      <div class="row">
+        <div class="col-12 text-center fw-bolder fs-5 bg-myprimary bg-gradient p-2">
+         Gestion des stocks
+        </div>
+
+      </div>
+    </div>
+
+    <div class="container mt-1">
+      <div class="row">
+        <div class="col-12 text-center fw-bolder fs-5 bg-myprimary bg-gradient p-2">
+         Gestion des stocks
+        </div>
+
+      </div>
+    </div>
+
+    <div class="container mt-1">
+      <div class="row">
+        <div class="col-12 text-center fw-bolder fs-5 bg-myprimary bg-gradient p-2">
+         Gestion des stocks
+        </div>
+
+      </div>
+    </div>
+
+    <div class="container mt-1">
+      <div class="row">
+        <div class="col-12 text-center fw-bolder fs-5 bg-myprimary bg-gradient p-2">
+         Gestion des stocks
+        </div>
+
+      </div>
+    </div>
+
+    <div class="container mt-1">
+      <div class="row">
+        <div class="col-12 text-center fw-bolder fs-5 bg-myprimary bg-gradient p-2">
+         Gestion des stocks
+        </div>
+
+      </div>
+    </div>
+
+    <div class="container mt-1">
+      <div class="row">
+        <div class="col-12 text-center fw-bolder fs-5 bg-myprimary bg-gradient p-2">
+         Gestion des stocks
+        </div>
+
+      </div>
+    </div>
+
+    <div class="container mt-1">
+
+      <div class="row g-2">
+
+        <div class="col-3 text-center fw-bolder fs-5 ">
+          <p class="bg-myprimary bg-gradient p-2">Gestion des stocks</p>
+        </div>
+
+        <div class="col-3 text-center fw-bolder fs-5 ">
+          <p class="bg-myprimary bg-gradient p-2">Gestion des stocks</p>
+        </div>
+        <div class="col-3 text-center fw-bolder fs-5">
+          <p class="bg-myprimary bg-gradient p-2">Gestion des stocks</p>
+        </div>
+
+        <div class="col-3 text-center fw-bolder fs-5">
+          <p class="bg-myprimary bg-gradient p-2">Gestion des stocks</p>
+        </div>
+      </div>
+
+
+    </div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </main>
+
+
+</div>

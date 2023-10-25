@@ -25,7 +25,7 @@ public class VehiculeServiceImpl  implements VehiculeService {
     @Override
     public Vehicule updateVehicule(Vehicule v) {
 
-        System.out.println(v);
+        // System.out.println(v);
 
         Vehicule vehicule = this.findByVehiculeId(v.getVehiculeId());
 

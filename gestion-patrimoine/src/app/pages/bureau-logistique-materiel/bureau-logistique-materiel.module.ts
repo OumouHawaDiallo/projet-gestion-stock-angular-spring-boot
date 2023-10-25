@@ -21,8 +21,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTableExporterModule } from 'mat-table-exporter';
-import { ToastrModule } from 'ngx-toastr';
-
 
 
 @NgModule({
@@ -56,13 +54,8 @@ import { ToastrModule } from 'ngx-toastr';
     MatDialogModule,
 
     MatTableExporterModule,
-    BrowserAnimationsModule ,  // module d'animations requis
-    ToastrModule. forRoot ( ),  // ToastrModule ajouté
-
 
     // MDCDialog
-
-
 
     BureauLogistiqueMaterielRoutingModule
   ]

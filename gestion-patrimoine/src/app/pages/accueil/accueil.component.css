@@ -1,0 +1,230 @@
+/* ----------------------------------------------------------------------------------------- */
+/* Styles pour le conteneur principal */
+.container1 {
+  /* overflow: hidden; */
+  display: grid;
+  height: 100vh; /* La hauteur du conteneur occupe 100% de la hauteur de la fenêtre */
+  grid-template-columns: 1fr 1fr 1fr 1fr; /* Quatre colonnes égales */
+  grid-template-rows: 0.4fr 1.2fr 1.2fr 1.2fr; /* Quatre rangées avec des fractions de hauteur */
+  grid-template-areas:
+    "nav nav nav nav"
+    "sidebar main main main"
+    "sidebar main main main"
+    "sidebar main main main"; /* Les noms d'aires pour chaque cellule de la grille */
+  grid-gap: 0rem; /* Espacement entre les cellules de la grille */
+}
+
+/* Styles pour la barre de navigation */
+nav {
+  border: 2px solid #e7e7e7;
+  grid-area: nav; /* Occupe la zone "nav" de la grille */
+  font-size: 1rem; /* Taille de police pour la barre de navigation */
+}
+
+/* Styles pour la section principale */
+main {
+  padding: 0.8rem;
+  overflow-y: hidden;
+  grid-area: main; /* Occupe la zone "main" de la grille */
+  font-size: 1rem; /* Taille de police pour la section principale */
+}
+
+/* Styles pour la barre latérale */
+#sidebar {
+  box-shadow: 0 4px 6px rgba(231, 231, 231, 1);
+  border-right: 2px solid #e7e7e7;
+  overflow-y: auto;
+  grid-area: sidebar; /* Occupe la zone "sidebar" de la grille */
+  font-size: 1.2rem; /* Taille de police pour la barre latérale */
+  margin: 0;
+  padding: 0;
+}
+
+/* Styles pour les liens */
+li a {
+  /* display: block; */
+  /* font-family: inherit; */
+  text-decoration: none;
+  font-weight: bold;
+  margin: 0.5rem;
+  padding: 1rem;
+}
+
+/* Media Query pour les écrans plus petits (largeur maximale de 550px) */
+@media only screen and (max-width: 550px) {
+  .container1 {
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.1fr 0.1fr auto;
+    grid-template-areas:
+      "nav"
+      "sidebar"
+      "main";
+  }
+  /* Ajustez la taille de police pour les écrans plus petits si nécessaire */
+  nav, main, #sidebar {
+    font-size: 0.8rem; /* Taille de police pour les écrans plus petits */
+  }
+}
+/* ----------------------------------------------------------------------------------------- */
+
+
+
+
+
+
+/* ----------------------------------------------------------------------------------------- */
+.menu-button {
+  font-size: 1.2rem;
+  /* margin: 5px 0 5px 0; */
+  background-color: #fff; /* Couleur de fond du bouton */
+  color: black; /* Couleur du texte */
+  padding: 10px 20px; /* Espacement interne */
+  border: none;
+  /* border: 1px solid #e7e7e7; */
+  /* border-radius: 5px; */
+  /* text-align: left; */
+  width: 100%; /* Largeur du bouton à 100% */
+  cursor: pointer; /* Curseur en forme de main pour indiquer qu'il est cliquable */
+  display: flex;
+  /* justify-content: start; */
+  align-items: center; /* Centre verticalement le contenu */
+  transition: background-color 0.3s ease; /* Transition de couleur de fond */
+}
+
+.menu-button:hover {
+  border: 1px solid #e7e7e7;
+  border-radius: 5px;
+}
+
+.lien{
+
+
+  cursor: pointer; /* Curseur de type main pour indiquer que c'est cliquable */
+  transition: background-color 0.5s, color 0.5s; /* Animation de transition */
+
+
+}
+
+.lien:hover{
+  border: none;
+  outline: none;
+  color: gray;
+
+
+
+}
+
+/* ----------------------------------------------------------------------------------------- */
+
+
+/* ----------------------------------------------------------------------------------------- */
+/* Style the collapsible content. Note: hidden by default */
+.content {
+  display: none;
+  overflow: hidden;
+  background-color: #fff;
+  border: none;
+  /* border: 1px solid #e7e7e7; */
+  /* box-shadow: 0 4px 6px rgba(231, 231, 231, 1); */
+  /* border-radius: 5px; */
+  /* margin: 0 20px 0 20px; */
+  /* padding: 10px; */
+}
+/* ----------------------------------------------------------------------------------------- */
+
+
+
+/* ----------------------------------------------------------------------------------------- */
+/* Stylisation du menu déroulant */
+.dropdown-menu1 {
+  width: 100%;
+  background-color: #ffffff; /* Couleur de fond */
+  border: 1px solid #e7e7e7; /* Bordure */
+  box-shadow: 0 4px 6px rgba(231, 231, 231, 1);
+  border-radius: 5px; /* Coins arrondis */
+  padding: 10px; /* Espacement interne */
+}
+
+
+/* Stylisation des éléments du menu */
+.dropdown-item1 {
+  margin: 3px;
+  text-align: start;
+  border: none;
+  width: 100%;
+  background-color: #e7e7e7;
+  font-weight: bold; /* Texte en gras */
+  color: #000; /* Couleur du texte */
+}
+
+/* Style au survol des éléments */
+.dropdown-item1:hover {
+  background-color: #E7C133; /* Couleur de fond au survol */
+  color: #fff; /* Couleur du texte au survol */
+}
+
+/* --------------------- */
+
+/* Stylisation du bouton */
+.dropdown-button {
+  border: none;
+  outline: none; /* Supprimer la bordure d'accentuation lorsqu'il est en focus */
+  cursor: pointer; /* Curseur de type main pour indiquer que c'est cliquable */
+  transition: background-color 0.5s, color 0.5s; /* Animation de transition */
+}
+
+/* Style par défaut */
+.dropdown-button {
+  background-color: transparent; /* Fond transparent par défaut */
+  color: #000; /* Couleur du texte par défaut */
+}
+
+/* Style au survol */
+.dropdown-button:hover {
+  background-color: #fff; /* Couleur de fond au survol */
+  color: grey; /* Couleur du texte au survol */
+}
+
+/* Style lorsque le bouton est actif (clic) */
+.dropdown-button:active {
+  background-color: #E7C133; /* Couleur de fond lorsqu'il est actif (clic) */
+  color: #E7C133; /* Couleur du texte lorsqu'il est actif (clic) */
+}
+
+/* Style lorsque le bouton est en focus (utilisation du clavier) */
+.dropdown-button:focus {
+  box-shadow: 0 0 5px #E7C133; /* Ombre légère lorsqu'il est en focus */
+  background-color: #fff; /* Couleur de fond en focus */
+  color: #000; /* Couleur du texte en focus */
+}
+/* ----------------------------------------------------------------------------------------- */
+
+
+
+
+
+
+/* ----------------------------------------------------------------------------------------- */
+.icon-button {
+  cursor: pointer;
+  width: 52px;
+  height: 52px;
+  margin-left: 10px;
+  /* font-size: 48px; */
+  /* background-color: white; */
+  /* color: #000; */
+}
+
+.icon-button:hover {
+  color: #f0dd99;
+}
+/* ----------------------------------------------------------------------------------------- */
+
+
+
+
+
+
+
+
+

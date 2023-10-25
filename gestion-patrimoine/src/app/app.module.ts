@@ -6,10 +6,8 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ConnexionComponent } from './pages/connexion/connexion.component';
 import { ErreurComponent } from './pages/erreur/erreur.component';
-import { VehiculeListeComponent } from './pages/bureau-logistique-materiel/vehicule/vehicule-liste/vehicule-liste.component';
-import { VehiculeAjouterComponent } from './pages/bureau-logistique-materiel/vehicule/vehicule-ajouter/vehicule-ajouter.component';
-import { VehiculeDetailComponent } from './pages/bureau-logistique-materiel/vehicule/vehicule-detail/vehicule-detail.component';
-import { VehiculeModifierComponent } from './pages/bureau-logistique-materiel/vehicule/vehicule-modifier/vehicule-modifier.component';
+
+
 
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
@@ -24,6 +22,7 @@ import { CommonModule, registerLocaleData } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+// import { NotifierModule, NotifierOptions } from 'angular-notifier';
 
 import localeFr from '@angular/common/locales/fr';
 import { MatTableExporterModule } from 'mat-table-exporter';
@@ -33,11 +32,15 @@ import { UtilisateurModifierComponent } from './pages/utilisateur/utilisateur-mo
 import { UtilisateurDetailComponent } from './pages/utilisateur/utilisateur-detail/utilisateur-detail.component';
 import { BureauLogistiqueMaterielModule } from './pages/bureau-logistique-materiel/bureau-logistique-materiel.module';
 import { LoaderComponent } from './pages/loader.component';
+import { NgToastModule } from 'ng-angular-popup';
+import { PopupConfirmationSupprimerComponent } from './pages/popup-confirmation-supprimer/popup-confirmation-supprimer.component';
+import { AccueilComponent } from './pages/accueil/accueil.component';
+
+
 
 
 // the second parameter 'fr' is optional
 registerLocaleData(localeFr, 'fr');
-
 
 
 @NgModule({
@@ -49,7 +52,9 @@ registerLocaleData(localeFr, 'fr');
     UtilisateurListeComponent,
     UtilisateurModifierComponent,
     UtilisateurDetailComponent,
-    LoaderComponent
+    LoaderComponent,
+    PopupConfirmationSupprimerComponent,
+    AccueilComponent
   ],
   imports: [
     BrowserModule,
@@ -58,13 +63,16 @@ registerLocaleData(localeFr, 'fr');
     ReactiveFormsModule, // pour formGroup
     BrowserAnimationsModule,
     HttpClientModule, // pour le backend
-
+    NgToastModule,
+    // NotifierModule.withConfig(
+    //   // customNotifierOptions1 // Custom options in here
+    // ),
 
 
     NgbModule, // dropdown
 
-    BureauLogistiqueMaterielModule,
-    AppRoutingModule,
+
+
 
 
     MatTableModule, MatPaginatorModule,
@@ -81,9 +89,11 @@ registerLocaleData(localeFr, 'fr');
 
     MatTableExporterModule,
 
-
-
     // MDCDialog
+
+    BureauLogistiqueMaterielModule,
+    AppRoutingModule,
+
   ],
   providers: [
     { provide: LOCALE_ID, useValue: "fr-FR" }

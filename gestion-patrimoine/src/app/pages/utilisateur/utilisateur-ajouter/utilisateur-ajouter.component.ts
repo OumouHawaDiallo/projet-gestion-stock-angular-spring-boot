@@ -2,7 +2,9 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
+import { NotificationType } from 'src/app/enum/notification-type.enum';
 import { IUtilisateur } from 'src/app/models/utilisateur';
+import { NotificationService } from 'src/app/services/notification.service';
 import { UtilisateurService } from 'src/app/services/utilisateur.service';
 import { ValidationService } from 'src/app/services/validation.service';
 
@@ -22,13 +24,23 @@ export class UtilisateurAjouterComponent implements OnInit, OnDestroy {
     // private router: Router,
     private utilisateurService: UtilisateurService,
     // private validationService: ValidationService,
-    public dialogRef: MatDialogRef<UtilisateurAjouterComponent>
+    public dialogRef: MatDialogRef<UtilisateurAjouterComponent>,
+    private notificationService: NotificationService
   ) {}
+
+  private sendNotification(type: NotificationType, message: string, titre?: string): void {
+    if (message) {
+      this.notificationService.showAlert(type, message, titre);
+    } else {
+      this.notificationService.showAlert(type, 'Une erreur s\'est produite. Veuillez réessayer.', titre);
+    }
+  }
 
   AjouterUtilisateur(): void {
     const subscription = this.utilisateurService.postUtilisateur(this.utilisateurForm.value).subscribe({
-      next: () => {
+      next: (utilisateur: IUtilisateur) => {
         this.popupFermer();
+        this.sendNotification(NotificationType.SUCCESS, `Ajout réussie de ${utilisateur.username}`);
       },
       error: (erreurs: any) => {
         console.log(erreurs);

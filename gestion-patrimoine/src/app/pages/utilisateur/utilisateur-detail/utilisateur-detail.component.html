@@ -1,57 +1,139 @@
 <div class="container">
 
-
   <div *ngIf="utilisateur" class="row">
-    <div class="col-12 col-md-8 offset-md-2">
-      <h2 class="text-center">{{ utilisateur.username }}</h2>
-      <div class="card mb-3">
-        <div class="row g-0">
-          <div class="col-md-4">
-            <!-- <img [src]="utilisateur.picture"> -->
-            <img src="../../../../assets/profil.png" alt="profil" class="img-fluid" />
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <table class="table">
-                <tbody>
-                  <tr>
-                    <td>Nom</td>
-                    <td><strong>{{ utilisateur.username }}</strong></td>
-                  </tr>
-                  <tr>
-                    <td>Points de vie</td>
-                    <td><strong>{{ utilisateur.email }}</strong></td>
-                  </tr>
-                  <tr>
-                    <td>Dégâts</td>
-                    <td><strong>{{ utilisateur.dateNaissance }}</strong></td>
-                  </tr>
-                  <tr>
-                    <td>Dégâts</td>
-                    <td><strong>{{ utilisateur.lieuNaissance }}</strong></td>
-                  </tr>
-                  <tr>
-                    <td>Types</td>
-                    <td>
-                      <span *ngFor="let vehicule of utilisateur.vehicules">{{ vehicule }}</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Date de création</td>
-                    <td><em>{{ utilisateur.dateEnregistrement | date:"dd/MM/yyyy" }}</em></td>
-                  </tr>
-                </tbody>
-              </table>
+
+    <!-- -------------------------------------------DETAIL--------------------------------------------------- -->
+    <ng-container *ngIf="afficherDetail; else modifier">
+      <div class="col-12 col-md-8 offset-md-2 mt-5">
+        <h2 class="text-center">{{ utilisateur.username }}</h2>
+        <div class="card shadow mb-3" style="border: 1px solid #E7C133;">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <!-- <img [src]="utilisateur.picture"> -->
+              <img src="../../../../assets/profil.png" alt="profil" class="img-fluid"
+                style="height: 70%; width: 90%; margin: 6px;" />
             </div>
-            <div class="card-footer">
-              <a (click)="goToUtilisateurList()" class="btn btn-primary me-2">Retour</a>
-              <a (click)="goToModifierUtilisateur(utilisateur.utilisateurId)" class="btn btn-secondary me-2">Éditer</a>
-              <a (click)="supprimerUtilisateurById(utilisateur.utilisateurId)" class="btn btn-danger">Supprimer</a>
+            <div class="col-md-8">
+              <div class="card-body">
+                <table class="table">
+                  <tbody>
+                    <tr>
+                      <td>Utilisateur</td>
+                      <td><strong>{{ utilisateur.username | uppercase }}</strong></td>
+                    </tr>
+                    <tr>
+                      <td>Email</td>
+                      <td><strong>{{ utilisateur.email | uppercase }}</strong></td>
+                    </tr>
+                    <tr>
+                      <td>Date Naissance</td>
+                      <td><strong>{{ utilisateur.dateNaissance | date: 'dd MMM yy' | uppercase }}</strong></td>
+                    </tr>
+                    <tr>
+                      <td>Lieu Naissance</td>
+                      <td><strong>{{ utilisateur.lieuNaissance | uppercase }}</strong></td>
+                    </tr>
+                    <tr>
+                      <td>Véhicules</td>
+                      <td>
+                        <span *ngFor="let vehicule of utilisateur.vehicules">{{ vehicule }}</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Date de création</td>
+                      <td><em>{{ utilisateur.dateEnregistrement | date: 'dd MMM yy' }}</em></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="card-footer text-end" style="background-color: #fff; border-top: 1px solid #E7C133;">
+                <a (click)="supprimerUtilisateurById(utilisateur.utilisateurId)"
+                  class="btn btn-mybrown me-2">Supprimer</a>
+                <!-- <button (click)="goToModifierUtilisateur(utilisateur.utilisateurId)"
+                  class="btn btn-myprimary me-2">Modifier</button> -->
+                <button (click)="afficherModifier()" class="btn btn-myprimary me-2">Modifier</button>
+                <button (click)="goToUtilisateurList()" class="btn btn-mysecondary">Retour</button>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </ng-container>
+
+    <!-- -------------------------------------------MODIFIER--------------------------------------------------- -->
+    <ng-template #modifier>
+      <div class="col-12 col-md-8 offset-md-2 mt-5">
+        <h2 class="text-center">{{ utilisateur.username }}</h2>
+        <div class="card shadow mb-3" style="border: 1px solid #E7C133;">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <!-- <img [src]="utilisateur.picture"> -->
+              <img src="../../../../assets/profil.png" alt="profil" class="img-fluid"
+                style="height: 70%; width: 90%; margin: 6px;" />
+            </div>
+
+            <div class="col-md-8">
+              <form novalidate (ngSubmit)="onSubmit()" [formGroup]="utilisateurForm">
+
+                <div class="card-body">
+                  <table class="table">
+                    <tbody>
+                      <tr>
+                        <td>Utilisateur</td>
+                        <td>
+                          <!-- <input id="username" name="username" type="text" formControlName="username" class="text-uppercase border-0 shadow-none" readonly> -->
+                          <strong>{{ utilisateur.username | uppercase }}</strong>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Email</td>
+                        <td>
+                          <input id="email" name="email" type="text" formControlName="email" [ngClass]="{'is-invalid': (utilisateurForm.get('email')?.touched || utilisateurForm.get('email')?.dirty) && !utilisateurForm.get('email')?.valid,
+                          'is-valid': utilisateurForm.get('email')?.valid}"
+                            class="text-input form-control bg-mywhite border border-myprimary px-1 text-uppercase">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Date Naissance</td>
+                        <td>
+                          <input id="dateNaissance" name="dateNaissance" type="date" formControlName="dateNaissance" [ngClass]="{'is-invalid': (utilisateurForm.get('dateNaissance')?.touched || utilisateurForm.get('dateNaissance')?.dirty) && !utilisateurForm.get('dateNaissance')?.valid,
+                            'is-valid': utilisateurForm.get('dateNaissance')?.valid}"
+                              class="text-input form-control bg-mywhite border border-myprimary px-1">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Lieu Naissance</td>
+                        <td>
+                          <input id="lieuNaissance" name="lieuNaissance" type="text" formControlName="lieuNaissance" [ngClass]="{'is-invalid': ( utilisateurForm.get('lieuNaissance')?.touched ||  utilisateurForm.get('lieuNaissance')?.dirty) && ! utilisateurForm.get('lieuNaissance')?.valid,
+                            'is-valid':  utilisateurForm.get('lieuNaissance')?.valid}"
+                            class="text-input form-control bg-mywhite border border-myprimary px-1 text-uppercase">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Véhicules</td>
+                        <td>
+                          <span *ngFor="let vehicule of utilisateur.vehicules">{{ vehicule }}</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Date de création</td>
+                        <td><em>{{ utilisateur.dateEnregistrement | date: 'dd MMM yy' }}</em></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div class="card-footer text-end" style="background-color: #fff; border-top: 1px solid #E7C133;">
+                  <button type="submit" [disabled]="utilisateurForm.invalid" class="btn btn-myprimary me-2">Sauvegarder</button>
+                  <button type="button" (click)="retourDetail()" class="btn btn-mysecondary">Retour</button>
+                </div>
+
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
   </div>
 </div>
 

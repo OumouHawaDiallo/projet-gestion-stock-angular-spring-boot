@@ -1,6 +1,7 @@
 
 export interface IVehicule {
-  rowNumber:number;
+
+  rowNumber: number;
   vehiculeId: string;
   dateEnregistrement: Date;
   numeroChassis: number;

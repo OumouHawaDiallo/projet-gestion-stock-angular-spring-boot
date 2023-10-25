@@ -82,12 +82,6 @@ $theme-colors: (
   "mywarning": #F9EFD2,
 );
 
-.custom-toast-position {
-  position: fixed;
-  right: 20px; /* Ajustez la valeur pour déplacer le toast vers la droite */
-  bottom: 500px; /* Ajustez la valeur pour déplacer le toast vers le bas */
-  height: 100px;
-};
 
 
 // $offcanvas-horizontal-width:        300px;
@@ -95,5 +89,3 @@ $theme-colors: (
 
 
 @import "../node_modules/bootstrap/scss/bootstrap";
-@import "../node_modules/ngx-toastr/toastr";
-

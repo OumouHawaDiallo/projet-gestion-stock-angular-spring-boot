@@ -157,8 +157,10 @@ export class UtilisateurListeComponent implements OnInit, OnDestroy {
   }
 
 
-  generatePDF() {
+  generatePDF(): void {
+
     const data: IUtilisateur[] = this.dataSource.filteredData;
+
     const months = [
       'JANV.',
       'FÉVR.',
@@ -173,10 +175,8 @@ export class UtilisateurListeComponent implements OnInit, OnDestroy {
       'NOV.',
       'DÉC.'
     ];
-    const doc = new jsPDF;
 
-
-
+    const doc = new jsPDF();
 
     // Créez un tableau de données pour autoTable
     const tableData = data.map((item: IUtilisateur) => [
@@ -185,44 +185,107 @@ export class UtilisateurListeComponent implements OnInit, OnDestroy {
       item.email,
       `${new Date(item.dateNaissance).getDate()} ${months[new Date(item.dateNaissance).getMonth()]} ${new Date(item.dateNaissance).getFullYear() % 100}`,
       item.lieuNaissance,
-
+      JSON.stringify(item.vehicules)
     ]);
 
     // Configuration pour le PDF avec une taille de page personnalisée
-    const pageWidth = 200; // Largeur de la page en mm (réduite)
-    const pageHeight = 200; // Hauteur de la page en mm (par défaut)
-   const marginLeft = 5;
-   const marginTop = 5;
-   const marginRight = 5; // Augmentation de la marge droite
-  //  const marginBottom = 10;
-
+    const pageWidth = 1000; // Largeur de la page en mm (A4 par défaut)
+    const pageHeight = 1000; // Hauteur de la page en mm (A4 par défaut)
+    const marginLeft = 10;
+    const marginTop = 10;
+    const marginRight = 10;
+    const marginBottom = 10;
 
     // Générer le tableau dans le PDF avec des styles de texte personnalisés
     autoTable(doc, {
       head: [
         [
-          { content: 'N°', styles: { fontSize: 7 } },
-          { content: 'Username', styles: { fontSize: 7 } },
-          { content: 'Email', styles: { fontSize: 7 } },
-          { content: 'Date naissance', styles: { fontSize: 7 } },
-          { content: 'Lieu naissance', styles: { fontSize: 7} }
-
+          { content: 'N°', styles: { fontSize: 5 } },
+          { content: 'Utilisateur', styles: { fontSize: 5 } },
+          { content: 'Email', styles: { fontSize: 5 } },
+          { content: 'Date Naissance', styles: { fontSize: 5 } },
+          { content: 'Lieu Naissance', styles: { fontSize: 5 } },
+          { content: 'Véhicules', styles: { fontSize: 5 } }
         ]
       ],
       body: tableData.map(row => row.map(cell => ({ content: cell, styles: { fontSize: 6 } }))),
-      margin: { top: marginTop, right: marginRight, left: marginLeft },
+      margin: { top: marginTop, right: marginRight, bottom: marginBottom, left: marginLeft },
       theme: 'plain'
-
-
     });
 
-
     // Sauvegarder le PDF avec un nom de fichier
-    doc.save('liste_utilisateur.pdf');
+    doc.save('utilisateur-liste.pdf');
   }
 
+  /* ----------------------------------------------------------------------------------------- */
+  //  générer un pdf avec Pdfmake
+  // generatePDF(): void {
+  //   const months = [
+  //     'JANV.',
+  //     'FÉVR.',
+  //     'MARS',
+  //     'AVR.',
+  //     'MAI',
+  //     'JUIN',
+  //     'JUIL.',
+  //     'AOÛT',
+  //     'SEPT.',
+  //     'OCT.',
+  //     'NOV.',
+  //     'DÉC.',
+  //   ];
 
+  //   const utilisateursData = this.utilisateurs.map((utilisateur) => {
+  //     return [
+  //       utilisateur.username,
+  //       utilisateur.email,
+  //       `${new Date(utilisateur.dateNaissance).getDate()} ${months[new Date(utilisateur.dateNaissance).getMonth()]} ${new Date(utilisateur.dateNaissance).getFullYear() % 100}`,
+  //       utilisateur.lieuNaissance,
+  //     ];
+  //   });
 
+  //   const documentDefinition = {
+  //     pageSize: { width: 460, height: 460 },
+
+  //     content: [
+  //       {
+  //         text: 'Liste des utilisateurs',
+  //         style: 'header',
+  //         absolutePosition: { x: 20, y: 17 },
+  //       },
+  //       {
+  //         table: {
+  //           style: 'tableStyle',
+  //           headerRows: 1,
+
+  //           widths: [82],
+
+  //           body: [
+  //             [
+  //               { text: 'Username', style: 'header' },
+  //               { text: 'Email', style: 'header' },
+  //               { text: 'Date Naissance', style: 'header' },
+  //               { text: 'Lieu Naissancee', style: 'header' },
+  //             ],
+  //             ...utilisateursData,
+  //           ],
+  //         },
+  //         layout: 'lightHorizontalLines',
+  //       },
+  //     ],
+  //     styles: {
+  //       header: {
+  //         fontSize: 10,
+  //         bold: true,
+  //       },
+  //     },
+  //     tableStyle: {
+  //       tableWidth: 'auto',
+  //     },
+  //   };
+
+  //   pdfMake.createPdf(documentDefinition).open();
+  // }
 
   search(term: string): void {
     this.termeRechercheUsernameEmail = term;
@@ -250,7 +313,7 @@ export class UtilisateurListeComponent implements OnInit, OnDestroy {
     const subscription = this.utilisateurService.getUtilisateurs().subscribe({
       next: (donnees: IUtilisateur[]) => {
         this.utilisateurs = donnees.sort((a, b) =>
-          a.utilisateurId.localeCompare(b.utilisateurId)
+          a.username.localeCompare(b.username)
         );
 
         this.rowNumber = 1;

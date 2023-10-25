@@ -7,7 +7,8 @@ import { IVehicule } from 'src/app/models/vehicule';
 import { VehiculeService } from 'src/app/services/vehicule.service';
 import { ValidationService } from 'src/app/services/validation.service';
 import { Subscription } from 'rxjs';
-import { ToastrService } from 'ngx-toastr';
+import { NotificationService } from 'src/app/services/notification.service';
+import { NotificationType } from 'src/app/enum/notification-type.enum';
 
 @Component({
   selector: 'app-ajouter',
@@ -17,7 +18,6 @@ import { ToastrService } from 'ngx-toastr';
 export class VehiculeAjouterComponent implements OnInit, OnDestroy {
 
   private subscriptions: Subscription[] = [];
-
 
   selectCouleur: string = SelectEnum.COULEUR;
   selectTransmission: string = SelectEnum.TRANSMISSION;
@@ -32,21 +32,23 @@ export class VehiculeAjouterComponent implements OnInit, OnDestroy {
     // private router: Router,
     private vehiculeService: VehiculeService,
     private validationService: ValidationService,
-    private toastrService:ToastrService,
-    public dialogRef: MatDialogRef<VehiculeAjouterComponent>
+    public dialogRef: MatDialogRef<VehiculeAjouterComponent>,
+    private notificationService: NotificationService
   ) {}
 
-  showToast(){
-    this.toastrService.success('Un vehicule a été ajouté !','',{ positionClass:'custom-toast-position',timeOut:1000})
+  private sendNotification(type: NotificationType, message: string, titre?: string): void {
+    if (message) {
+      this.notificationService.showAlert(type, message, titre);
+    } else {
+      this.notificationService.showAlert(type, 'Une erreur s\'est produite. Veuillez réessayer.', titre);
+    }
   }
-
 
   AjouterVehicule(): void {
     const subscription = this.vehiculeService.postVehicule(this.vehiculeForm.value).subscribe({
-      next: () => {
+      next: (vehicule: IVehicule) => {
         this.popupFermer();
-        this.showToast();
-
+        this.sendNotification(NotificationType.SUCCESS, `Ajout réussie de ${vehicule.marque}`);
       },
       error: (erreurs: any) => {
         console.log(erreurs);
@@ -106,6 +108,7 @@ export class VehiculeAjouterComponent implements OnInit, OnDestroy {
       ])
     });
   }
+
 
   onSubmit(): void {
     // console.log(this.vehiculeForm.value);

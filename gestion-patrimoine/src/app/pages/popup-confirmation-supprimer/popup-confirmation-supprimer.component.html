@@ -1,0 +1,31 @@
+<div class="card">
+
+    <div class="card-header text-center fw-bold bg-myprimary fs-5">
+        Confirmation
+    </div>
+
+    <div class="card-body">
+        <form class="container px-3 py-2">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <span class="fw-bold">{{ informations.message }}</span>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-12 text-end">
+                    <button (click)="supprimeronfirmer(informations.id, informations.categorie)" type="button"
+                        class="btn btn-mybrown fw-bold mx-2" data-bs-toggle="tooltip" title="cliquer ici pour supprimer">
+                        Oui
+                    </button>
+
+                    <button (click)="popupFermer()" type="button" class="btn btn-mysecondary fw-bold mx-2"
+                        data-bs-toggle="tooltip" title="cliquer ici pour annuler">
+                        Non
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>

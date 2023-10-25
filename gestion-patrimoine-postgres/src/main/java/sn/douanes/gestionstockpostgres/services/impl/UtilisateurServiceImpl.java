@@ -25,7 +25,7 @@ public class UtilisateurServiceImpl implements UtilisateurService {
     @Override
     public Utilisateur updateUtilisateur(Utilisateur u) {
 
-        System.out.println(u);
+        // System.out.println(u);
 
         Utilisateur utilisateur = this.findByUtilisateurId(u.getUtilisateurId());
 

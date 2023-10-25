@@ -50,7 +50,7 @@
 
             <input id="dateNaissance" name="dateNaissance" type="date" formControlName="dateNaissance" [ngClass]="{'is-invalid': (utilisateurForm.get('dateNaissance')?.touched || utilisateurForm.get('dateNaissance')?.dirty) && !utilisateurForm.get('dateNaissance')?.valid,
             'is-valid': utilisateurForm.get('dateNaissance')?.valid}"
-              class="text-input form-control bg-mywhite border border-myprimary  px-1 text-uppercase">
+              class="text-input form-control bg-mywhite border border-myprimary px-1">
 
             <div class="invalid-feedback">
               <span *ngIf="utilisateurForm.get('dateNaissance')?.errors?.['required']">
@@ -87,14 +87,14 @@
       <div class="row mt-5">
 
         <div class="col-12 text-end">
-          <button type="submit" [disabled]="utilisateurForm.invalid" class="btn btn-myprimary fw-bold w-25 mx-2"
+          <button type="submit" [disabled]="utilisateurForm.invalid" class="btn btn-myprimary fw-bold mx-2"
             data-bs-toggle="tooltip" title="cliquer ici pour ajouter">
-            VALIDER
+            Valider
           </button>
 
-          <button (click)="popupFermer()" type="button" class="btn btn-mysecondary fw-bold w-25 mx-2"
+          <button (click)="popupFermer()" type="button" class="btn btn-mysecondary fw-bold mx-2"
             data-bs-toggle="tooltip" title="cliquer ici pour retourner">
-            RETOUR
+            Retour
           </button>
         </div>
 

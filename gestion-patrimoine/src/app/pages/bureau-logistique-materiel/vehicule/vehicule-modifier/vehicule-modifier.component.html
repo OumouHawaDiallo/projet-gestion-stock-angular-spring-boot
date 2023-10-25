@@ -1,4 +1,4 @@
-<div class="card shadow">
+<!-- <div class="card">
 
   <div class="card-header text-center fw-bold bg-myprimary fs-5">
     Modifier un vehicule
@@ -23,7 +23,7 @@
           <select formControlName="couleur" id="couleur"
             class="text-input form-select bg-mywhite border border-myprimary px-1 text-uppercase">
             <option [value]="selectCouleur" selected>
-              <!-- {{ selectCouleur }} -->
+              {{ selectCouleur }}
             </option>
             <option value="Blanche">Blanche</option>
             <option value="Noire">Noire</option>
@@ -40,12 +40,12 @@
           </select>
 
           <div class="invalid-feedback">
-            <!-- <span *ngIf="vehiculeForm.get('couleur')?.hasError('required')">
+            <span *ngIf="vehiculeForm.get('couleur')?.hasError('required')">
               <sup class="fw-bold">*</sup>Obligatoire
-            </span> -->
-            <!-- <span *ngIf="vehiculeForm.get('couleur')?.hasError('invalideCouleurSelection')">
+            </span>
+            <span *ngIf="vehiculeForm.get('couleur')?.hasError('invalideCouleurSelection')">
               Veuillez sélectionner une couleur
-            </span> -->
+            </span>
           </div>
         </div>
 
@@ -83,7 +83,7 @@
           <select formControlName="transmission" id="transmission"
             class="text-input form-select bg-mywhite border border-myprimary px-1 text-uppercase">
             <option [value]="selectTransmission" selected>
-              <!-- {{ selectTransmission }} -->
+              {{ selectTransmission }}
             </option>
             <option value="Automatique">Automatique</option>
             <option value="Semi-Automatique">Semi-Automatique</option>
@@ -91,12 +91,12 @@
           </select>
 
           <div class="invalid-feedback">
-            <!-- <span *ngIf="vehiculeForm.get('transmission')?.hasError('required')">
+            <span *ngIf="vehiculeForm.get('transmission')?.hasError('required')">
               <sup class="fw-bold">*</sup>Obligatoire
-            </span> -->
-            <!-- <span *ngIf="vehiculeForm.get('transmission')?.hasError('invalideTransmissionSelection')">
+            </span>
+            <span *ngIf="vehiculeForm.get('transmission')?.hasError('invalideTransmissionSelection')">
               Veuillez sélectionner une transmission
-            </span> -->
+            </span>
           </div>
         </div>
 
@@ -108,7 +108,7 @@
           <select formControlName="energie" id="energie"
             class="text-input form-select bg-mywhite border border-myprimary px-1 text-uppercase">
             <option [value]="selectEnergie" selected>
-              <!-- {{ selectEnergie }} -->
+              {{ selectEnergie }}
             </option>
             <option value="Essence">Essence</option>
             <option value="Diesel">Diesel</option>
@@ -123,12 +123,12 @@
           </select>
 
           <div class="invalid-feedback">
-            <!-- <span *ngIf="vehiculeForm.get('energie')?.hasError('required')">
+            <span *ngIf="vehiculeForm.get('energie')?.hasError('required')">
               <sup class="fw-bold">*</sup>Obligatoire
-            </span> -->
-            <!-- <span *ngIf="vehiculeForm.get('energie')?.hasError('invalideEnergieSelection')">
+            </span>
+            <span *ngIf="vehiculeForm.get('energie')?.hasError('invalideEnergieSelection')">
               Veuillez sélectionner une energie
-            </span> -->
+            </span>
           </div>
         </div>
 
@@ -166,7 +166,7 @@
           <select formControlName="etat" id="etat"
             class="text-input form-select bg-mywhite border border-myprimary px-1 text-uppercase">
             <option [value]="selectEtat" selected>
-              <!-- {{ selectEtat }} -->
+              {{ selectEtat }}
             </option>
             <option value="Neuf">Neuf</option>
             <option value="Usagé">Usagé</option>
@@ -174,12 +174,12 @@
           </select>
 
           <div class="invalid-feedback">
-            <!-- <span *ngIf="vehiculeForm.get('etat')?.hasError('required')">
+            <span *ngIf="vehiculeForm.get('etat')?.hasError('required')">
               <sup class="fw-bold">*</sup>Obligatoire
-            </span> -->
-            <!-- <span *ngIf="vehiculeForm.get('etat')?.hasError('invalideEtatSelection')">
+            </span>
+            <span *ngIf="vehiculeForm.get('etat')?.hasError('invalideEtatSelection')">
               <sup class="fw-bold">*</sup> Veuillez sélectionner un etat
-            </span> -->
+            </span>
           </div>
         </div>
 
@@ -196,7 +196,7 @@
           <select formControlName="marque" id="marque"
             class="text-input form-select bg-mywhite border border-myprimary px-1 text-uppercase">
             <option [value]="selectMarque" selected>
-              <!-- {{ selectMarque }} -->
+              {{ selectMarque }}
             </option>
             <option value="Toyota">Toyota</option>
             <option value="Volkswagen">Volkswagen</option>
@@ -223,12 +223,12 @@
           </select>
 
           <div class="invalid-feedback">
-            <!-- <span *ngIf="vehiculeForm.get('marque')?.hasError('required')">
+            <span *ngIf="vehiculeForm.get('marque')?.hasError('required')">
               <sup class="fw-bold">*</sup>Obligatoire
-            </span> -->
-            <!-- <span *ngIf="vehiculeForm.get('marque')?.hasError('invalideMarqueSelection')">
+            </span>
+            <span *ngIf="vehiculeForm.get('marque')?.hasError('invalideMarqueSelection')">
               Veuillez sélectionner une marque
-            </span> -->
+            </span>
           </div>
         </div>
 
@@ -256,7 +256,7 @@
           <select formControlName="typeVehicule" id="typeVehicule"
             class="text-input form-select px-1 bg-mywhite border border-myprimary text-uppercase">
             <option [value]="selectTypeVehicule" selected>
-              <!-- {{ selectTypeVehicule }} -->
+              {{ selectTypeVehicule }}
             </option>
             <option value="Voiture">Voiture</option>
             <option value="Camion">Camion</option>
@@ -272,12 +272,12 @@
           </select>
 
           <div class="invalid-feedback">
-            <!-- <span *ngIf="vehiculeForm.get('typeVehicule')?.hasError('required')">
+            <span *ngIf="vehiculeForm.get('typeVehicule')?.hasError('required')">
               <sup class="fw-bold">*</sup>Obligatoire
-            </span> -->
-            <!-- <span *ngIf="vehiculeForm.get('typeVehicule')?.hasError('invalideTypeVehiculeSelection')">
+            </span>
+            <span *ngIf="vehiculeForm.get('typeVehicule')?.hasError('invalideTypeVehiculeSelection')">
               Veuillez sélectionner un type du vehicule
-            </span> -->
+            </span>
           </div>
         </div>
 
@@ -303,4 +303,4 @@
     </form>
   </div>
 
-</div>
+</div> -->

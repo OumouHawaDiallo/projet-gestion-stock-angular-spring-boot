@@ -1,101 +1,423 @@
 <div class="card">
 
-  <div class="card-header text-center fw-bold bg-myprimary fs-5">
-    Détail du véhicule
-  </div>
+  <!-- -------------------------------------------DETAIL--------------------------------------------------- -->
+  <ng-container *ngIf="afficherPopupDetail; else modifier">
+    <div class="card-header text-center fw-bold bg-myprimary fs-5">
+      Détail du véhicule
+    </div>
 
-  <div class="card-body">
-    <form class="container px-3 py-2">
+    <div class="card-body">
+      <form class="container px-3 py-2">
 
-      <div class="row g-4 mb-3">
-        <div class="col-3 mx-auto">
-          <span class="fw-bold">N° chassis</span>
-          <div class="text-input"> {{ vehicule.numeroChassis }} </div>
+        <div class="row g-4 mb-3">
+          <div class="col-3 mx-auto">
+            <span class="fw-bold">N° chassis</span>
+            <div class="text-input"> {{ vehicule.numeroChassis }} </div>
+          </div>
+
+          <div class="col-3 mx-auto">
+            <span class="fw-bold">Couleur</span>
+            <div class="text-input text-uppercase"> {{ vehicule.couleur }} </div>
+          </div>
+
+          <div class="col-3 mx-auto">
+            <span class="fw-bold">Date livraison</span>
+            <div class="text-input text-uppercase"> {{ vehicule.dateLivraison | date: 'dd MMM yy' }} </div>
+          </div>
         </div>
 
-        <div class="col-3 mx-auto">
-          <span class="fw-bold">Couleur</span>
-          <div class="text-input text-uppercase"> {{ vehicule.couleur }} </div>
+
+        <div class="row g-4 mb-3">
+          <div class="col-3 mx-auto">
+            <span class="fw-bold">N° matricule</span>
+            <div class="text-input"> {{ vehicule.numeroMatricule }} </div>
+          </div>
+
+          <div class="col-3 mx-auto">
+            <span class="fw-bold">Transmission</span>
+            <div class="text-input text-uppercase"> {{ vehicule.transmission }} </div>
+          </div>
+
+          <div class="col-3 mx-auto">
+            <span class="fw-bold">Energies</span>
+            <div class="text-input text-uppercase"> {{ vehicule.energie }} </div>
+          </div>
         </div>
 
-        <div class="col-3 mx-auto">
-          <span class="fw-bold">Date livraison</span>
-          <div class="text-input text-uppercase"> {{ vehicule.dateLivraison | date: 'dd MMM yy' }} </div>
-        </div>
-      </div>
 
+        <div class="row g-4 mb-3">
+          <div class="col-3 mx-auto">
+            <span class="fw-bold">Modèle</span>
+            <div class="text-input text-uppercase"> {{ vehicule.modele }} </div>
+          </div>
 
-      <div class="row g-4 mb-3">
-        <div class="col-3 mx-auto">
-          <span class="fw-bold">N° matricule</span>
-          <div class="text-input"> {{ vehicule.numeroMatricule }} </div>
-        </div>
+          <div class="col-3 mx-auto">
+            <span class="fw-bold">Date fabrication</span>
+            <div class="text-input text-uppercase"> {{ vehicule.dateFabrication | date: 'dd MMM yy' }} </div>
+          </div>
 
-        <div class="col-3 mx-auto">
-          <span class="fw-bold">Transmission</span>
-          <div class="text-input text-uppercase"> {{ vehicule.transmission }} </div>
-        </div>
-
-        <div class="col-3 mx-auto">
-          <span class="fw-bold">Energies</span>
-          <div class="text-input text-uppercase"> {{ vehicule.energie }} </div>
-        </div>
-      </div>
-
-
-      <div class="row g-4 mb-3">
-        <div class="col-3 mx-auto">
-          <span class="fw-bold">Modèle</span>
-          <div class="text-input text-uppercase"> {{ vehicule.modele }} </div>
+          <div class="col-3 mx-auto">
+            <span class="fw-bold">Etat</span>
+            <div class="text-input text-uppercase"> {{ vehicule.etat }} </div>
+          </div>
         </div>
 
-        <div class="col-3 mx-auto">
-          <span class="fw-bold">Date fabrication</span>
-          <div class="text-input text-uppercase"> {{ vehicule.dateFabrication | date: 'dd MMM yy' }} </div>
+
+        <div class="row g-4 mb-3">
+          <div class="col-3 mx-auto">
+            <span class="fw-bold">Marque</span>
+            <div class="text-input text-uppercase"> {{ vehicule.marque }} </div>
+          </div>
+
+          <div class="col-3 mx-auto">
+            <span class="fw-bold">Date commande</span>
+            <div class="text-input text-uppercase"> {{ vehicule.dateCommande | date: 'dd MMM yy' }} </div>
+          </div>
+
+          <div class="col-3 mx-auto">
+            <span class="fw-bold">Type vehicule</span>
+            <div class="text-input text-uppercase"> {{ vehicule.typeVehicule }} </div>
+          </div>
         </div>
 
-        <div class="col-3 mx-auto">
-          <span class="fw-bold">Etat</span>
-          <div class="text-input text-uppercase"> {{ vehicule.etat }} </div>
+        <div class="row mt-5">
+          <div class="col-12 text-end">
+            <button (click)="supprimerVehiculeById(vehicule.vehiculeId)" type="button"
+              class="btn btn-mybrown fw-bold mx-2" data-bs-toggle="tooltip" title="cliquer ici pour ajouter">
+              Supprimer
+            </button>
+
+            <!-- <button (click)="popupModifier(vehicule)" type="button" class="btn btn-myprimary fw-bold w-25 mx-2"
+              data-bs-toggle="tooltip" title="cliquer ici pour ajouter">
+              MODIFIER
+            </button> -->
+
+            <button (click)="popupModifier()" type="button" class="btn btn-myprimary fw-bold mx-2"
+              data-bs-toggle="tooltip" title="cliquer ici pour ajouter">
+              Modifier
+            </button>
+
+            <button (click)="popupFermer()" type="button" class="btn btn-mysecondary fw-bold mx-2"
+              data-bs-toggle="tooltip" title="cliquer ici pour ajouter">
+              Retour
+            </button>
+          </div>
         </div>
-      </div>
+
+      </form>
+    </div>
+  </ng-container>
 
 
-      <div class="row g-4 mb-3">
-        <div class="col-3 mx-auto">
-          <span class="fw-bold">Marque</span>
-          <div class="text-input text-uppercase"> {{ vehicule.marque }} </div>
+  <!-- -------------------------------------------MODIFIER--------------------------------------------------- -->
+  <ng-template #modifier>
+    <div class="card-header text-center fw-bold bg-myprimary fs-5">
+      Modifier un vehicule
+    </div>
+
+    <div class="card-body">
+      <form class="container px-3 py-2" novalidate (ngSubmit)="onSubmit()" [formGroup]="vehiculeForm">
+
+
+        <div class="row g-4 mb-3">
+
+          <div class="col-3 mx-auto">
+            <span class="fw-bold">N° chassis:</span>
+            <div class="text-input"> {{ vehicule.numeroChassis }} </div>
+          </div>
+
+          <div class="col-3 mx-auto">
+            <label for="couleur" class="form-label fw-bold">
+              Couleur
+            </label>
+
+            <select formControlName="couleur" id="couleur"
+              class="text-input form-select bg-mywhite border border-myprimary px-1 text-uppercase">
+              <option [value]="selectCouleur" selected>
+                <!-- {{ selectCouleur }} -->
+              </option>
+              <option value="Blanche">Blanche</option>
+              <option value="Noire">Noire</option>
+              <option value="Grise">Grise</option>
+              <option value="Rouge">Rouge</option>
+              <option value="Orange">Orange</option>
+              <option value="Verte">Verte</option>
+              <option value="Bleu">Bleu</option>
+              <option value="Rose">Rose</option>
+              <option value="Marron">Marron</option>
+              <option value="Jaune">Jaune</option>
+              <option value="Argentée">Argentée</option>
+              <option value="Violette">Violette</option>
+            </select>
+
+            <div class="invalid-feedback">
+              <!-- <span *ngIf="vehiculeForm.get('couleur')?.hasError('required')">
+                <sup class="fw-bold">*</sup>Obligatoire
+              </span> -->
+              <!-- <span *ngIf="vehiculeForm.get('couleur')?.hasError('invalideCouleurSelection')">
+                Veuillez sélectionner une couleur
+              </span> -->
+            </div>
+          </div>
+
+          <div class="col-3 mx-auto">
+            <label for="dateLivraison" class="form-label fw-bold">
+              Date livraison
+            </label>
+
+            <input id="dateLivraison" name="dateLivraison" type="date" formControlName="dateLivraison" [ngClass]="{'is-invalid': (vehiculeForm.get('dateLivraison')?.touched || vehiculeForm.get('dateLivraison')?.dirty) && !vehiculeForm.get('dateLivraison')?.valid,
+            'is-valid': vehiculeForm.get('dateLivraison')?.valid}"
+              class="text-input form-control bg-mywhite border border-myprimary  px-1 text-uppercase">
+
+            <div class="invalid-feedback">
+              <span *ngIf="vehiculeForm.get('dateLivraison')?.errors?.['required']">
+                <sup class="fw-bold">*</sup>Obligatoire
+              </span>
+            </div>
+          </div>
+
         </div>
 
-        <div class="col-3 mx-auto">
-          <span class="fw-bold">Date commande</span>
-          <div class="text-input text-uppercase"> {{ vehicule.dateCommande | date: 'dd MMM yy' }} </div>
+
+        <div class="row g-4 mb-3">
+
+          <div class="col-3 mx-auto">
+            <span class="fw-bold">N° matricule:</span>
+            <div class="text-input"> {{ vehicule.numeroMatricule }} </div>
+          </div>
+
+          <div class="col-3 mx-auto">
+            <label for="transmission" class="form-label fw-bold">
+              Transmission
+            </label>
+
+            <select formControlName="transmission" id="transmission"
+              class="text-input form-select bg-mywhite border border-myprimary px-1 text-uppercase">
+              <option [value]="selectTransmission" selected>
+                <!-- {{ selectTransmission }} -->
+              </option>
+              <option value="Automatique">Automatique</option>
+              <option value="Semi-Automatique">Semi-Automatique</option>
+              <option value="Manuelle">Manuelle</option>
+            </select>
+
+            <div class="invalid-feedback">
+              <!-- <span *ngIf="vehiculeForm.get('transmission')?.hasError('required')">
+                <sup class="fw-bold">*</sup>Obligatoire
+              </span> -->
+              <!-- <span *ngIf="vehiculeForm.get('transmission')?.hasError('invalideTransmissionSelection')">
+                Veuillez sélectionner une transmission
+              </span> -->
+            </div>
+          </div>
+
+          <div class="col-3 mx-auto">
+            <label for="energie" class="form-label fw-bold">
+              Energie
+            </label>
+
+            <select formControlName="energie" id="energie"
+              class="text-input form-select bg-mywhite border border-myprimary px-1 text-uppercase">
+              <option [value]="selectEnergie" selected>
+                <!-- {{ selectEnergie }} -->
+              </option>
+              <option value="Essence">Essence</option>
+              <option value="Diesel">Diesel</option>
+              <option value="Électricitée">Électricitée</option>
+              <option value="Hybride">Hybride</option>
+              <option value="Hybride rechargeable">Hybride rechargeable</option>
+              <option value="Hydrogène">Hydrogène</option>
+              <option value="Gaz naturel">Gaz naturel</option>
+              <option value="GPL (Gaz de pétrole liquéfié)">GPL (Gaz de pétrole liquéfié)</option>
+              <option value="Biocarburants">Biocarburants</option>
+              <option value="Énergie solaire">Énergie solaire</option>
+            </select>
+
+            <div class="invalid-feedback">
+              <!-- <span *ngIf="vehiculeForm.get('energie')?.hasError('required')">
+                <sup class="fw-bold">*</sup>Obligatoire
+              </span> -->
+              <!-- <span *ngIf="vehiculeForm.get('energie')?.hasError('invalideEnergieSelection')">
+                Veuillez sélectionner une energie
+              </span> -->
+            </div>
+          </div>
+
         </div>
 
-        <div class="col-3 mx-auto">
-          <span class="fw-bold">Type vehicule</span>
-          <div class="text-input text-uppercase"> {{ vehicule.typeVehicule }} </div>
+
+        <div class="row g-4 mb-3">
+
+          <div class="col-3 mx-auto">
+            <label for="modele" class="form-label fw-bold">
+              Modèle
+            </label>
+
+            <input id="modele" name="modele" type="text" formControlName="modele" [ngClass]="{'is-invalid': (vehiculeForm.get('modele')?.touched || vehiculeForm.get('modele')?.dirty) && !vehiculeForm.get('modele')?.valid,
+            'is-valid': vehiculeForm.get('modele')?.valid}"
+              class="text-input form-control bg-mywhite border border-myprimary px-1 text-uppercase">
+
+            <div class="invalid-feedback">
+              <span *ngIf="vehiculeForm.get('modele')?.errors?.['required']">
+                <sup class="fw-bold">*</sup>Obligatoire
+              </span>
+            </div>
+          </div>
+
+          <div class="col-3 mx-auto">
+            <span class="fw-bold">Date fabrication:</span>
+            <div class="text-input text-uppercase"> {{ vehicule.dateFabrication | date: 'dd MMM yy' }} </div>
+          </div>
+
+          <div class="col-3 mx-auto">
+            <label for="etat" class="form-label fw-bold">
+              Etat
+            </label>
+
+            <select formControlName="etat" id="etat"
+              class="text-input form-select bg-mywhite border border-myprimary px-1 text-uppercase">
+              <option [value]="selectEtat" selected>
+                <!-- {{ selectEtat }} -->
+              </option>
+              <option value="Neuf">Neuf</option>
+              <option value="Usagé">Usagé</option>
+              <option value="Accidenté">Accidenté</option>
+            </select>
+
+            <div class="invalid-feedback">
+              <!-- <span *ngIf="vehiculeForm.get('etat')?.hasError('required')">
+                <sup class="fw-bold">*</sup>Obligatoire
+              </span> -->
+              <!-- <span *ngIf="vehiculeForm.get('etat')?.hasError('invalideEtatSelection')">
+                <sup class="fw-bold">*</sup> Veuillez sélectionner un etat
+              </span> -->
+            </div>
+          </div>
+
         </div>
-      </div>
 
-      <div class="row mt-5">
-        <div class="col-12 text-end">
-          <button (click)="supprimerVehiculeById(vehicule.vehiculeId)" type="button" class="btn btn-myprimary fw-bold w-25 mx-2" data-bs-toggle="tooltip" title="cliquer ici pour ajouter">
-            SUPPRIMER
-          </button>
 
-          <button (click)="popupModifier(vehicule)" type="button" class="btn btn-myprimary fw-bold w-25 mx-2" data-bs-toggle="tooltip"
-            title="cliquer ici pour ajouter">
-            MODIFIER
-          </button>
+        <div class="row g-4 mb-3">
 
-          <button (click)="fermerPopup()" type="button" class="btn btn-mysecondary fw-bold w-25 mx-2" data-bs-toggle="tooltip" title="cliquer ici pour ajouter">
-            RETOUR
-          </button>
+          <div class="col-3 mx-auto">
+            <label for="marque" class="form-label fw-bold">
+              Marque
+            </label>
+
+            <select formControlName="marque" id="marque"
+              class="text-input form-select bg-mywhite border border-myprimary px-1 text-uppercase">
+              <option [value]="selectMarque" selected>
+                <!-- {{ selectMarque }} -->
+              </option>
+              <option value="Toyota">Toyota</option>
+              <option value="Volkswagen">Volkswagen</option>
+              <option value="Ford">Ford</option>
+              <option value="Chevrolet">Chevrolet</option>
+              <option value="Honda">Honda</option>
+              <option value="Nissan">Nissan</option>
+              <option value="Mercedes-Benz">Mercedes-Benz</option>
+              <option value="BMW">BMW</option>
+              <option value="Audi">Audi</option>
+              <option value="Hyundai">Hyundai</option>
+              <option value="Kia">Kia</option>
+              <option value="Subaru">Subaru</option>
+              <option value="Mazda">Mazda</option>
+              <option value="Jeep">Jeep</option>
+              <option value="Volvo">Volvo</option>
+              <option value="Tesla">Tesla</option>
+              <option value="Porsche">Porsche</option>
+              <option value="Lexus">Lexus</option>
+              <option value="Land Rover">Land Rover</option>
+              <option value="Ferrari">Ferrari</option>
+              <option value="Maserati">Maserati</option>
+              <option value="Jaguar">Jaguar</option>
+            </select>
+
+            <div class="invalid-feedback">
+              <!-- <span *ngIf="vehiculeForm.get('marque')?.hasError('required')">
+                <sup class="fw-bold">*</sup>Obligatoire
+              </span> -->
+              <!-- <span *ngIf="vehiculeForm.get('marque')?.hasError('invalideMarqueSelection')">
+                Veuillez sélectionner une marque
+              </span> -->
+            </div>
+          </div>
+
+          <div class="col-3 mx-auto">
+            <label for="dateCommande" class="form-label fw-bold">
+              Date commande
+            </label>
+
+            <input id="dateCommande" name="dateCommande" type="date" formControlName="dateCommande" [ngClass]="{'is-invalid': (vehiculeForm.get('dateCommande')?.touched || vehiculeForm.get('dateCommande')?.dirty) && !vehiculeForm.get('dateCommande')?.valid,
+            'is-valid': vehiculeForm.get('dateCommande')?.valid}"
+              class="text-input form-control bg-mywhite border border-myprimary  px-1 text-uppercase">
+
+            <div class="invalid-feedback">
+              <span *ngIf="vehiculeForm.get('dateCommande')?.errors?.['required']">
+                <sup class="fw-bold">*</sup>Obligatoire
+              </span>
+            </div>
+          </div>
+
+          <div class="col-3 mx-auto">
+            <label for="typeVehicule" class="form-label fw-bold">
+              Type vehicule
+            </label>
+
+            <select formControlName="typeVehicule" id="typeVehicule"
+              class="text-input form-select px-1 bg-mywhite border border-myprimary text-uppercase">
+              <option [value]="selectTypeVehicule" selected>
+                <!-- {{ selectTypeVehicule }} -->
+              </option>
+              <option value="Voiture">Voiture</option>
+              <option value="Camion">Camion</option>
+              <option value="Moto">Moto</option>
+              <option value="Scooter">Scooter</option>
+              <option value="Cyclomoteur">Cyclomoteur</option>
+              <option value="Vélos">Vélos</option>
+              <option value="Bus">Bus</option>
+              <option value="Train">Train</option>
+              <option value="Avion">Avion</option>
+              <option value="Bateaux">Bateaux</option>
+              <option value="Véhicule électrique">Véhicule électrique</option>
+            </select>
+
+            <div class="invalid-feedback">
+              <!-- <span *ngIf="vehiculeForm.get('typeVehicule')?.hasError('required')">
+                <sup class="fw-bold">*</sup>Obligatoire
+              </span> -->
+              <!-- <span *ngIf="vehiculeForm.get('typeVehicule')?.hasError('invalideTypeVehiculeSelection')">
+                Veuillez sélectionner un type du vehicule
+              </span> -->
+            </div>
+          </div>
+
         </div>
-      </div>
 
-    </form>
-  </div>
+
+        <div class="row mt-5">
+
+          <div class="col-12 text-end">
+            <button type="submit" [disabled]="vehiculeForm.invalid" class="btn btn-myprimary fw-bold mx-2"
+              data-bs-toggle="tooltip" title="cliquer ici pour ajouter">
+              Valider
+            </button>
+
+            <!-- <button (click)="fermerPopup()" type="button" class="btn btn-mysecondary fw-bold w-25 mx-2"
+              data-bs-toggle="tooltip" title="cliquer ici pour retourner">
+              RETOUR
+            </button> -->
+
+            <button (click)="PopupDetail()" type="button" class="btn btn-mysecondary fw-bold mx-2"
+              data-bs-toggle="tooltip" title="cliquer ici pour ajouter">
+              Retour
+            </button>
+          </div>
+
+        </div>
+
+      </form>
+    </div>
+  </ng-template>
 
 </div>

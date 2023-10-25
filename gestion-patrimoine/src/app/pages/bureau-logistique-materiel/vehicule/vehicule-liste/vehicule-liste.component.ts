@@ -178,17 +178,12 @@ export class VehiculeListeComponent implements OnInit, OnDestroy, AfterViewInit 
     /* ----------------------------------------------------------------------------------------- */
   }
 
-  // generatePDF() {
-  //   // Utilisez une condition pour décider quel ensemble de données utiliser
-  //   if (this.dataSource.filter === '') {
-  //     this.generatePDFFromList(this.dataSource.data); // Générer à partir de la liste complète
-  //   } else {
-  //     this.generatePDFFromList(this.dataSource.filteredData); // Générer à partir de la liste filtrée
-  //   }
-  // }
 
-  generatePDF() {
+
+  generatePDF(): void {
+
     const data: IVehicule[] = this.dataSource.filteredData;
+
     const months = [
       'JANV.',
       'FÉVR.',
@@ -236,7 +231,7 @@ export class VehiculeListeComponent implements OnInit, OnDestroy, AfterViewInit 
       head: [
         [
           { content: 'N°', styles: { fontSize: 5 } },
-          { content: 'N° châssis', styles: { fontSize: 5 } },
+          { content: 'Châssis', styles: { fontSize: 5 } },
           { content: 'Matricule', styles: { fontSize: 5 } },
           { content: 'Modèle', styles: { fontSize: 5 } },
           { content: 'Marque', styles: { fontSize: 5 } },
@@ -253,20 +248,95 @@ export class VehiculeListeComponent implements OnInit, OnDestroy, AfterViewInit 
       body: tableData.map(row => row.map(cell => ({ content: cell, styles: { fontSize: 6 } }))),
       margin: { top: marginTop, right: marginRight, bottom: marginBottom, left: marginLeft },
       theme: 'plain'
-
-
     });
 
-
     // Sauvegarder le PDF avec un nom de fichier
-    doc.save('liste_vehicule.pdf');
+    doc.save('vehicule-liste.pdf');
   }
 
 
+/* ----------------------------------------------------------------------------------------- */
+//  générer un pdf avec Pdfmake
+//   generatePDF(): void {
+//     const months = [
+//       'JANV.',
+//       'FÉVR.',
+//       'MARS',
+//       'AVR.',
+//       'MAI',
+//       'JUIN',
+//       'JUIL.',
+//       'AOÛT',
+//       'SEPT.',
+//       'OCT.',
+//       'NOV.',
+//       'DÉC.'
+//     ];
 
+//     const vehiculesData = this.vehicules.map((vehicule) => {
+//       return [
+//         vehicule.numeroChassis,
+//         vehicule.numeroMatricule,
+//         vehicule.modele,
+//         vehicule.marque,
+//         vehicule.couleur,
+//         vehicule.transmission,
+//         `${new Date(vehicule.dateFabrication).getDate()} ${months[new Date(vehicule.dateFabrication).getMonth()]} ${new Date(vehicule.dateFabrication).getFullYear() % 100}`,
+//         `${new Date(vehicule.dateCommande).getDate()} ${months[new Date(vehicule.dateCommande).getMonth()]} ${new Date(vehicule.dateCommande).getFullYear() % 100}`,
+//         `${new Date(vehicule.dateLivraison).getDate()} ${months[new Date(vehicule.dateLivraison).getMonth()]} ${new Date(vehicule.dateLivraison).getFullYear() % 100}`,
+//         vehicule.energie,
+//         vehicule.etat,
+//         vehicule.typeVehicule
+//       ];
+//     });
 
+//     const documentDefinition = {
 
+//       pageSize: { width: 1200, height: 1200 },
+//       content: [
+//         { text: 'Liste des véhicules', style: 'header', absolutePosition: { x:20, y:10 }, },
+//         {
+//           table: {
+//             style:'tableStyle',
+//             headerRows: 1,
+//             // widths: ['auto', 'auto', 'auto', 'auto', 'auto', 'auto', 'auto', 'auto', 'auto', 'auto', 'auto', 'auto'],
+//             margin: [82],
+//             body: [
+//               [
+//                 { text: 'N° Châssis', style: 'header' },
+//                 { text: 'N° Matricule', style: 'header' },
+//                 { text: 'Modèle', style: 'header' },
+//                 { text: 'Marque', style: 'header' },
+//                 { text: 'Couleur', style: 'header' },
+//                 { text: 'Transmission', style: 'header' },
+//                 { text: 'Date Fabrication', style: 'header' },
+//                 { text: 'Date Commande', style: 'header' },
+//                 { text: 'Date Livraison', style: 'header' },
+//                 { text: 'Énergie', style: 'header' },
+//                 { text: 'État', style: 'header' },
+//                 { text: 'Type Véhicule', style: 'header' },
+//               ],
+//               ...vehiculesData,
+//             ]
+//           },
+//           layout: 'lightHorizontalLines', // Option de mise en forme du tableau
+//         }
+//       ],
+//       styles: {
+//         header: {
+//           fontSize: 10,
+//           bold: true
+//         },
+//       },
+//       tableStyle: {
+//         tableWidth: 'auto', // Largeur du tableau (utilisez 'auto' pour l'ajuster automatiquement)
+//         cellPadding: 3, // Rembourrage des cellules
+//         margin: [null, 20, null, 20],
+//       },
+//     };
 
+//     pdfMake.createPdf(documentDefinition).open();
+//   }
 
 
   search(term: string): void {
@@ -274,8 +344,6 @@ export class VehiculeListeComponent implements OnInit, OnDestroy, AfterViewInit 
     this.searchTerms.next(term);
     this.searchTermsFilterDoubleMatriculeMarque.next(term);
   }
-
-
 
   applyFilter(event: Event): void {
     const filterValue = (event.target as HTMLInputElement).value;

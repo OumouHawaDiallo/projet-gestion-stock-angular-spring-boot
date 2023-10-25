@@ -6,16 +6,19 @@ import { VehiculeListeComponent } from './pages/bureau-logistique-materiel/vehic
 import { UtilisateurListeComponent } from './pages/utilisateur/utilisateur-liste/utilisateur-liste.component';
 import { UtilisateurDetailComponent } from './pages/utilisateur/utilisateur-detail/utilisateur-detail.component';
 import { UtilisateurModifierComponent } from './pages/utilisateur/utilisateur-modifier/utilisateur-modifier.component';
+import { AccueilComponent } from './pages/accueil/accueil.component';
 
 const routes: Routes = [
   { path: 'connexion', component: ConnexionComponent },
+  { path: 'accueil', component: AccueilComponent },
+
 
   { path: 'gestion-utilisateur', component: UtilisateurListeComponent },
   { path: 'gestion-utilisateur/detail/:id', component: UtilisateurDetailComponent },
-  { path: 'gestion-utilisateur/modifier/:id', component: UtilisateurModifierComponent },
+  // { path: 'gestion-utilisateur/modifier/:id', component: UtilisateurModifierComponent },
 
   { path: 'erreur', component: ErreurComponent },
-  { path: '', redirectTo: 'gestion-utilisateur', pathMatch: 'full' },
+  { path: '', redirectTo: 'accueil', pathMatch: 'full' },
   { path: '**', redirectTo: 'erreur', pathMatch: 'full' }
 ];
 
