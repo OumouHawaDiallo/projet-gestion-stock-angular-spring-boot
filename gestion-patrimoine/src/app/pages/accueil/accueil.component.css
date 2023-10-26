@@ -103,12 +103,14 @@ li a {
   transition: background-color 0.5s, color 0.5s; /* Animation de transition */
 
 
+
 }
 
 .lien:hover{
+  cursor: pointer;
   border: none;
   outline: none;
-  color: gray;
+  background-color:#f0dd99;
 
 
 
